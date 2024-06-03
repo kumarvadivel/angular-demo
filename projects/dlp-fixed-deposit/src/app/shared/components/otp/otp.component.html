@@ -1,0 +1,41 @@
+<!-- OTP -->
+<div class="col-lg-6 col-md-4 form-group input-container" [class]="options.className">
+    <div class="text-info">{{field.infoText}}</div>
+    <label class="form-label Required">{{field.fieldLabel}}
+        <span class="requiredHastrick"></span>
+    </label>
+    <div class="mb-3 d-flex align-items-center" >
+        <ngx-otp-input #ngxotp [config]="{
+            otpLength: field.length,
+            autofocus: true,
+            isPasswordInput: field.OtpMasking,
+            numericInputMode: field.otpDataType=='NUMBER'?true:false,
+            classList: {
+                inputBox: 'my-super-box-class',
+                input: 'my-super-class',
+                inputFilled: 'my-super-filled-class',
+                inputDisabled: 'my-super-disable-class',
+                inputSuccess: 'my-super-success-class',
+                inputError: 'my-super-error-class'
+            }
+        }" (fill)="handleFillEvent($event)"   (otpChange)="handeOtpChange($event)"></ngx-otp-input>'
+        <img class="cursorPointer" *ngIf="field.isPreview" [src]="'../../../assets//icons/preview.png'" alt="img"
+        (click)="preview(field)">
+        <img class="cursorPointer" *ngIf="!field.isPreview" [src]="'../../../assets//icons/preview-not.png'" alt="img"
+        (click)="preview(field)">
+    </div>
+    <div class="otp-timer mt-2">
+        <div class="text-danger d-flex align-items-center mr-5 " *ngIf="otpAttempt < field.otpAttempts">
+            <img [src]="'../../../assets/icons/caution.png'" class="me-2" alt="img"> {{otpAttempt}}
+            attempts remaining
+        </div>
+        <div class="otp-timer mt-2"></div>
+        <div class="text-orange" *ngIf="timeLeft > 0">Wait for <span class="fw-600">{{minsLeft | number:'1.0-0'}}:{{secsLeft |number:'1.0-0'}}
+            s</span> to <span class="resendOTP">Resend OTP</span> </div>
+            <span class="text-info text-orange" *ngIf="timeLeft == 0"
+            (click)="resendOtp()">
+            
+            Resend OTP</span>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

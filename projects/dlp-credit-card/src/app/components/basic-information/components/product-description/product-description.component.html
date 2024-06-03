@@ -1,0 +1,56 @@
+ <div class="main-cnt-pad mobileWidt commonStyle w-100">
+    
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12  col-12 pl-0 pr-0 commonStyle float-left ">
+            
+        </div>
+    
+    <div class="row no-margin  mob-mb-20  commonStyle pr-10 mob-pr-0">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 float-left pl-0 pr-20 mob-p-0">
+            <img class="choose-loan-img mb-10" [src]="'assets/images/choose-loan.webp'" alt="img">
+        </div>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 col-12 float-left mob-p-0 pl-0 pr-10" *ngFor="let item of productDescription;let i=index">
+            <div class="f-40 clr-black loan-title font-dark">{{item.name}}</div>
+            <div class="clr-black f-16 font-light mb-20">{{item.description}}
+            </div>
+            <div class="w-100 float-left popup-btn-panel">
+                    <button mat-flat-button (click)="navigateToCustType()"class="btn-orange mob-w-100 mob-mb-10 mob-mr-10" >Apply Now</button>
+                    <button type="button" (click)="navigateToTrackStatus()" mat-stroked-button class="btn-stroked-orange ms-3 mob-w-100 mob-ml-0">Track Status</button>
+            </div>
+        </div>
+    </div>
+    <div class="row no-margin  pr-10 mob-pl-0 mob-pr-0">
+        <div class="col-xxl-10 col-xl-10 col-lg-10 col-md-10 col-sm-12 col-xs-12 pl-0">
+            <mat-tab-group [selectedIndex]="selected.value" (selectedIndexChange)="selected.setValue($event)">
+                <mat-tab *ngFor="let tab of productDescInfoTabs; let index = index" [label]="tab?.label">
+                    <div class="row" *ngIf="tab.mode == 'points'">
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="loan-form-label clr-black">{{tab.head}}</div>
+                            <ul class="list-details" >
+                                <li *ngFor="let tabcontent of tab.desc; let index = index">{{tabcontent.pt1}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mob-mb-20 accordion-panel pl-10" *ngIf="tab.mode == 'accordion'">
+                        <div class="loan-form-label clr-black">{{tab.head}}</div>
+                        <mat-accordion multi class="mb-30">
+                            <mat-expansion-panel *ngFor="let tabcontent of tab.desc; let index = index">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        {{tabcontent.accordionheader}}
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <div class="row mt-10">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            {{tabcontent.accordioncontent}}
+                                    </div>
+                                </div>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>
+    
+

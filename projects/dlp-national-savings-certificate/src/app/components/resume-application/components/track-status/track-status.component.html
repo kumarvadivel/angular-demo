@@ -1,0 +1,12 @@
+<div class="breadcrumb-content">
+
+    <app-bread-crumb [breadCrumbList]="breadCrumbList"></app-bread-crumb>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-0 pr-0">
+        <app-section-builder [config]="config"  (status)="otpCompleteTrigger($event)"></app-section-builder>
+    </div>
+    <button mat-flat-button="" *ngIf="showContinue" (click)="continue()" class=" btn-orange  ng-star-inserted">
+         Continue 
+    </button>
+</div>
+ 

@@ -1,0 +1,76 @@
+<div class="pageMeta-config-console">
+    <div class="config-section"  style="overflow-y: auto;max-height: 90vh;flex-basis: 65%;">
+        <div class="config-actions-section">
+            <button class="primary-btn" (click)="importConfig()">Import and Edit Config</button>
+            <button class="secondary-btn" (click)="clearConfig()">clear config</button>
+        </div>
+        <div class="config-otherkeys-section">
+            <app-section-builder [config]="pageSectionConfig" (status)="emitter($event)"></app-section-builder>
+        </div>
+        <div class="config-prepopulation-remap-section">
+            <app-section-builder [config]="pageSectionConfig_prepopulation" (status)="emitter_prepop($event)"></app-section-builder>
+            <div class="" *ngIf="prepopulationRemaps |keyvalue">
+                <span class="common-title f-16">prepopulationRemaps List</span> 
+                <div class="display-flex">
+                    <div class="card" *ngFor="let item of prepopulationRemaps | keyvalue" >
+                       <div>{{item.key}}</div> 
+                       <span class="material-symbols-outlined cursor-pointer" (click)="deleteprepopulation(item.key)">
+                        close
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="config-formsubmitflow-section">
+            <app-section-builder [config]="pageSectionConfig_formsubmitflow" (status)="emitter_submitflow($event)"></app-section-builder>
+            <div class="form-submit-queue" *ngIf="formSubmitflow.length!=0">
+                <span class="common-title f-16">Submitflow Queue</span>
+                <span class="common-info">Tip: drag to re-arrange the submitflow order</span>
+                <div class="queue">
+                    <smooth-dnd-container [behaviour]="'contain'" [orientation]="'horizontal'" (drop)="onsubmitflowDrop($event)">
+                        <smooth-dnd-draggable *ngFor="let submitflow of formSubmitflow;let i = index">
+                            <div class="draggable-item">
+                                <div class="card display-flex j-c-sb" >
+                                    <span>{{submitflow.submitflow}}</span>
+                                    <span class="material-symbols-outlined cursor-pointer" (click)="deletesubmitflow(i)">
+                                        close
+                                    </span>
+                                </div>
+                            </div>
+                        </smooth-dnd-draggable>
+                    </smooth-dnd-container>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="config-datascopefetchflow-section" id="fetchflow">
+            <app-section-builder [config]="pageSectionConfig_datascopefetchflow" (status)="emitter_fetchflow($event)"></app-section-builder>
+            <div class="fetchflow-queue" *ngIf="datascopefetchflow.length!=0">
+                <span class="common-title f-16">fetchflow Queue</span>
+                <span class="common-info">Tip: drag to re-arrange the fetchflow order</span>
+                
+                    <smooth-dnd-container [behaviour]="'contain'" [orientation]="'horizontal'" (drop)="onfetchflowDrop($event)">
+                        <div class="queue">
+                        <smooth-dnd-draggable *ngFor="let fetchflow of datascopefetchflow;let i = index">
+                            <div class="draggable-item">
+                                <div class="card display-flex j-c-sb" >
+                                    <span>{{fetchflow.fetchflow}}</span>
+                                    <span class="material-symbols-outlined cursor-pointer" (click)="deletefetchflow(i)">
+                                        close
+                                    </span>
+                                </div>
+                            </div>
+                        </smooth-dnd-draggable>
+                        </div>
+                    </smooth-dnd-container>
+            </div>
+        </div>
+        <div class="export-section">
+            <button class="primary-btn" (click)="exportConfig()">Export Config</button>
+        </div>
+    </div>
+    <div class="config-preview-section" style="flex-basis: 36%;">
+        <div class="common-title mb-20">PageMeta Configuration Preview</div>
+        <app-json-viewer [json]="mainConfig" [expanded]="false"></app-json-viewer>
+    </div>
+</div>

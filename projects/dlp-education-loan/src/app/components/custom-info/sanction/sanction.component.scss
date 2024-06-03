@@ -1,0 +1,109 @@
+.emi-calc-container {
+    .label-disp {
+      color: #565656;
+      font-size: 12px;
+      font-family: var(--font-family-lt);
+    }
+  
+    input {
+      height: 32px !important;
+    }
+  
+    .mat-slider-horizontal {
+      height: 40px;
+      min-width: 310px;
+  
+      ::ng-deep .mat-slider-track-background {
+        background-color: var(--brand-color) !important;
+      }
+    }
+  }
+  
+  :host::ng-deep .mat-slider-thumb {
+    background-color: var(--brand-color);
+  }
+  
+  :host::ng-deep .mat-slider-track-fill {
+    background-color: var(--brand-color);
+  }
+  
+  :host::ng-deep .mat-slider-thumb-label {
+    background-color: var(--brand-color);
+    border-radius: 4px !important;
+    width: 65px;
+    right: -30px !important;
+  }
+  
+  :host::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb {
+    transform: scale(0.7);
+  }
+  
+  :host::ng-deep .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label {
+    transform: rotate(0deg) !important;
+  }
+  
+  :host::ng-deep .mat-slider-horizontal .mat-slider-thumb-label-text {
+    transform: inherit !important;
+  }
+  
+  :host::ng-deep .mat-slider {
+    width: 100%;
+  }
+  
+  :host::ng-deep .mat-slider-track-background {
+    background-color: rgba(0, 125, 197, .4) !important;
+  }
+  
+  .interestDiv {
+    font-size: 15px;
+  }
+  
+  .bgblue {
+    background-color: #eff8fd;
+  }
+  
+  .pl_2 {
+    padding-left: 2% !important;
+  }
+  
+  .payment {
+    display: flex;
+    gap: 150px;
+    align-items: baseline;
+  }
+  
+  .display {
+    display: grid;
+  }
+  
+  .sanctionContent {
+    border-radius: 4px !important;
+    border: 1px solid grey;
+  }
+  
+  .label-disp {
+    font-size: 12px;
+    font-family: var(--font-family-lt);
+    color: black;
+  }
+  
+  .total-emi-details {
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+  }
+  
+  .sanction-generate-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .title-area {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .enhance-section-container > div {
+    margin-bottom: 20px;
+  }
+  

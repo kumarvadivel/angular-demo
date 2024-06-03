@@ -1,0 +1,28 @@
+
+<div class="home-banner carousel-wrapper">
+    <div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators" *ngIf="data.length>1">
+            <button type="button" aria-label="indicators" (click)="setCurrentCarousel(i)" *ngFor="let slide of data;let i=index" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{i}}" [ngClass]="{active: i==config.activeCarouselIndex}"></button>
+        </div>
+        <div class="carousel-inner" *ngIf="environmentService.configData.appConfig.display_brandable_images">
+            <div *ngFor="let item of data;let i=index" class="carousel-item bannerImage"
+                [ngClass]="{active: i==config.activeCarouselIndex}">
+                <img [src]="item.image" class="bannerImageHeight d-block w-100" alt="bannerImg">
+                <div class="carousel-caption d-none d-md-block z-99">
+                    <h5 class="bannerTitle">{{item?.title}}</h5>
+                    <p class="bannerDescription">{{item?.description}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-inner" *ngIf="!environmentService.configData.appConfig.display_brandable_images">
+            <div *ngFor="let item of defaultCarouselData;let i=index" class="carousel-item bannerImage"
+                [ngClass]="{active: i==config.activeCarouselIndex}">
+                <img [src]="item.image" class="bannerImageHeight d-block w-100" alt="bannerImg">
+                <div class="carousel-caption d-none d-md-block z-99">
+                    <h5 class="bannerTitle">{{item?.title}}</h5>
+                    <p class="bannerDescription">{{item?.description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

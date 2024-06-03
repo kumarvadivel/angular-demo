@@ -1,0 +1,52 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  brand-layout commonStyle" *ngIf="!showloader">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 commonStyle float-left pl-0 pr-0" >
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs> 
+    </div>
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mobileWidt commonStyle main-cnt-pad" [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}">
+        <div  *ngIf="metaConfig.showStepper" [ngClass]="{'mb-20':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper  [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div class="containerscroll">
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-20':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper [stepperData]="journey.metaData.substepperData"></app-substepper>
+            </div>
+            <div class="display-flex">
+                <div class="row udyam-main-content">
+                    <div *ngIf="metaConfig.showVerificationText"  class="details">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <img class="me-2" [src]="'../../../assets/icons/tick.png'" alt="" />
+                                    <span class="me-2">{{metaConfig.showVerificationText}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <app-section-builder [config]="config" class="mb-4">
+                    </app-section-builder>
+                    <div class="w-100 mb-4">
+                        <button class="btn-orange mob-w-100" mat-flat-button *ngIf="showSubmit"
+                            (click)="continue()">Continue</button>
+                            <button class="btn-stroked-orange mob-w-100 ml-40"  *ngIf="metaConfig.skipPage"
+                            (click)="SkipPage()">{{metaConfig.buttonSkip}}</button>
+                    </div>
+                    <span class="common-info me-3">Forgot the Udyam Registration Number? <button class="underscore-orange click-padding" (click)="udyamLinkRedirect('REGISTER')" >Click Here</button></span>
+                </div>
+                <div class="row udyam-link-content">
+                    <div  class="common-title me-3">
+                        <img  [src]="'../../../../assets/icons/download@2.png'" alt="">
+                        <br > Download your Udyam Registration Certificate, 
+                        <button  class="underscore-orange-lg a-button" (click)="udyamLinkRedirect('VERIFY')">Here</button>
+                    </div>
+                    <div  class="common-title me-3">
+                        <img  [src]="'../../../../assets/icons/search_file.png'" alt="">
+                        <br > Identify your Udyam Registration Number, 
+                        <button  class="underscore-orange-lg a-button" (click)="udyamLinkRedirect('DOWNLOAD')">Here</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

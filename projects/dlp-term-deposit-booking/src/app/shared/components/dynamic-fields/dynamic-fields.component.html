@@ -1,0 +1,926 @@
+<div>
+    <div *ngFor="let group of dynamicGroupList;let groupIndex=index " class="group-wrapper">
+        <div *ngIf="fieldGroups[groupIndex]!=null && fieldGroups[groupIndex]!=''">
+            <label *ngIf="ShowGroupName(group)"
+                   class="adressfieldLabelGroup form-label-lg mb-3">{{fieldGroups[groupIndex]}}</label>
+        </div>
+        <div *ngFor="let row of group" [ngClass]="{'twoColumnrowLayout':options.columnSize == 2,'threeColumnrowLayout': options.columnSize == 3}"
+             class="dynamicFormFields">
+            <div *ngFor="let field of row;" [class]="field.WrapperclassName"
+                 [ngClass]="{'addressLayout':field.fieldDataType == 'ADDRESS'||field.fieldDataType == 'TABLE' ,'field-display-none':field.showField == false,'w-100':options.columnSize==1 && options.layout=='sideLayout','oneColumnrowLayout': options.columnSize == 1}"
+                 class="dynamic-fields-wrapper">
+                <div [ngClass]="{'sideFormlayout': options.layout == 'sideLayout' && field.fieldDataType != 'ADDRESS'}"
+                     class="field-wrapper w-100">
+                    <div *ngIf="field.showLabel" class="label-group">
+                        <label [attr.for]="field.fieldLabel" [ngClass]="{'form-label-lg adressfieldLabelGroup': field.fieldDataType == 'ADDRESS'}"
+                               class="form-label d-flex">{{field.fieldLabel}}
+                            <span *ngIf="field.isMandatory" class="requiredHastrick"></span>
+                            <div *ngIf="field.labelInfo!=null" class="floating-info mr-5"
+                                 matTooltip="{{field.labelInfo}}">i
+                            </div>
+                            <div *ngIf="field.isVerified" [ngClass]="{'ml-15':field.isMandatory}" class="common-info ">
+                                <img alt="img" class="display-flex" src="../../../../../assets/icons/tick.png">
+                            </div>
+                        </label>
+                    </div>
+                    <div [ngClass]="{'side':options.layout=='sideLayout' && field.fieldDataType!='RANGE'}"
+                         class="input-group w-100">
+                        <!-- TEXT -->
+                        <div *ngIf="field.fieldDataType=='TEXT'" [class]="field.className"
+                             class="input-container input-group w-100">
+                            <input (change)="validationCheck(field);formulamapping(field)" (focusout)="verificationCheck(field);" (input)="autoSuggestCheck(field,$event);validationCheck(field);formulamapping(field)"
+                                   (ngModelChange)="validationCheck(field);formulamapping(field)" *ngIf="!field.showprefix" [(ngModel)]="field.value"
+                                   [attr.fieldName]="field.fieldName" [attr.maxLength]="field.maxLength"
+                                   [attr.max]="field.maxLength" [attr.minLength]="field.minLength"
+                                   [attr.min]="field.minLength" [attr.type]="field.fieldDataType" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                   [id]="field.fieldName" [matTooltipClass]="'below'"
+                                   [matTooltipPosition]="'below'"
+                                   [matTooltip]="field.error ? field.error : ''" [ngClass]="{'is-invalid':field.error}"
+                                   [placeholder]="field.placeholderText" [udyamHyphen]="field.udyamHyphen" [uppercase]="field.upperCase"
+                                   appCopyPaste
+                                   autocomplete="off"
+                                   class="form-control "
+                                   ngDefaultControl>
+                            <div *ngIf="field.autoSuggest && (field.suggestion)"
+                                 [ngClass]="{'autocompleteField':field.suggestion?.length==0}"
+                                 class="autocomplete-popover">
+                                <span (click)="selectSuggestion(field,suggestion)" *ngFor="let suggestion of field.suggestion"
+                                      class="autocomplete-options">{{suggestion}}</span>
+                            </div>
+                            <button
+                                    (click)="verifyField(field)"
+                                    *ngIf="field.verificationType!=null && !field.isVerified && (field.verificationType=='EMAIL' || field.verificationType=='ACCOUNT_NO' || field.verificationType=='GST') && !field.verifyDisable" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                    class="input-group-text orange ng-star-inserted">
+                                Verify
+                            </button>
+                            <span
+                                    (click)="ChangeFieldAccessModifier(field)"
+                                    *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                    class="input-group-text orange ng-star-inserted"><img
+                                    alt="editInfo"
+                                    class="editInfo" src="assets/icons/editinfo.png"></span>
+                            <span (click)="verifyDisableToggle(field)" *ngIf="field.verifyDisable"
+                                  class="input-group-text orange ng-star-inserted">Edit</span>
+                            <div *ngIf="field.showprefix" [ngClass]="{'w-100':options.layout=='sideLayout'}"
+                                 class="input-group">
+                                <span *ngIf="field.prefixType=='TEXT'"
+                                      class="input-group-text disabled-bg">{{field.prefix}}</span>
+                                <select (change)="dropdownChange(field);validationCheck(field);formulamapping(field);" *ngIf="field.prefixType=='DROPDOWN'"
+                                        [(ngModel)]="field.prefix" [attr.fieldName]="field.prefixfieldName"
+                                        [disabled]="field.prefixfieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [id]="field.prefixfieldName"
+                                        [ngClass]="{'is-invalid':field.error}"
+                                        class="prefixDropdown">
+                                    <option disabled value=null>-{{field.prefixplaceholderText}}-</option>
+                                    <option *ngFor="let item of field.options" [value]="item.optionKey">
+                                        {{item.optionName}}
+                                    </option>
+                                </select>
+                                <input (focusout)="verificationCheck(field)" [(ngModel)]="field.value"
+                                       [attr.fieldName]="field.prefixfieldName" [attr.maxLength]="field.maxLength"
+                                       [attr.max]="field.maxLength" [attr.minLength]="field.minLength"
+                                       [attr.min]="field.minLength" [attr.type]="field.fieldDataType"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [id]="field.prefixfieldName" [ngClass]="{'is-invalid':field.error}"
+                                       [placeholder]="field.placeholderText" appCopyPaste
+                                       autocomplete="off"
+                                       class="form-control "
+                                       ngDefaultControl>
+                                <span
+                                        (click)="ChangeFieldAccessModifier(field)"
+                                        *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                        class="input-group-text orange ng-star-inserted"><img
+                                        alt="editInfo" class="editInfo" src="assets/icons/editinfo.png"></span>
+                                <span (click)="verifyDisableToggle(field)" *ngIf="field.verifyDisable"
+                                      class="input-group-text orange ng-star-inserted">Edit</span>
+                            </div>
+                        </div>
+                        <!-- NUMBER -->
+                        <div *ngIf="field.fieldDataType=='NUMBER'" [class]="field.className"
+                             class="input-container input-group w-100">
+                            <input (change)="formulamapping(field)" (focusout)="verificationCheck(field)" (input)="validationCheck(field);formulamapping(field)"
+                                   (ngModelChange)="validationCheck(field);formulamapping(field)"
+                                   *ngIf="!field.showprefix"
+                                   [(ngModel)]="field.value"
+                                   [OnlyNumber]="true"
+                                   [attr.fieldName]="field.fieldName" [attr.maxLength]="ParseInputRestrictionForNumberDataType(field.maxLength)" [attr.max]="ParseInputRestrictionForNumberDataType(field.maxLength)"
+                                   [attr.minLength]="ParseInputRestrictionForNumberDataType(field.minLength)" [attr.min]="ParseInputRestrictionForNumberDataType(field.minLength)"
+                                   [attr.type]="'text'"
+                                   [disabled]="field.fieldAccessModifier=='READ_ONLY' || (options.disableMode == true)"
+                                   [id]="field.fieldName"
+                                   [matTooltipClass]="'below'"
+                                   [matTooltipPosition]="'below'" [matTooltip]="field.error ? field.error : ''"
+                                   [ngClass]="{'is-invalid':field.error}" [placeholder]="field.placeholderText"
+                                   appCopyPaste autocomplete="off" class="form-control "
+                                   inputmode="numeric"
+                                   ngDefaultControl>
+                            <button
+                                    (click)="verifyField(field)"
+                                    *ngIf="field.verificationType!=null && !field.isVerified && (field.verificationType=='EMAIL'||field.verificationType=='ACCOUNT_NO')" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                    class="input-group-text orange ng-star-inserted">
+                                Verify
+                            </button>
+                            <span
+                                    (click)="ChangeFieldAccessModifier(field)"
+                                    *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                    class="input-group-text orange ng-star-inserted"><img
+                                    alt="editInfo"
+                                    class="editInfo" src="assets/icons/editinfo.png"></span>
+                            <span (click)="verifyDisableToggle(field)" *ngIf="field.verifyDisable"
+                                  class="input-group-text orange ng-star-inserted">Edit</span>
+                            <div *ngIf="field.showprefix" class="display-flex w-100">
+                                <span *ngIf="field.prefixType=='TEXT'"
+                                      class="input-group-text disabled-bg">{{field.prefix}}</span>
+                                <select *ngIf="field.prefixType=='DROPDOWN'" [(ngModel)]="field.prefix"
+                                        [ngClass]="{'is-invalid':field.error}" class="prefixDropdown">
+                                    <option disabled value="">-{{field.placeholderText}}-</option>
+                                    <option *ngFor="let item of field.options" [value]="item.optionKey">
+                                        {{item.optionName}}
+                                    </option>
+                                </select>
+                                <input (change)="formulamapping(field)"
+                                       (focusout)="verificationCheck(field)"
+                                       (input)="validationCheck(field);formulamapping(field)"
+                                       [(ngModel)]="field.value"
+                                       [OnlyNumber]="true"
+                                       [attr.maxLength]="ParseInputRestrictionForNumberDataType(field.maxLength)" [attr.max]="ParseInputRestrictionForNumberDataType(field.maxLength)"
+                                       [attr.max]="field.maxLength"
+                                       [attr.minLength]="ParseInputRestrictionForNumberDataType(field.minLength)"
+                                       [attr.min]="ParseInputRestrictionForNumberDataType(field.minLength)" [attr.min]="field.minLength"
+                                       [attr.type]="field.fieldDataType" [disabled]="field.fieldAccessModifier=='READ_ONLY' || (options.disableMode == true)" [ngClass]="{'is-invalid':field.error}"
+                                       [placeholder]="field.placeholderText" appCopyPaste
+                                       autocomplete="off"
+                                       class="form-control "
+                                       ngDefaultControl>
+                                <button
+                                        (click)="verifyField(field)"
+                                        *ngIf="field.verificationType!=null && !field.isVerified && (field.verificationType=='EMAIL'||field.verificationType=='ACCOUNT_NO')" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                        class="input-group-text orange ng-star-inserted">
+                                    Verify
+                                </button>
+                                <span
+                                        (click)="ChangeFieldAccessModifier(field)"
+                                        *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                        class="input-group-text orange ng-star-inserted"><img
+                                        alt="editInfo" class="editInfo" src="assets/icons/editinfo.png"></span>
+                                <span (click)="verifyDisableToggle(field)" *ngIf="field.verifyDisable"
+                                      class="input-group-text orange ng-star-inserted">Edit</span>
+                            </div>
+                        </div>
+                        <!-- TEXT AREA -->
+                        <div *ngIf="field.fieldDataType=='TEXT_AREA'" [class]="field.className"
+                             class="input-container w-100">
+                            <textarea (change)="formulamapping(field)" (input)="validationCheck(field)"
+                                      [(ngModel)]="field.value" [attr.fieldName]="field.fieldName"
+                                      [attr.maxLength]="field.maxLength" [attr.minLength]="field.minLength"
+                                      [disabled]="field.fieldAccessModifier=='READ_ONLY' || (options.disableMode == true)"
+                                      [id]="field.fieldName" [matTooltipClass]="'below'" [matTooltipPosition]="'below'"
+                                      [matTooltip]="field.error ? field.error : ''" [ngClass]="{'is-invalid':field.error}"
+                                      [placeholder]="field.placeholderText" [rows]="field.rows"
+                                      appCopyPaste autocomplete="off"
+                                      class="form-control"
+                                      ngDefaultControl></textarea>
+                        </div>
+                        <!-- MOBILE_NO -->
+                        <div *ngIf="field.fieldDataType=='MOBILE_NO'" [class]="field.className"
+                             class="input-container w-100">
+                            <div class="d-flex mb-2">
+                                <input [OnlyNumber]="true" [value]="field.countryCode" class="form-control form-control-lg countryCode me-3" disabled
+                                       placeholder="countryCode"
+                                       type="text">
+                                <div class="input-group input-group-lg ">
+                                    <input (change)="formulamapping(field)" (input)="validationCheck(field)" [(ngModel)]="field.value"
+                                           [OnlyNumber]="true" [attr.fieldName]="field.fieldName"
+                                           [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [id]="field.fieldName"
+                                           [matTooltipClass]="'below'" [matTooltipPosition]="'below'"
+                                           [matTooltip]="field.error ? field.error : ''"
+                                           [maxlength]="field.maxLength"
+                                           [ngClass]="{'is-invalid':field.error}"
+                                           [placeholder]="field.placeholderText" [type]="'number'"
+                                           appCopyPaste
+                                           autocomplete="off"
+                                           class="form-control form-control-lg input-group-field" inputmode="numeric">
+                                    <span
+                                            (click)="ChangeFieldAccessModifier(field)"
+                                            *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                            class="input-group-text orange ng-star-inserted"><img
+                                            alt="editInfo" class="editInfo" src="assets/icons/editinfo.png"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DROPDOWN -->
+                        <div *ngIf="field.fieldDataType=='DROPDOWN'" [class]="field.className"
+                             class="input-container w-100 display-flex">
+                            <select (change)="dropdownChange(field);validationCheck(field);formulamapping(field);" [(ngModel)]="field.value"
+                                    [attr.fieldName]="field.fieldName"
+                                    [disabled]="field.fieldAccessModifier=='READ_ONLY' || (options.disableMode == true)"
+                                    [id]="field.fieldName" [matTooltipClass]="'below'"
+                                    [matTooltipPosition]="'below'" [matTooltip]="field.error ? field.error : ''"
+                                    [ngClass]="{'is-invalid':field.error}" class="form-select form-select-lg"
+                                    placeholder="field.placeholderText">
+                                <option hidden>-{{field.placeholderText}}-</option>
+                                <option [value]="null" disabled>-{{field.placeholderText}}-</option>
+                                <option *ngFor="let item of field.searchoption" [value]="item.optionKey">
+                                    {{item.optionName}}</option>
+                                <option *ngIf="field.searchoption?.length == 0 && field.isParentFilled==false"
+                                        [value]="">Please select a {{field.dependentParentLabel}}</option>
+                                <option
+                                        *ngIf=" field.noOptions==true && field.isParentFilled==true && field.dependentField!=null">
+                                    No option available
+                                </option>
+                                <option *ngIf=" field.searchoption?.length==0 && field.dependentField==null">No option
+                                    available
+                                </option>
+                            </select>
+                            <button
+                                    (click)="verifyField(field)"
+                                    *ngIf="field.verificationType!=null && !field.isVerified && (field.verificationType=='EMAIL' || field.verificationType=='ACCOUNT_NO' || field.verificationType=='GST') && !field.verifyDisable" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                    class="input-group-text orange ng-star-inserted">
+                                Verify
+                            </button>
+                            <span
+                                    (click)="ChangeFieldAccessModifier(field)"
+                                    *ngIf="field.isEditableOnDisable!=null && field.isEditableOnDisable==true && field.fieldAccessModifier=='READ_ONLY'"
+                                    class="input-group-text orange ng-star-inserted"><img
+                                    alt="editInfo"
+                                    class="editInfo" src="assets/icons/editinfo.png"></span>
+                            <span (click)="verifyDisableToggle(field)" *ngIf="field.verifyDisable"
+                                  class="input-group-text orange ng-star-inserted">Edit</span>
+                        </div>
+                        <!-- AUTO_COMPLETE -->
+                        <div *ngIf="field.fieldDataType=='AUTO_COMPLETE'" [class]="field.className"
+                             class="input-container w-100">
+                            <ngx-select-dropdown (change)="formatAutoCompleteValue($event,field);formulamapping(field);validationCheck(field)" [(ngModel)]="field.value" [disabled]="field.fieldAccessModifier=='READ_ONLY'?true:false"
+                                                 [attr.fieldName]="field.fieldName" [config]="DropDownconfig"
+                                                 [id]="field.fieldName"
+                                                 [matTooltipClass]="'below'"
+                                                 [matTooltipPosition]="'below'" [matTooltip]="field.error ? field.error : ''"
+                                                 [multiple]="false"
+                                                 [ngClass]=" {'is-invalid':field.error}"
+                                                 [options]="field.searchoption"
+                                                 class="form-control form-select form-select-lg">
+                            </ngx-select-dropdown>
+                        </div>
+                        <!-- PAN CARD -->
+                        <div *ngIf="field.fieldDataType=='PAN_CARD'" [attr.fieldName]="field.fieldName"
+                             [class]="field.className" [id]="field.fieldName"
+                             class="input-container panField">
+                            <div class="digit-group mb-3 input-container w-100" id="panGroup">
+                                <input (change)="formulamapping(field)" (input)="panNumberMerge(field);validationCheck(field)" [(ngModel)]="field.panNumberFirst"
+                                       [alphaOnly]="true" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                       [uppercase]="true" autoTab="panNumberSecond"
+                                       autocomplete="off" class="form-control col-lg-4 col-md-4" id="panNumberFirst" maxlength="5"
+                                       placeholder="XXXXX"
+                                       type="text">
+                                <input (change)="formulamapping(field)" (input)="panNumberMerge(field);validationCheck(field)" [(ngModel)]="field.panNumberSecond" [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [uppercase]="true"
+                                       autoTab="panNumberThird" autocomplete="off" class="form-control"
+                                       id="panNumberSecond" maxlength="4"
+                                       placeholder="XXXX"
+                                       type="text">
+                                <input (change)="formulamapping(field)" (input)="panNumberMerge(field);validationCheck(field)" [(ngModel)]="field.panNumberThird" [alphaOnly]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [uppercase]="true"
+                                       autocomplete="off" class="form-control" id="panNumberThird"
+                                       maxlength="1" placeholder="X"
+                                       type="text">
+                                <button
+                                        (click)="verifyField(field)"
+                                        *ngIf="field.verificationType!=null && !field.isVerified && (field.verificationType=='PAN' || field.verificationType=='PAN_V2')" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                        class="input-group-text orange ng-star-inserted">
+                                    Verify
+                                </button>
+                            </div>
+                        </div>
+                        <!-- RADIO -->
+                        <div *ngIf="field.fieldDataType=='RADIO'" [class]="field.className" class="radio-field">
+                            <mat-radio-group #radioBtn="matRadioGroup"
+                                             (change)="validationCheck(field);formulamapping(field)" (input)="beforeChange($event,field,field.value)"
+                                             [(ngModel)]="field.value"
+                                             [attr.fieldName]="field.fieldName" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                             [id]="field.fieldName"
+                                             [ngClass]="{'example-radio-group-vertical':field.radioGroupOrientation=='VERTICAL'}"
+                                             class="form-conrol d-flex example-radio-group-vertical">
+                                <mat-radio-button *ngFor="let item of field.options" [value]="item.optionKey">
+                                    <img *ngIf="item.icon" [src]="renderRadioIcons(item)" alt="img" class="me-2">
+                                    {{item.optionName}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <!-- AADHAR -->
+                        <div *ngIf="field.fieldDataType=='AADHAR'"
+                             [attr.fieldName]="field.fieldName"
+                             [class]="field.className" [id]="field.fieldName"
+                             class="d-flex justify-content-between align-items-start input-container">
+                            <div class="digit-group mb-3 d-flex align-items-center" id="aadharGroup">
+                                <input (change)="formulamapping(field)"
+                                       (input)="aadharNumberMerge(field);validationCheck(field)" (keyup)="MultiInputFocusSystem($event,field.aadhaarNumberFirst,0,'aadharGroup')" [(ngModel)]="field.aadhaarNumberFirst"
+                                       [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [type]="field.Masking ||field.aadhaarNumberFirstMask==true?'password':'text'" appCopyPaste
+                                       autocomplete="off"
+                                       inputmode="numeric"
+                                       maxlength="4"
+                                       placeholder="XXXX">
+                                <input (change)="formulamapping(field)"
+                                       (input)="aadharNumberMerge(field);validationCheck(field)" (keyup)="MultiInputFocusSystem($event,field.aadhaarNumberSecond,1,'aadharGroup')" [(ngModel)]="field.aadhaarNumberSecond"
+                                       [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                       [type]="field.Masking || field.aadhaarNumberSecondMask==true?'password':'text'" appCopyPaste autocomplete="off"
+                                       inputmode="numeric"
+                                       maxlength="4"
+                                       placeholder="XXXX">
+                                <input (change)="formulamapping(field)"
+                                       (input)="aadharNumberMerge(field);validationCheck(field)" (keyup)="MultiInputFocusSystem($event,field.aadhaarNumberThird,2,'aadharGroup')" [(ngModel)]="field.aadhaarNumberThird"
+                                       [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                       [type]=" field.Masking || field.aadhaarNumberThirdMask==true?'password':'text'" appCopyPaste autocomplete="off"
+                                       inputmode="numeric"
+                                       maxlength="4"
+                                       placeholder="XXXX">
+                                <img (click)="preview(field)" *ngIf="!field.isPreview" alt="img"
+                                     class="cursorPointer" src="../../../assets//icons/preview.png">
+                                <img (click)="preview(field)" *ngIf="field.isPreview" alt="img"
+                                     class="cursorPointer" src="../../../assets//icons/preview-not.png">
+                                <button
+                                        (click)="verifyField(field)"
+                                        *ngIf="field.verificationType!=null && !field.isVerified && !field.externalVerificationTrigger &&(field.verificationType=='AADHAR')" [disabled]="field.value==null || (field.error && field.error!=field.fieldLabel+' Verification is Required') "
+                                        class="input-group-text orange ng-star-inserted">
+                                    Verify
+                                </button>
+                            </div>
+                        </div>
+                        <!-- ACCOUNT_NO -->
+                        <div *ngIf="field.fieldDataType=='ACCOUNT_NO'" [attr.fieldName]="field.fieldName" [class]="field.className"
+                             [id]="field.fieldName" class="input-container">
+                            <div class="digit-group mb-3 input-container accountNumber w-100" id="accountGroup">
+                                <input (change)="formulamapping(field)" (input)="accountNumberMerge(field);validationCheck(field)"
+                                       (keyup)="MultiInputFocusSystem($event,field.accountNumberFirst,0,'accountGroup')" [(ngModel)]="field.accountNumberFirst"
+                                       [OnlyNumber]="true" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                       [type]="field.Masking==true?'password':'text'" appCopyPaste autocomplete="off" class="form-control col-lg-4 col-md-4"
+                                       id="accountNumberFirst"
+                                       inputmode="numeric"
+                                       maxlength="4"
+                                       placeholder="XXXX">
+                                <input (change)="formulamapping(field)" (input)="accountNumberMerge(field);validationCheck(field)"
+                                       (keyup)="MultiInputFocusSystem($event,field.accountNumberSecond,1,'accountGroup')" [(ngModel)]="field.accountNumberSecond" [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [type]="field.Masking==true?'password':'text'" appCopyPaste
+                                       autocomplete="off" class="form-control"
+                                       id="accountNumberSecond"
+                                       inputmode="numeric"
+                                       maxlength="3"
+                                       placeholder="XXX">
+                                <input (change)="formulamapping(field)" (input)="accountNumberMerge(field);validationCheck(field)" (keyup)="MultiInputFocusSystem($event,field.accountNumberThird,2,'accountGroup')" [(ngModel)]="field.accountNumberThird"
+                                       [OnlyNumber]="true"
+                                       [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                       [type]="'text'" appCopyPaste autocomplete="off"
+                                       class="form-control" id="accountNumberThird"
+                                       inputmode="numeric"
+                                       maxlength="8"
+                                       placeholder="XXXXXXXX">
+                                <div class="aadhareyetoggle">
+                                    <img (click)="preview(field)" *ngIf="!field.isPreview" alt="img"
+                                         class="cursorPointer" src="../../../assets//icons/preview.png" style="margin-top: 50%;">
+                                    <img (click)="preview(field)" *ngIf="field.isPreview" alt="img"
+                                         class="cursorPointer" src="../../../assets//icons/preview-not.png"
+                                         style="margin-top: 50%;">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CHECKBOX -->
+                        <div *ngIf="field.fieldDataType=='CHECKBOX'" [attr.fieldName]="field.fieldName" [class]="field.className"
+                             [id]="field.fieldName" class="input-container">
+                            <mat-checkbox (change)="formulamapping(field)" [(ngModel)]="field.value" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" color="primary">
+                                <span (click)="check($event)">{{field.fieldLabel}}</span>
+                            </mat-checkbox>
+                        </div>
+                        <!-- SLIDER -->
+                        <div *ngIf="field.fieldDataType=='BOOLEAN'" [attr.fieldName]="field.fieldName" [class]="field.className"
+                             [id]="field.fieldName">
+                            <mat-slide-toggle (change)="formulamapping(field)" [(ngModel)]="field.value" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                              color="primary">{{field.fieldLabel}}
+                            </mat-slide-toggle>
+                        </div>
+                        <!-- DATE -->
+                        <div *ngIf="field.fieldDataType=='DATE'" [class]="field.className"
+                             class="datePicker input-container w-100">
+                            <input (ngModelChange)="validationCheck(field);formulamapping(field)" (click)="picker.open()" (input)="validationCheck(field)" [(ngModel)]="field.value"
+                                   [attr.fieldName]="field.fieldName" [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                   [id]="field.fieldName"
+                                   [matDatepicker]="picker"
+                                   [matTooltipClass]="'below'" [matTooltipPosition]="'below'"
+                                   [matTooltip]="field.error ? field.error : ''" [max]="field.maxDate"
+                                   [min]="field.minDate" [ngClass]="{'is-invalid':field.error}"
+                                   [placeholder]="field.placeholderText" appCopyPaste autocomplete="off"
+                                   class="form-control form-control-lg"
+                                   type="text">
+                            <mat-datepicker-toggle [for]="picker" [ngClass]="{'is-invalid':field.error}" matSuffix>
+                            </mat-datepicker-toggle>
+                            <mat-datepicker
+                                    #picker
+                                    disabled="{{field.fieldAccessModifier == 'READ_ONLY' || options.disableMode == true ? true : false}}">
+                            </mat-datepicker>
+                        </div>
+                        <!-- BUTTON_TOGGLE -->
+                        <div *ngIf="field.fieldDataType=='BUTTON_TOGGLE'" [attr.fieldName]="field.fieldName"
+                             [class]="field.className" [id]="field.fieldName"
+                             class="input-container w-100">
+                            <mat-button-toggle-group (change)="formulamapping(field)" (input)="validationCheck(field)"
+                                                     [(ngModel)]="field.value" [vertical]="field.isVertical">
+                                <mat-button-toggle (click)="validationCheck(field)" *ngFor="let item of field.options"
+                                                   [value]="item.optionKey">
+                                    <img *ngIf="item.icon" [src]="renderIcon(item,field)" alt="img" class="me-3 ms-2">
+                                    <span class="text-ellipse d-flex">
+                                        {{item.optionName}}
+                                    </span>
+                                </mat-button-toggle>
+                            </mat-button-toggle-group>
+                        </div>
+                        <!-- RANGE -->
+                        <div *ngIf="field.fieldDataType=='RANGE'" [class]="field.className"
+                             class="input-container w-100">
+                            <div>
+                                <mat-slider (change)="validationCheck(field);formulamapping(field)"  [attr.fieldName]="field.fieldName" [displayWith]="formatSlider(field)"
+                                            [id]="field.fieldName" [max]="field.maxLength" [min]="field.minLength" [attr.fieldName]="field.fieldName" aria-label="field.fieldLabel" 
+                                            [thumbLabel]="true" [vertical]="false" color="primary" [discrete]="true" [disabled]="field.fieldAccessModifier=='READ_ONLY'"
+                                            thumbLabel>
+                                            <input matSliderThumb [(ngModel)]="field.value">
+                                </mat-slider>
+                            </div>
+                            <div
+                                    class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-between align-items-center">
+                                <label class="loan-title ">{{field.prefix}} {{field.minLength}} {{field.suffix}}</label>
+                                <label class="loan-title ">{{field.prefix}} {{field.maxLength}} {{field.suffix}}</label>
+                            </div>
+                        </div>
+                        <!-- TABLE -->
+                        <div *ngIf="field.fieldDataType=='TABLE'" [class]="field.className"
+                             class="input-container w-100">
+                            <div [id]="field.fieldName" class="tableFormFields mb-20">
+                                <div class="w-100 commonStyle table-responsive">
+                                    <table *ngIf="field.tableFields != undefined && field.tableFields.length != 0"
+                                           aria-describedby="form-table"
+                                           class="table  common-table">
+                                        <thead class="thead-light">
+                                        <tr class="mat-header-row">
+                                            <th *ngIf="field.showSerialNo" class="mat-header-cell">S.No</th>
+                                            <th *ngFor="let heading of field.tableFields" class="mat-header-cell">
+                                                {{heading.fieldLabel}} <span *ngIf="heading.isMandatory"
+                                                                             class="requiredHastrick"></span></th>
+                                            <th *ngIf="field.showAction" class="mat-header-cell">Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr *ngFor="let data of field.value; let i=index" class="mat-row">
+                                            <td *ngIf="field.showSerialNo" class="mat-cell">{{i + 1}}</td>
+                                            <td *ngFor="let tableField of data" class="mat-cell">
+                                                <!-- TEXT -->
+                                                <div *ngIf="tableField.fieldDataType=='TEXT'"
+                                                     class="input-container input-group w-100">
+                                                    <input (change)="validationCheck(tableField);formulamapping(tableField);tableValueChange(tableField,i,data,field)" (input)="validationCheck(tableField);formulamapping(tableField);tableValueChange(tableField,i,data,field)"
+                                                           *ngIf="!tableField.showprefix" [(ngModel)]="tableField.value"
+                                                           [attr.maxLength]="tableField.maxLength"
+                                                           [attr.minLength]="tableField.minLength"
+                                                           [attr.type]="tableField.fieldDataType"
+                                                           [disabled]="tableField.fieldAccessModifier == 'READ_ONLY' || tableField.fieldAccessModifier == 'DISABLED'"
+                                                           [matTooltipClass]="'below'"
+                                                           [matTooltipPosition]="'below'"
+                                                           [matTooltip]="tableField.error ? tableField.error : ''"
+                                                           [ngClass]="{'is-invalid':tableField.error}"
+                                                           [placeholder]="tableField.placeholderText" appCopyPaste
+                                                           autocomplete="off"
+                                                           class="form-control "
+                                                           ngDefaultControl>
+                                                </div>
+                                                <!-- NUMBER -->
+                                                <div *ngIf="tableField.fieldDataType=='NUMBER'"
+                                                     class="input-container input-group w-100">
+                                                    <input (change)="validationCheck(tableField);formulamapping(tableField);tableValueChange(tableField,i,data,field)" (input)="validationCheck(tableField);formulamapping(tableField);tableValueChange(tableField,i,data,field)"
+                                                           *ngIf="!tableField.showprefix" [(ngModel)]="tableField.value" [OnlyNumber]="true"
+                                                           [attr.maxLength]="ParseInputRestrictionForNumberDataType(tableField.maxLength)"
+                                                           [attr.max]="ParseInputRestrictionForNumberDataType(tableField.maxLength)"
+                                                           [attr.minLength]="ParseInputRestrictionForNumberDataType(tableField.minLength)"
+                                                           [attr.min]="ParseInputRestrictionForNumberDataType(tableField.minLength)"
+                                                           [attr.type]="'text'"
+                                                           [disabled]="tableField.fieldAccessModifier == 'READ_ONLY' || tableField.fieldAccessModifier == 'DISABLED'"
+                                                           [matTooltipClass]="'below'"
+                                                           [matTooltipPosition]="'below'"
+                                                           [matTooltip]="tableField.error ? tableField.error : ''"
+                                                           [ngClass]="{'is-invalid':tableField.error}"
+                                                           [placeholder]="tableField.placeholderText" appCopyPaste
+                                                           autocomplete="off"
+                                                           class="form-control "
+                                                           ngDefaultControl>
+                                                </div>
+                                                <!-- DROPDOWN -->
+                                                <div *ngIf="tableField.fieldDataType=='DROPDOWN'"
+                                                     class="input-container input-group w-100">
+                                                    <select (change)="dropdownChange(tableField);validationCheck(tableField);formulamapping(field);tableValueChange(tableField,i,data,field)"
+                                                            (input)="dropdownChange(tableField);validationCheck(tableField);formulamapping(field);tableValueChange(tableField,i,data,field)"
+                                                            [(ngModel)]="tableField.value"
+                                                            [disabled]="tableField.fieldAccessModifier=='READ_ONLY' || tableField.fieldAccessModifier == 'DISABLED'"
+                                                            [matTooltipClass]="'below'"
+                                                            [matTooltipPosition]="'below'"
+                                                            [matTooltip]="tableField.error ? tableField.error : ''"
+                                                            [ngClass]="{'is-invalid':tableField.error}"
+                                                            [attr.placeholder]="tableField.placeholderText" class="form-select form-select-lg"
+                                                            >
+                                                        <option [value]="null" disabled>
+                                                            -{{tableField.placeholderText}}-
+                                                        </option>
+                                                        <option *ngFor="let item of tableField.searchoption"
+                                                                [value]="item.optionKey">
+                                                            {{item.optionName}}</option>
+                                                        <option
+                                                                *ngIf="tableField.searchoption?.length == 0 && tableField.isParentFilled==false"
+                                                                [value]="">Please select a
+                                                            {{tableField.dependentParentLabel}}</option>
+                                                        <option
+                                                                *ngIf=" tableField.noOptions==true && tableField.isParentFilled==true && tableField.dependentField!=null">
+                                                            No option available
+                                                        </option>
+                                                        <option
+                                                                *ngIf=" tableField.searchoption?.length==0 && tableField.dependentField==null">
+                                                            No option
+                                                            available
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div *ngIf="tableField.fieldDataType=='slNo'">
+                                                    {{i + 1}}
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div *ngIf="field.showAction && field.rowActionData"
+                                                     class="display-flex">
+                                                    <div *ngFor="let action of field.rowActionData[i].actions">
+                                                            <span (click)="tableAction(action,data,field,i)" *ngIf="action.isDisplay" [class]="action.className"
+                                                                  class="material-symbols-sharp mr-5 cursor-pointer"
+                                                                  height="auto"
+                                                                  width="24px">
+                                                                {{action.icon}}
+                                                            </span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr class="mat-footer-row" role="row">
+                                            <td class="mat-footer-cell" colspan="4" role="gridcell">
+                                                <a (click)="addNewRow(field,field.tableFields)"
+                                                   *ngIf="field.addMore==true"
+                                                   class="underscore-orange">+ Add New Item</a>
+                                            </td>
+                                            <td *ngIf="field.tableFooterData" class="mat-footer-cell" colspan="2"
+                                                role="gridcell">
+                                                    <span>
+                                                        {{field.tableFooterData.fieldLabel}}</span>:<span
+                                                    *ngIf="field.tableFooterData.valuePrefix && field.tableFooterData.value">{{field.tableFooterData.valuePrefix}}
+                                                    </span> <span
+                                                    class="form-label-xl">{{field.tableFooterData.value}}</span><span
+                                                    *ngIf="field.tableFooterData.valueSuffix && field.tableFooterData.value">{{field.tableFooterData.valueSuffix}}</span>
+                                            </td>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="field.fieldDataType=='ADDRESS'" [attr.fieldName]="field.fieldName"
+                             [class]="field.className" [id]="field.fieldName"
+                             [ngClass]="{'twoColumnrowLayout':options.columnSize == 2,'threeColumnrowLayout': options.columnSize == 3}"
+                             class="dynamicAddressType input-container w-100">
+                            <div *ngFor="let addressField of field.addressFields"
+                                 [ngClass]="{'field-display-none':addressField.showField == false}"
+                                 class="dynamic-fields-wrapper">
+                                <div class="field-wrapper w-100">
+                                    <div *ngIf="addressField.showLabel" class="label-group">
+                                        <label [attr.for]="addressField.fieldLabel"
+                                               class="form-label d-flex">{{addressField.fieldLabel}}
+                                            <span *ngIf="addressField.isMandatory" class="requiredHastrick"></span>
+                                            <div *ngIf="addressField.labelInfo!=null" class="floating-info mr-5"
+                                                 matTooltip="{{addressField.labelInfo}}">i
+                                            </div>
+                                            <div *ngIf="addressField.isVerified" class="common-info ">
+                                                <img alt="img" class="display-flex"
+                                                     src="../../../../../assets/icons/tick.png">
+                                            </div>
+                                        </label>
+                                    </div>
+                                    <div class="input-group w-100">
+                                        <!-- TEXT -->
+                                        <div *ngIf="addressField.fieldDataType=='TEXT'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <input (change)="formulamapping(addressField)" (input)="validationCheck(addressField);formulamapping(addressField)"
+                                                   *ngIf="!addressField.showprefix"
+                                                   [(ngModel)]="addressField.value"
+                                                   [attr.fieldName]="addressField.fieldName"
+                                                   [attr.maxLength]="addressField.maxLength"
+                                                   [attr.max]="addressField.maxLength"
+                                                   [attr.minLength]="addressField.minLength"
+                                                   [attr.min]="addressField.minLength"
+                                                   [attr.type]="addressField.fieldDataType"
+                                                   [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [id]="addressField.fieldName"
+                                                   [matTooltipClass]="'below'"
+                                                   [matTooltipPosition]="'below'"
+                                                   [matTooltip]="addressField.error ? addressField.error : ''"
+                                                   [ngClass]="{'is-invalid':addressField.error}"
+                                                   [placeholder]="addressField.placeholderText" appCopyPaste
+                                                   autocomplete="off"
+                                                   class="form-control "
+                                                   ngDefaultControl>
+                                            <div *ngIf="addressField.showprefix" class="input-group">
+                                                <span *ngIf="addressField.prefixType=='TEXT'"
+                                                      class="input-group-text disabled-bg">{{addressField.prefix}}</span>
+                                                <select *ngIf="addressField.prefixType=='DROPDOWN'"
+                                                        [(ngModel)]="addressField.prefix"
+                                                        [disabled]="field.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                        [ngClass]="{'is-invalid':addressField.error}"
+                                                        class="prefixDropdown">
+                                                    <option disabled value="">-{{addressField.placeholderText}}-
+                                                    </option>
+                                                    <option *ngFor="let item of addressField.options"
+                                                            [value]="item.optionKey">{{item.optionName}}
+                                                    </option>
+                                                </select>
+                                                <input (change)="formulamapping(addressField)" [(ngModel)]="addressField.value"
+                                                       [attr.maxLength]="addressField.maxLength"
+                                                       [attr.max]="addressField.maxLength"
+                                                       [attr.minLength]="addressField.minLength"
+                                                       [attr.min]="addressField.minLength"
+                                                       [attr.type]="addressField.fieldDataType" [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                       [ngClass]="{'is-invalid':addressField.error}"
+                                                       [placeholder]="addressField.placeholderText"
+                                                       appCopyPaste autocomplete="off"
+                                                       class="form-control "
+                                                       ngDefaultControl>
+                                            </div>
+                                        </div>
+                                        <!-- NUMBER -->
+                                        <div *ngIf="addressField.fieldDataType=='NUMBER'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <input (change)="formulamapping(addressField)" (input)="validationCheck(addressField);formulamapping(addressField)" [(ngModel)]="addressField.value"
+                                                   [OnlyNumber]="true"
+                                                   [attr.fieldName]="addressField.fieldName"
+                                                   [attr.maxLength]="ParseInputRestrictionForNumberDataType(addressField.maxLength)"
+                                                   [attr.max]="ParseInputRestrictionForNumberDataType(addressField.maxLength)"
+                                                   [attr.minLength]="ParseInputRestrictionForNumberDataType(addressField.minLength)"
+                                                   [attr.min]="ParseInputRestrictionForNumberDataType(addressField.minLength)"
+                                                   [attr.type]="'text'" [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                   [id]="addressField.fieldName"
+                                                   [matTooltipClass]="'below'"
+                                                   [matTooltipPosition]="'below'" [matTooltip]="addressField.error ? addressField.error : ''"
+                                                   [ngClass]="{'is-invalid':addressField.error}"
+                                                   [placeholder]="addressField.placeholderText"
+                                                   appCopyPaste autocomplete="off"
+                                                   class="form-control "
+                                                   inputmode="numeric"
+                                                   ngDefaultControl>
+                                        </div>
+                                        <!-- TEXT AREA -->
+                                        <div *ngIf="addressField.fieldDataType=='TEXT_AREA'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <textarea (change)="formulamapping(addressField)"
+                                                      (input)="validationCheck(addressField)"
+                                                      [(ngModel)]="addressField.value"
+                                                      [attr.fieldName]="addressField.fieldName" [attr.maxLength]="addressField.maxLength"
+                                                      [attr.minLength]="addressField.minLength"
+                                                      [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                      [id]="addressField.fieldName" [matTooltipClass]="'below'"
+                                                      [matTooltipPosition]="'below'" [matTooltip]="addressField.error ? addressField.error : ''"
+                                                      [ngClass]="{'is-invalid':addressField.error}"
+                                                      [placeholder]="addressField.placeholderText"
+                                                      [rows]="addressField.rows"
+                                                      appCopyPaste
+                                                      autocomplete="off"
+                                                      class="form-control"
+                                                      ngDefaultControl></textarea>
+                                        </div>
+                                        <!-- RADIO -->
+                                        <div *ngIf="addressField.fieldDataType=='RADIO'" [class]="addressField.className"
+                                             class="radio-field">
+                                            <mat-radio-group (change)="validationCheck(addressField);formulamapping(addressField)"
+                                                             [(ngModel)]="addressField.value"
+                                                             [attr.fieldName]="addressField.fieldName"
+                                                             [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                             [id]="addressField.fieldName"
+                                                             [ngClass]="{'example-radio-group-vertical':addressField.radioGroupOrientation=='VERTICAL'}"
+                                                             class="form-conrol d-flex example-radio-group-vertical">
+                                                <mat-radio-button *ngFor="let item of addressField.options"
+                                                                  [value]="item.optionKey">
+                                                    <img *ngIf="item.icon" [src]="renderRadioIcons(item)" alt="img"
+                                                         class="me-2">
+                                                    {{item.optionName}}
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+                                        </div>
+                                        <!-- DROPDOWN -->
+                                        <div *ngIf="addressField.fieldDataType=='DROPDOWN'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <select (change)="dropdownChange(addressField);validationCheck(addressField);formulamapping(addressField)"
+                                                    [(ngModel)]="addressField.value" [attr.fieldName]="addressField.fieldName"
+                                                    [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                    [id]="addressField.fieldName"
+                                                    [matTooltipClass]="'below'"
+                                                    [matTooltipPosition]="'below'"
+                                                    [matTooltip]="addressField.error ? addressField.error : ''"
+                                                    [ngClass]="{'is-invalid':addressField.error}" [attr.placeholder]="addressField.placeholderText"
+                                                    class="form-select form-select-lg">
+                                                <option [value]=null disabled>-{{addressField.placeholderText}}-
+                                                </option>
+                                                <option *ngFor="let item of addressField.searchoption"
+                                                        [value]="item.optionKey">{{item.optionName}}</option>
+                                                <option
+                                                        *ngIf="addressField.searchoption?.length == 0 && addressField.isParentFilled==false"
+                                                        [value]="">Please select a {{addressField.dependentParentLabel}}
+                                                </option>
+                                                <option
+                                                        *ngIf=" addressField.noOptions==true && addressField.isParentFilled==true && addressField.dependentField!=null">
+                                                    No option available
+                                                </option>
+                                                <option
+                                                        *ngIf=" addressField.searchoption?.length==0 && addressField.dependentField==null">
+                                                    No option available
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <!-- CHECKBOX -->
+                                        <div *ngIf="addressField.fieldDataType=='CHECKBOX'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <mat-checkbox (change)="formulamapping(addressField)" [(ngModel)]="addressField.value"
+                                                          [attr.fieldName]="addressField.fieldName"
+                                                          [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                          [id]="addressField.fieldName"
+                                                          color="primary">
+                                                <span (click)="check($event)">{{addressField.fieldLabel}}</span>
+                                            </mat-checkbox>
+                                        </div>
+                                        <!-- DATE -->
+                                        <div *ngIf="addressField.fieldDataType=='DATE'" [class]="addressField.className"
+                                             class="datePicker input-container w-100">
+                                            <input (change)="validationCheck(addressField);formulamapping(addressField)" (click)="picker.open()" 
+                                                   (input)="validationCheck(addressField)"
+                                                   (ngModelChange)="validationCheck(addressField);formulamapping(addressField)" [(ngModel)]="addressField.value"
+                                                   [attr.fieldName]="addressField.fieldName"
+                                                   [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)" [id]="addressField.fieldName"
+                                                   [matDatepicker]="picker"
+                                                   [matTooltipClass]="'below'"
+                                                   [matTooltipPosition]="'below'"
+                                                   [matTooltip]="addressField.error ? addressField.error : ''"
+                                                   [max]="addressField.maxDate" [min]="addressField.minDate"
+                                                   [ngClass]="{'is-invalid':addressField.error}" appCopyPaste
+                                                   autocomplete="off"
+                                                   class="form-control form-control-lg"
+                                                   type="text">
+                                            <mat-datepicker-toggle [for]="picker" [ngClass]="{'is-invalid':addressField.error}"
+                                                                   matSuffix></mat-datepicker-toggle>
+                                            <mat-datepicker
+                                                    #picker
+                                                    disabled="{{addressField.fieldAccessModifier == 'READ_ONLY' || options.disableMode == true ? true : false}}"></mat-datepicker>
+                                        </div>
+                                        <!-- BUTTON_TOGGLE -->
+                                        <div *ngIf="addressField.fieldDataType=='BUTTON_TOGGLE'"
+                                             [class]="addressField.className">
+                                            <mat-button-toggle-group (change)="formulamapping(addressField)"
+                                                                     (input)="validationCheck(addressField)"
+                                                                     [(ngModel)]="addressField.value"
+                                                                     [attr.fieldName]="addressField.fieldName"
+                                                                     [id]="addressField.fieldName"
+                                                                     [vertical]="addressField.isVertical">
+                                                <mat-button-toggle *ngFor="let item of addressField.options"
+                                                                   [value]="item.optionKey">
+                                                    <img *ngIf="item.icon" [src]="renderIcon(item,addressField)"
+                                                         alt="img" class="me-3 ms-2">
+                                                    <span class="text-ellipse d-flex">
+                                                        {{item.optionName}}
+                                                    </span>
+                                                </mat-button-toggle>
+                                            </mat-button-toggle-group>
+                                        </div>
+                                        <!-- SLIDER -->
+                                        <div *ngIf="addressField.fieldDataType=='BOOLEAN'" [attr.fieldName]="addressField.fieldName"
+                                             [class]="addressField.className"
+                                             [id]="addressField.fieldName">
+                                            <mat-slide-toggle (change)="formulamapping(addressField)" [(ngModel)]="addressField.value"
+                                                              [disabled]="addressField.fieldAccessModifier == 'READ_ONLY' || (options.disableMode == true)"
+                                                              color="primary">
+                                                {{addressField.fieldLabel}}</mat-slide-toggle>
+                                        </div>
+                                        <!-- SECTION -->
+                                        <div *ngIf="addressField.fieldDataType=='SECTION'" [attr.fieldName]="addressField.fieldName"
+                                             [class]="addressField.className"
+                                             [id]="addressField.fieldName">
+                                            <div [innerHTML]="addressField.value"></div>
+                                        </div>
+                                        <!-- AUTO COMPLETE -->
+                                        <div *ngIf="addressField.fieldDataType=='AUTO_COMPLETE'" [class]="addressField.className"
+                                             class="input-container w-100">
+                                            <ngx-select-dropdown (change)="formatAutoCompleteValue($event,addressField);formulamapping(addressField);validationCheck(addressField)" [disabled]="addressField.fieldAccessModifier=='READ_ONLY'?true:false"
+                                                                 [(ngModel)]="addressField.value" [attr.fieldName]="addressField.fieldName"
+                                                                 [config]="DropDownconfig"
+                                                                 [id]="addressField.fieldName"
+                                                                 [matTooltipClass]="'below'"
+                                                                 [matTooltipPosition]="'below'"
+                                                                 [matTooltip]="addressField.error ? addressField.error : ''"
+                                                                 [multiple]="false"
+                                                                 [ngClass]=" {'is-invalid':addressField.error}"
+                                                                 [options]="addressField.searchoption"
+                                                                 class="form-control form-select form-select-lg">
+                                            </ngx-select-dropdown>
+                                        </div>
+                                        <!-- DOCUMENT -->
+                                        <div *ngIf="addressField.fieldDataType=='DOCUMENT'" [class]="addressField.className"
+                                             class="w-100">
+                                            <div class="w-100">
+                                                <div (click)="fileInputTrigger(addressField)"
+                                                     class="display-flex file-input-dynamic-fields">
+                                                    <span class="material-symbols-outlined">
+                                                        file_upload
+                                                    </span>
+                                                    <span class="common-info">Upload {{addressField.fieldLabel}}</span>
+                                                </div>
+                                                <div *ngIf="addressField.value" class="p-10 display-flex gap-15 a-i-c">
+                                                    <img *ngIf="addressField.uploaddone==false" alt="img"
+                                                         class="load-img-file" src="../../../assets/icons/loader.gif">
+                                                    <span *ngIf="addressField.uploaddone==true"
+                                                          class="material-symbols-outlined color-green">check_circle</span>
+                                                    <span class="common-info">{{addressField.uploaddone == false ?
+                                                        'Uploading ' : addressField.uploaddone == true ? "" : ""}}
+                                                        {{addressField.value.name}}{{addressField.uploaddone == false ?
+                                                            ' .... ' : addressField.uploaddone == true ? " Uploaded
+                                                                Successfull" : ""}}</span>
+                                                </div>
+                                            </div>
+                                            <input (change)="fileChange(addressField,$event)" [id]="addressField.fieldName" class="display-none" hidden
+                                                   type="file">
+                                        </div>
+                                    </div>
+                                    <div class="error-group">
+                                        <div *ngIf="addressField.error" class="text-danger fadeInDown animated">
+                                            {{addressField.error}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- CARD_OPTIONS -->
+                        <div *ngIf="field.fieldDataType=='CARD_OPTIONS'" [class]="field.className">
+                            <div class="flex-container ">
+                                <div (click)="selectCardoptions(field,option);validationCheck(field);formulamapping(field)" *ngFor="let option of field.options" [attr.fieldName]="field.fieldName"
+                                     [id]="field.fieldName"
+                                     [ngClass]="{'rating-highlight':field.value==option.optionKey}"
+                                     class="cardoptions">
+                                    <img [src]="renderCardOption(option)" alt="card-options-image" class="rate-img">
+                                    <p class="form-label text-center texinfo">{{option.optionName}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- SECTION -->
+                        <div *ngIf="field.fieldDataType=='SECTION'" [class]="field.className">
+                            <span [attr.fieldName]="field.fieldName" [id]="field.fieldName" [innerHTML]="field.value"
+                                  class="common-info"></span>
+                        </div>
+                        <!-- DOCUMENT -->
+                        <div *ngIf="field.fieldDataType=='DOCUMENT'" [class]="field.className" class="w-100">
+                            <div [attr.fieldName]="field.fieldName" [id]="field.fieldName" class="w-100">
+                                <div (click)="fileInputTrigger(field)" class="display-flex file-input-dynamic-fields">
+                                    <span class="material-symbols-outlined">
+                                        file_upload
+                                    </span>
+                                    <span class="common-info">Upload {{field.fieldLabel}}</span>
+                                </div>
+                                <div *ngIf="field.value" class="p-10 display-flex gap-15 a-i-c">
+                                    <img *ngIf="field.uploaddone==false" alt="img"
+                                         class="load-img-file" src="../../../assets/icons/loader.gif">
+                                    <span *ngIf="field.uploaddone==true"
+                                          class="material-symbols-outlined color-green">check_circle</span>
+                                    <span class="common-info">{{field.uploaddone == false ? 'Uploading ' :
+                                        field.uploaddone == true ? "" : ""}} {{field.value.name}}{{field.uploaddone ==
+                                    false ? ' .... ' : field.uploaddone == true ? " Uploaded Successfull" :
+                                        ""}}</span>
+                                </div>
+                            </div>
+                            <input (change)="fileChange(field,$event)" [id]="field.fieldName" class="display-none" hidden
+                                   type="file">
+                        </div>
+                        <!-- OTP -->
+                        <div *ngIf="field.fieldDataType=='OTP'&& field.showField==true" [class]="field.className"
+                             class="input-container otpContainer">
+                            <otp (onAttemptsComplete)="otpAttemptsDone($event)" (onError)="otpErrorEmit($event)" (onGenerateSuccess)="otpGenerateSuccess($event)"
+                                 (onSuccess)="otpCompleteEmit($event)" [field]="field"
+                                 [options]="field.options"></otp>
+                        </div>
+                    </div>
+                    <div *ngIf="field.fieldDataType!='SECTION'" class="error-group">
+                        <div *ngIf="field.error"
+                             [ngClass]="{'groupError':field.fieldDataType == 'ADDRESS'}" class="text-danger fadeInDown animated">
+                            {{field.error}}
+                        </div>
+                    </div>
+                    <div *ngIf="field.prefixType =='DROPDOWN'" class="error-group">
+                        <div *ngIf="field.prefixError"
+                             [ngClass]="{'groupError':field.prefixType == 'DROPDOWN'}" class="text-danger fadeInDown animated">
+                            {{field.prefixError}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <spinner *ngIf="showloader"></spinner>

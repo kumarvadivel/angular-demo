@@ -1,0 +1,67 @@
+
+
+<div class="card-margin">
+  <div class="row">
+    <div class="col-sm-6" *ngFor="let item of loanProgramList; let ind = index;">
+
+      <div class="card mb-3" style="max-width: 850px;" [class.borderblue]="item.isSelected"
+        [class.bordergray]="!item.isSelected">
+        <div class="row g-0">
+
+          <div class="col-md-4">
+
+            <div>
+              <span class="badge orangebadge" *ngIf="item.name == 'Rupay Select'">
+                Recommended
+              </span>
+            </div>
+
+            <div class="card-body">
+              <img [src]="item.programImageDownloadUrl" class="img-fluid rounded-start" [alt]="item.name" loading="lazy">
+            </div>
+
+          </div>
+
+          <div class="col-md-8">
+            <div class="card-body paddingcardbody">
+              
+              <img *ngIf="item.isSelected" [src]="'./assets/icons/tick-white.png'" class="cc-selectedBlueTick" alt="tick-white">
+
+              <h5 class="card-title">{{item.name}}</h5>
+
+              <p class="card-text singlelabel-line-clamp-bullet limittext" [innerHTML]="item.descriptionHtml"></p>
+
+              <div class="col-md-12">
+                <ng-container *ngIf="isSelectPossible else SelectNotPossible;">
+                  <button (click)="selectCCVariant(ind)" class="cc-selectedToggleButton"
+                    [ngClass]="{'orange' : !item.isSelected, 'white': item.isSelected}">
+
+                    <img *ngIf="item.isSelected" [src]="'./assets/icons/tick-white.png'" class="cc-selectedOrangeTick" alt="tick-white">
+
+                    <span class="cc-selectedToggleButtonLabel"> {{item.isSelectedText}} </span>
+
+                  </button>
+                </ng-container>
+                <ng-template #SelectNotPossible>
+                  <button class="cc-selectedToggleButton orange cj-back-gray cj-cursorDefault">
+                    <span class="cc-selectedToggleButtonLabel"> {{item.isSelectedText}} </span>
+                  </button>
+                </ng-template>
+
+                <span class="card-text underscore-orange">
+                  <small class="orangeknowmorelink" (click)="openKnowMoreDialog(ind)">
+                    Know more
+                  </small>
+                </span>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

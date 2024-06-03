@@ -1,0 +1,33 @@
+.popup-page {
+  .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F4F9FC;
+    padding: 12px 30px;
+    position: sticky;
+    top: 0;
+  }
+
+  .text-info-content {
+    font-size: 14px !important;
+  }
+}
+
+.content-area {
+  width: 100%;
+  overflow: hidden;
+  padding: 25px 30px 25px 30px;
+  max-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font-family) !important;
+}
+
+.button-section {
+  flex-direction: row-reverse;
+}
+
+.ml-70 {
+  margin-left: 70% !important;
+}

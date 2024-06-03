@@ -1,0 +1,12 @@
+<div *ngIf="dispSubstepper" class="containerSubstep">
+      <div class="substepper">
+            <ng-container *ngFor="let sub of substepperData">
+                  <div class="step" *ngIf="sub.isCompleted==true">
+                        <img class="imgsize2"
+                              [src]="'assets/icons/tick.png'"
+                              alt="">
+                        <span class="step-name">{{sub.name}}</span>
+                  </div>
+            </ng-container>
+      </div>
+</div>

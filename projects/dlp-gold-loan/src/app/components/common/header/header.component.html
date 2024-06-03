@@ -1,0 +1,89 @@
+ <div class="row ipadFix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header-style">
+        <div class="header header-floating-nav mobileNone">
+            <div class="header-content">
+                <div class="header-inner-content">
+                    <div class="header-mobile-img">
+                   <img [src]="'assets/images/header.webp'" alt="img">
+                    </div>
+                    <div class="cursor home-link ml-15">
+                        <img *ngIf="environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                        [src]="'../../../assets/icons/logo_legend.png'" alt="img" (click)="routeToHome()">
+                        <img *ngIf="!environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                        [src]="'assets/images/Integreat-logo_legend.webp'" alt="img" (click)="routeToHome()">
+                    </div>
+                    <div class="header-info">
+                    <img class="header-info" [src]="'assets/images/header.webp'" alt="img">
+                    </div>
+                    <div class="home-link header-home home-mobile-link">
+                        <button class="a-button z-index" (click)="routeToHome()">
+                            <img [src]="'../../../assets/icons/home.png'" style="border-right:1px solid #dadada ;"
+                                class="me-3 pe-2 cursorPointer" alt="img">
+                        </button>
+                        <span class="getHelp z-index">Having Trouble ?
+                            <button (click)="getHelp()" class="redirectAction a-button">Get Help</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobileDisplay">
+    <ng-container *ngIf="!commonVaribleService.appLayoutConfig.isShowJourneyHeader">
+        <div class="row">
+            <div class="col-xs-12 pr-0">
+                <div class="home-header">
+                    <img *ngIf="environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                [src]="'../../../assets/icons/logo_legend.png'" alt="img" (click)="routeToHome()">
+                <img *ngIf="!environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                [src]="'assets/images/Integreat-logo_legend.webp'" alt="img" (click)="routeToHome()">
+                    <div class="float-left headerLeft-panel">
+                        <button class="float-left burgerIcon mr-20" aria-label="burgerIcon" (click)="showSideNav()">
+                            <div *ngIf="showMobileSideNav == false">
+                                <span class="burgerLine1"></span>
+                                <span class="burgerLine2"></span>
+                                <span class="burgerLine3"></span>
+                            </div>
+                            <div *ngIf="showMobileSideNav ">
+                                <img class="closeImage" [src]="'../../../assets/icons/close.png'" alt="">
+                            </div>
+                        </button>
+                    </div>
+                    <div class="w-100">
+                        <nav class="navbarsidemenu colorWhite float-left w-100 nav-menu"
+                            *ngIf="showMobileSideNav " [ngClass]="{'nav-menu':showMobileSideNav}" aria-label="Primary Navigation">
+                            <div class="w-100">
+                                <ul class="navbar-nav bg-white w-100 mobile-menubar" >
+                                    <li class="sideMenuItem">
+                                        <ul class="listStyle">
+                                            <li class="nav-item">
+                                                <span
+                                                    class="nav-link p-hor-20 link-color  display-flex w-100 activeSpan">
+                                                    <div>
+                                                        <span class="getHelp">Having Trouble ?
+                                                            <button (click)="getHelp()"
+                                                                class="redirectAction a-button">Get
+                                                                Help</button>
+                                                        </span>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="home-link home-mobile-link">
+                        <button class="a-button" (click)="routeToHome()">
+                            <img  [src]="'../../../assets/icons/home.png'"
+                                class="me-3 pe-2 cursorPointer" alt="img">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

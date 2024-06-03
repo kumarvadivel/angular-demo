@@ -1,0 +1,9 @@
+<div class="loader">
+    <div class="content">
+        <img *ngIf="environmentService.configData.appConfig.display_brandable_images" [src]="'assets/icons/loader.gif'"
+             alt="img">
+        <img *ngIf="!environmentService.configData.appConfig.display_brandable_images"
+             [src]="'assets/images/loader-integreat.gif'" alt="img">
+        <span class="common-info">{{message}}</span>
+    </div>
+</div>

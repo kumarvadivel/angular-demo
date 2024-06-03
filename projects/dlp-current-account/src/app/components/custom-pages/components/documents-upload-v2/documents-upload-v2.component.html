@@ -1,0 +1,665 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyle" *ngIf="!showloader">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView"
+        class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 float-left mobileWidt pl-0 pr-0 commonStyle">
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-12 float-left mobileWidt commonStyle main-cnt-pad"
+        [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}">
+        <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-20':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div class="containerscroll">
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-20':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper [stepperData]="journey.metaData.substepperData">
+                </app-substepper>
+            </div>
+            <div class="w-100 mb-15">
+                <app-section-builder [config]="config" (status)="sectionBuilderEmitter($event)"></app-section-builder>
+            </div>
+            <div *ngIf="metaConfig.documentList">
+                <div *ngFor="let document of metaConfig.documentList">
+                    <div class="document-section" *ngIf="document.showDocument && (!document?.documentVariant || document.documentVariant=='SINGLE')">
+                        <div>
+                            <div class="document-box-wrapper display-flex  mob-flex-col mob-flex-grow"
+                                [ngClass]="{'brdr-nn': document.documentUploadStatus=='COMPLETED' || !document.showUpload }">
+                                <div
+                                    class="document-name-section col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mob-flex-grow mob-w-100" [ngClass]="{'w-40':showShareSection==true,'w-50':showShareSection==false}">
+                                    <div class="common-title f-20"> {{document?.documentData?.documentName}}<span
+                                            class="requiredHastrick" *ngIf="(document?.documentData?.isMandatory)"></span>
+                                    </div>
+                                    <div class="common-info" *ngIf="document.description">{{document.description}}</div>
+                                </div>
+                                <div class="document-status-section col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                    *ngIf="document.showUpload || document.documentUploadStatus=='COMPLETED'" [ngClass]="{'w-40':showShareSection==true,'w-50':showShareSection==false}">
+                                    <div class="status-wrap"
+                                        [ngClass]="{'inprogress': document.documentUploadStatus=='IN_PROGRESS','complete':document.documentUploadStatus=='COMPLETED'}">
+                                        <span class="material-icons-sharp">
+                                            fiber_manual_record
+                                        </span>
+                                        <div class="common-info"
+                                            [ngClass]="{'inprogress': document.documentUploadStatus=='IN_PROGRESS','complete':document.documentUploadStatus=='COMPLETED'}">
+                                            {{document.documentUploadStatuslocalisation}}</div>
+                                    </div>
+                                    <div class="common-info" *ngIf="document.documentUploadStatus=='COMPLETED'">Data
+                                        fetched Online</div>
+                                </div>
+                                <div class="w-20 upload-option mob-w-100 ml-auto" style="margin-left: auto;"
+                                    (click)="document.showUpload = !document.showUpload"
+                                    *ngIf="!showShareSection && !document.showUpload && document.documentUploadStatus!='COMPLETED'">
+                                    <div class="bluebg">
+                                        <span class="material-icons-sharp">ios_share</span>
+                                        <span class="common-info">Share Document</span>
+                                    </div>
+
+                                </div>
+                                <div class="w-20 upload-option mob-w-100 ml-auto" style="margin-left: auto;"
+                                    (click)="document.showUpload = !document.showUpload"
+                                    *ngIf="showShareSection && !document.showUpload">
+                                    <div class="bluebg">
+                                        <span class="material-icons-sharp">ios_share</span>
+                                        <span class="common-info">Share Document</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div *ngIf="document.documentType=='BANK_STATEMENT' && document.showUpload==true">
+                                <div class="document-bank-option-wrapper display-flex mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  mob-flex-grow mob-w-100"
+                                    [ngClass]="{'brdr-nn': !document.selectedBankData?.value}"
+                                    *ngIf="document.documentUploadStatus!='COMPLETED' && document.multiBankOption">
+                                    <span class="common-title f-15 mob-f-20  w-50 mob-flex-grow mob-w-100" *ngIf="!metaConfig.hideDocument">My Salary
+                                        gets Credited In</span>
+                                    <div *ngIf="!metaConfig.hideDocument"
+                                        class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 w-50 mob-flex-grow mob-w-100">
+                                        <div class="radio-field">
+                                            <mat-radio-group class="form-conrol d-flex example-radio-group-vertical"
+                                                #radioBtn="matRadioGroup" (ngModel)="document.selectedBankData?.value">
+                                                <mat-radio-button
+                                                    *ngFor="let item of document.selectedBankData?.options"
+                                                    (change)="changeRadioButton(item,document)" [value]="item.name">
+                                                    <div class="mr-100"
+                                                        style="display: flex; align-items:center;gap: 10px;margin-right: 100px;">
+                                                        <img alt="img" *ngIf="item.icon" [src]="item.icon">
+                                                        {{item.name}}
+                                                    </div>
+                                                </mat-radio-button>
+                                            </mat-radio-group>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="document-action-section"
+                                    *ngIf="document.documentUploadStatus!='COMPLETED' && document.selectedBankData?.value && document.multiBankOption && !metaConfig.hideDocument">
+                                    <div class="sameBank" *ngIf="document.selectedBankData?.value=='Bank of India'">
+                                        <div class="selection-section w-30 mob-w-100">
+                                            <div class="">
+                                                <label
+                                                    class="form-label">{{document.selectedBank.BOI.uploadOptions.label}}</label>
+                                                <div class="input-container ">
+                                                    <select [(ngModel)]="document.selectedBank.BOI.uploadOptions.value"
+                                                        class="form-select form-select-lg"
+                                                        (change)="updateAccount(document.selectedBank.BOI.uploadOptions.value)">
+                                                        <option hidden>-Select Account Number-</option>
+                                                        <option disabled [value]="null">-Select Account Number-</option>
+                                                        <option
+                                                            *ngFor="let item of document.selectedBank.BOI.uploadOptions.options"
+                                                            [value]="item.accountNumber">
+                                                            {{item.maskedAccountNumber}}</option>
+                                                        <option
+                                                            *ngIf="!document.selectedBank.BOI.uploadOptions.options.length">
+                                                            No option available</option>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="primaryBtn float-right btn-orange mobileButton"
+                                            *ngIf="metaConfig.documentList.length>1"
+                                            (click)="fetchEdwDocument(document,true)">Fetch Bank statement</button>
+
+                                    </div>
+                                    <div *ngIf="document.selectedBankData?.value=='Other Banks'">
+                                        <div class="">
+                                            <div class="selection-section mb-20  w-30 mob-w-100">
+                                                <div class="">
+                                                    <label
+                                                        class="form-label">{{document.selectedBank.OB.uploadOptions.label}}</label>
+                                                    <div class="input-container">
+
+                                                        <select [(ngModel)]="document.selectedBank.OB.bankname"
+                                                            class="form-select form-select-lg">
+                                                            <option hidden>-Select Bank-</option>
+                                                            <option disabled [value]="null">-Select Bank-</option>
+                                                            <option *ngFor="let item of document.documentData.alias"
+                                                                [value]="item.uuid" (click)="changeBank(item,document)">
+                                                                {{item.name}}</option>
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="document-upload-section">
+                                            <span
+                                                class="form-label f-15">{{document['selectedBank']['OB'].label}}</span>
+                                            <div
+                                                class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="w-20 upload-option mob-w-100"
+                                                    *ngFor="let uploadOptions of document['selectedBank']['OB'].uploadOptions.options">
+                                                    <div class="bluebg" (click)="uploadDocument(uploadOptions,document)"
+                                                        [ngClass]="{'disabled': uploadOptions.disabled}"
+                                                        >
+                                                        <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                        <span class="common-info">{{uploadOptions.name}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div> 
+                                    <div *ngIf="metaConfig.hideDocument">
+                                        <div *ngIf="!hideBankSelection" class="">
+                                            <div class="selection-section mb-20  w-30 mob-w-100">
+                                                <div class="">
+                                                    <label
+                                                        class="form-label">{{document.selectedBank.OB.uploadOptions.label}}</label>
+                                                    <div class="input-container">
+
+                                                        <select [(ngModel)]="document.selectedBank.OB.bankname"
+                                                            class="form-select form-select-lg">
+                                                            <option hidden>-Select Bank-</option>
+                                                            <option disabled [value]="null">-Select Bank-</option>
+                                                            <option *ngFor="let item of document.documentData.alias"
+                                                                [value]="item.uuid" (click)="changeBank(item,document)">
+                                                                {{item.name}}</option>
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="document-upload-section">
+                                            <span
+                                                class="form-label f-15">{{document['selectedBank']['OB'].label}}</span>
+                                            <div
+                                                class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="w-20 upload-option mob-w-100"
+                                                    *ngFor="let uploadOptions of document['selectedBank']['OB'].uploadOptions.options">
+                                                    <div class="bluebg" (click)="uploadDocument(uploadOptions,document)"
+                                                        [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                        <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                        <span class="common-info">{{uploadOptions.name}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="document-action-section" 
+                                    *ngIf="document.documentUploadStatus!='COMPLETED' && document.selectedBankData?.value && !document.multiBankOption">
+
+                                    <div>
+                                        <div class="">
+                                            <div class="selection-section mb-20  w-30 mob-w-100">
+                                                <div class="">
+                                                    <label
+                                                        class="form-label">{{document.selectedBank.OB.uploadOptions.label}}</label>
+                                                    <div class="input-container">
+
+                                                        <select [(ngModel)]="document.selectedBank.OB.bankname"
+                                                            class="form-select form-select-lg">
+                                                            <option hidden>-Select Bank-</option>
+                                                            <option disabled [value]="null">-Select Bank-</option>
+                                                            <option *ngFor="let item of document.documentData.alias"
+                                                                [value]="item.uuid" (click)="changeBank(item,document)">
+                                                                {{item.name}}</option>
+
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="document-upload-section">
+                                            <span
+                                                class="form-label f-15">{{document['selectedBank']['OB'].label}}</span>
+                                            <div
+                                                class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                <div class="w-20 upload-option mob-w-100"
+                                                    *ngFor="let uploadOptions of document['selectedBank']['OB'].uploadOptions.options">
+                                                    <div class="bluebg" (click)="uploadDocument(uploadOptions,document)"
+                                                        [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                        <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                        <span class="common-info">{{uploadOptions.name}}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="document.documentType=='ITR' && document.showUpload==true && document.documentUploadStatus!='COMPLETED'">
+                                <div class="document-upload-section mt-20">
+                                    <span class="form-label f-15">{{document.label}}</span>
+                                    <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                        style="justify-content: unset;">
+                                        <div class="w-20 upload-option mob-w-100"
+                                            *ngFor="let uploadOptions of document.uploadOptions">
+                                            <div class="bluebg" (click)="uploadDocument(uploadOptions,document)"
+                                                [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                <span class="common-info">{{uploadOptions.name}}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="document.documentType=='GST' && document.showUpload==true && document.documentUploadStatus!='COMPLETED'">
+                                <form #f="ngForm" novalidate>
+                                    <div class="form-group">
+                                        <input class="form-control gstCss" type="text" id="gstNumber" #gst="ngModel"
+                                            name="gstNumber"
+                                            pattern="\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}"
+                                            placeholder="please Enter GST number"
+                                            (ngModelChange)="f.form.valid?onSubmit($event):''" [(ngModel)]="gstNumber"
+                                            standalone="true" minlength="15" maxlength="15"
+                                            [ngClass]="{ 'is-invalid': f.submitted && f.invalid }" required>
+                                        <div *ngIf="f.invalid && (f.dirty || f.touched) || gst.errors?.pattern"
+                                            class="alert"> Please Enter valid GST number</div>
+                                    </div>
+                                </form>
+                                <div class="document-upload-section mt-20">
+                                    <span class="form-label f-15">{{document.label}}</span>
+                                    <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                        style="justify-content: unset;">
+                                        <div class="w-20 upload-option mob-w-100"
+                                            *ngFor="let uploadOptions of document.uploadOptions">
+                                            <div class="bluebg" (click)="uploadDocument(uploadOptions,document)"
+                                            [class.disabled]="!f.valid" 
+                                            [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                <span class="common-info">{{uploadOptions.name}}</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="document.documentType=='DOCUMENT' && document.showUpload==true && document.documentUploadStatus!='COMPLETED'">
+                                <div class="document-upload-section mt-20">
+                                    <span class="form-label f-15">{{document.label}}<span class="requiredHastrick"
+                                            *ngIf="document.documentData.isMandatory"></span></span>
+                                    <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                        style="justify-content: unset;">
+                                        <div class="display-flex file-input-dynamic-fields"
+                                            (click)="fileInputTrigger(document)">
+                                            <span class="material-symbols-outlined">
+                                                file_upload
+                                            </span>
+                                            <span class="common-info">Upload
+                                                {{document.documentData.documentName}}</span>
+                                        </div>
+                                        <input type="file" class="display-none"
+                                            [id]="document.documentData.documentName" hidden
+                                            (change)="fileChange(document,$event)">
+
+                                    </div>
+                                    <div class="p-10 display-flex gap-15 a-i-c" *ngIf="document.uploadedDoc">
+
+                                        <img *ngIf="document.uploaddone==false" class="load-img-file"
+                                            [src]="'../../../assets/icons/loader.gif'" alt="img">
+                                        <span class="material-symbols-outlined color-green"
+                                            *ngIf="document.uploaddone==true">check_circle</span>
+                                        <span class="common-info">{{document.uploaddone==false?'Uploading
+                                            ':document.uploaddone==true?"":""}}
+                                            {{document.uploadedDoc.name}}{{document.uploaddone==false?' ....
+                                            ':document.uploaddone==true?" Uploaded Successfull":""}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  *ngIf="document.documentVariant && document.documentVariant=='GROUPED'">
+                        <div *ngFor="let subDoc of document.documents;let i=index">
+                            <div class="document-section">
+                                <div class="document-box-wrapper display-flex  mob-flex-col mob-flex-grow"
+                                    [ngClass]="{'brdr-nn': subDoc.documentUploadStatus=='COMPLETED' || !subDoc.showUpload }">
+                                    <div
+                                        class="document-name-section col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 w-50 mob-flex-grow mob-w-100">
+                                        <div class="common-title f-20">{{subDoc?.documentData?.documentName}}<span
+                                                class="requiredHastrick" *ngIf="subDoc?.documentData?.isMandatory"></span>
+                                        </div>
+                                        <div class="common-info" *ngIf="subDoc.description">{{subDoc.description}}</div>
+                                    </div>
+                                    <div class="document-status-section w-50 col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                        *ngIf="subDoc.showUpload || subDoc.documentUploadStatus=='COMPLETED'">
+                                        <div class="status-wrap"
+                                            [ngClass]="{'inprogress': subDoc.documentUploadStatus=='IN_PROGRESS','complete':subDoc.documentUploadStatus=='COMPLETED'}">
+                                            <span class="material-icons-sharp">
+                                                fiber_manual_record
+                                            </span>
+                                            <div class="common-info"
+                                                [ngClass]="{'inprogress': subDoc.documentUploadStatus=='IN_PROGRESS','complete':subDoc.documentUploadStatus=='COMPLETED'}">
+                                                {{subDoc.documentUploadStatuslocalisation}}</div>
+                                        </div>
+                                        <div class="common-info" *ngIf="subDoc.documentUploadStatus=='COMPLETED'">Data
+                                            fetched Online</div>
+                                    </div>
+                                    <div class="w-20 upload-option mob-w-100 ml-auto" style="margin-left: auto;"
+                                        (click)="subDoc.showUpload = !subDoc.showUpload"
+                                        *ngIf="!subDoc.showUpload && subDoc.documentUploadStatus!='COMPLETED'">
+                                        <div class="bluebg">
+                                            <span class="material-icons-sharp">ios_share</span>
+                                            <span class="common-info">Share Document</span>
+                                        </div>
+    
+                                    </div>
+    
+                                </div>
+                                <div *ngIf="subDoc.documentType=='BANK_STATEMENT' && subDoc.showUpload==true">
+                                    <div class="document-bank-option-wrapper display-flex mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  mob-flex-grow mob-w-100"
+                                        [ngClass]="{'brdr-nn': !subDoc.selectedBankData?.value}"
+                                        *ngIf="subDoc.documentUploadStatus!='COMPLETED' && subDoc.multiBankOption">
+                                        <span class="common-title f-15 mob-f-20  w-50 mob-flex-grow mob-w-100" *ngIf="!metaConfig.hideDocument">My Salary
+                                            gets Credited In</span>
+                                        <div *ngIf="!metaConfig.hideDocument"
+                                            class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 w-50 mob-flex-grow mob-w-100">
+                                            <div class="radio-field">
+                                                <mat-radio-group class="form-conrol d-flex example-radio-group-vertical"
+                                                    #radioBtn="matRadioGroup" (ngModel)="subDoc.selectedBankData?.value">
+                                                    <mat-radio-button
+                                                        *ngFor="let item of subDoc.selectedBankData?.options"
+                                                        (change)="changeRadioButton(item,subDoc)" [value]="item.name">
+                                                        <div class="mr-100"
+                                                            style="display: flex; align-items:center;gap: 10px;margin-right: 100px;">
+                                                            <img alt="img" *ngIf="item.icon" [src]="item.icon">
+                                                            {{item.name}}
+                                                        </div>
+                                                    </mat-radio-button>
+                                                </mat-radio-group>
+    
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="document-action-section"
+                                        *ngIf="subDoc.documentUploadStatus!='COMPLETED' && subDoc.selectedBankData?.value && subDoc.multiBankOption && !metaConfig.hideDocument">
+                                        <div class="sameBank" *ngIf="subDoc.selectedBankData?.value=='Bank of India'">
+                                            <div class="selection-section w-30 mob-w-100">
+                                                <div class="">
+                                                    <label
+                                                        class="form-label">{{subDoc.selectedBank.BOI.uploadOptions.label}}</label>
+                                                    <div class="input-container ">
+                                                        <select [(ngModel)]="subDoc.selectedBank.BOI.uploadOptions.value"
+                                                            class="form-select form-select-lg"
+                                                            (change)="updateAccount(subDoc.selectedBank.BOI.uploadOptions.value)">
+                                                            <option hidden>-Select Account Number-</option>
+                                                            <option disabled [value]="null">-Select Account Number-</option>
+                                                            <option
+                                                                *ngFor="let item of subDoc.selectedBank.BOI.uploadOptions.options"
+                                                                [value]="item.accountNumber">
+                                                                {{item.maskedAccountNumber}}</option>
+                                                            <option
+                                                                *ngIf="!subDoc.selectedBank.BOI.uploadOptions.options.length">
+                                                                No option available</option>
+    
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="primaryBtn float-right btn-orange mobileButton"
+                                                *ngIf="metaConfig.documentList.length>1"
+                                                (click)="fetchEdwDocument(subDoc,true)">Fetch Bank statement</button>
+    
+                                        </div>
+                                        <div *ngIf="subDoc.selectedBankData?.value=='Other Banks'">
+                                            <div class="">
+                                                <div class="selection-section mb-20  w-30 mob-w-100">
+                                                    <div class="">
+                                                        <label
+                                                            class="form-label">{{subDoc.selectedBank.OB.uploadOptions.label}}</label>
+                                                        <div class="input-container">
+    
+                                                            <select [(ngModel)]="subDoc.selectedBank.OB.bankname"
+                                                                class="form-select form-select-lg">
+                                                                <option hidden>-Select Bank-</option>
+                                                                <option disabled [value]="null">-Select Bank-</option>
+                                                                <option *ngFor="let item of subDoc.documentData.alias"
+                                                                    [value]="item.uuid" (click)="changeBank(item,subDoc)">
+                                                                    {{item.name}}</option>
+    
+    
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="document-upload-section">
+                                                <span
+                                                    class="form-label f-15">{{subDoc['selectedBank']['OB'].label}}</span>
+                                                <div
+                                                    class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="w-20 upload-option mob-w-100"
+                                                        *ngFor="let uploadOptions of subDoc['selectedBank']['OB'].uploadOptions.options">
+                                                        <div class="bluebg" (click)="uploadDocument(uploadOptions,subDoc)"
+                                                            [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                            <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                            <span class="common-info">{{uploadOptions.name}}</span>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+    
+                                    <div> 
+                                        <div *ngIf="metaConfig.hideDocument">
+                                            <div class="">
+                                                <div class="selection-section mb-20  w-30 mob-w-100">
+                                                    <div class="">
+                                                        <label
+                                                            class="form-label">{{subDoc.selectedBank.OB.uploadOptions.label}}</label>
+                                                        <div class="input-container">
+    
+                                                            <select [(ngModel)]="subDoc.selectedBank.OB.bankname"
+                                                                class="form-select form-select-lg">
+                                                                <option hidden>-Select Bank-</option>
+                                                                <option disabled [value]="null">-Select Bank-</option>
+                                                                <option *ngFor="let item of subDoc.documentData.alias"
+                                                                    [value]="item.uuid" (click)="changeBank(item,subDoc)">
+                                                                    {{item.name}}</option>
+    
+    
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="document-upload-section">
+                                                <span
+                                                    class="form-label f-15">{{subDoc['selectedBank']['OB'].label}}</span>
+                                                <div
+                                                    class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="w-20 upload-option mob-w-100"
+                                                        *ngFor="let uploadOptions of subDoc['selectedBank']['OB'].uploadOptions.options">
+                                                        <div class="bluebg" (click)="uploadDocument(uploadOptions,subDoc)"
+                                                            [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                            <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                            <span class="common-info">{{uploadOptions.name}}</span>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    <div class="document-action-section" 
+                                        *ngIf="subDoc.documentUploadStatus!='COMPLETED' && subDoc.selectedBankData?.value && !subDoc.multiBankOption">
+    
+                                        <div>
+                                            <div class="">
+                                                <div class="selection-section mb-20  w-30 mob-w-100">
+                                                    <div class="">
+                                                        <label
+                                                            class="form-label">{{subDoc.selectedBank.OB.uploadOptions.label}}</label>
+                                                        <div class="input-container">
+    
+                                                            <select [(ngModel)]="subDoc.selectedBank.OB.bankname"
+                                                                class="form-select form-select-lg">
+                                                                <option hidden>-Select Bank-</option>
+                                                                <option disabled [value]="null">-Select Bank-</option>
+                                                                <option *ngFor="let item of subDoc.documentData.alias"
+                                                                    [value]="item.uuid" (click)="changeBank(item,subDoc)">
+                                                                    {{item.name}}</option>
+    
+    
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="document-upload-section">
+                                                <span
+                                                    class="form-label f-15">{{subDoc['selectedBank']['OB'].label}}</span>
+                                                <div
+                                                    class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <div class="w-20 upload-option mob-w-100"
+                                                        *ngFor="let uploadOptions of subDoc['selectedBank']['OB'].uploadOptions.options">
+                                                        <div class="bluebg" (click)="uploadDocument(uploadOptions,subDoc)"
+                                                            [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                            <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                            <span class="common-info">{{uploadOptions.name}}</span>
+                                                        </div>
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="subDoc.documentType=='ITR' && subDoc.showUpload==true">
+                                    <div class="document-upload-section mt-20">
+                                        <span class="form-label f-15">{{subDoc.label}}</span>
+                                        <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                            style="justify-content: unset;">
+                                            <div class="w-20 upload-option mob-w-100"
+                                                *ngFor="let uploadOptions of subDoc.uploadOptions">
+                                                <div class="bluebg" (click)="uploadDocument(uploadOptions,subDoc)"
+                                                    [ngClass]="{'disabled': uploadOptions.disabled}">
+                                                    <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                    <span class="common-info">{{uploadOptions.name}}</span>
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="subDoc.documentType=='GST' && subDoc.showUpload==true">
+                                    <form #f="ngForm" novalidate>
+                                        <div *ngIf="!subDoc.getGstValueFromDropdown" class="form-group">
+                                            <input class="form-control gstCss" type="text" id="gstNumber" #gst="ngModel" name="gstNumber"
+                                                pattern="\d{2}[A-Z]{5}\d{4}[A-Z]{1}[A-Z\d]{1}[Z]{1}[A-Z\d]{1}" placeholder="please Enter GST number"
+                                                (ngModelChange)="f.form.valid?onSubmit($event):''" [(ngModel)]="gstNumber" standalone="true"
+                                                minlength="15" maxlength="15" [ngClass]="{ 'is-invalid': f.submitted && f.invalid }" required>
+                                            <div *ngIf="f.invalid && (f.dirty || f.touched) || gst.errors?.pattern" class="alert"> Please Enter valid
+                                                GST number</div>
+                                        </div>
+                                        <div *ngIf="subDoc.getGstValueFromDropdown" class="gstCss">
+                                            <label class="form-label">Please select GST number</label>
+                                            <div class="input-container form-group">
+                                                <select [(ngModel)]="gstNumberDrop" class="form-control form-select form-select-lg"
+                                                    id="gstNumberDrop" #gstDrop="ngModel" name="gstNumberDrop" [ngClass]="{ 'is-invalid': f.submitted && f.invalid }" required
+                                                    (change)="f.form.valid?updateGst(gstNumberDrop):''">
+                                                    <option hidden>-Select GST Number-</option>
+                                                    <option disabled [value]="null">-Select GST Number-</option>
+                                                    <option *ngFor="let item of subDoc.selectGst.options" [value]="item.optionKey">
+                                                        {{item.optionName}}</option>
+                                                    <option *ngIf="!subDoc.selectGst.options.length">
+                                                        No option available</option>
+                                    
+                                                </select>
+                                                <div *ngIf="f.invalid && (f.dirty || f.touched) || gstDrop.errors?.pattern" class="alert"> Please Enter valid
+                                                    GST number</div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                
+                                    <div class="document-upload-section mt-20">
+                                        <span class="form-label f-15">{{subDoc.label}}</span>
+                                        <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                            style="justify-content: unset;">
+                                            <div class="w-20 upload-option mob-w-100" *ngFor="let uploadOptions of subDoc.uploadOptions">
+                                                <div class="bluebg" (click)="uploadDocument(uploadOptions,subDoc)"
+                                                    [ngClass]="{'disabled': uploadOptions.disabled}" [class.disabled]='!f.valid'>
+                                                    <span class="material-icons-sharp">{{uploadOptions.icon}}</span>
+                                                    <span class="common-info">{{uploadOptions.name}}</span>
+                                                </div>
+                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="subDoc.documentType=='DOCUMENT' && subDoc.showUpload==true && subDoc.documentUploadStatus!='COMPLETED'">
+                                    <div class="document-upload-section mt-20">
+                                        <span class="form-label f-15">{{subDoc.label}}<span class="requiredHastrick"
+                                                *ngIf="subDoc.documentData.isMandatory"></span></span>
+                                        <div class="options-wrapper mob-flex-col col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12"
+                                            style="justify-content: unset;">
+                                            <div class="display-flex file-input-dynamic-fields"
+                                                (click)="fileInputTrigger(subDoc)">
+                                                <span class="material-symbols-outlined">
+                                                    file_upload
+                                                </span>
+                                                <span class="common-info">Upload
+                                                    {{subDoc.documentData.documentName}}</span>
+                                            </div>
+                                            <input type="file" class="display-none"
+                                                [id]="subDoc.documentData.documentName" hidden
+                                                (change)="fileChange(subDoc,$event)">
+    
+                                        </div>
+                                        <div class="p-10 display-flex gap-15 a-i-c" *ngIf="subDoc.uploadedDoc">
+    
+                                            <img *ngIf="subDoc.uploaddone==false" class="load-img-file"
+                                                [src]="'../../../assets/icons/loader.gif'" alt="img">
+                                            <span class="material-symbols-outlined color-green"
+                                                *ngIf="subDoc.uploaddone==true">check_circle</span>
+                                            <span class="common-info">{{subDoc.uploaddone==false?'Uploading
+                                                ':subDoc.uploaddone==true?"":""}}
+                                                {{subDoc.uploadedDoc.name}}{{subDoc.uploaddone==false?' ....
+                                                ':subDoc.uploaddone==true?" Uploaded Successfull":""}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="pb-20 clr-grey" style="text-align: center;" *ngIf="i!=document.documents.length-1">OR</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="submit-action mb-20">
+                <button class="btn-orange mobileButton" mat-flat-button [disabled]="ContinueButtonStatus()"
+                    (click)="continue()">{{metaConfig.fieldLabel}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

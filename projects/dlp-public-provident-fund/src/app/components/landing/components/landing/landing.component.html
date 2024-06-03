@@ -1,0 +1,126 @@
+    <div class="home-content">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mobileWidt commonStyle"> 
+            <carousel [data]="bannerList"></carousel>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 mobileWidt commonStyle">
+            <div class="loan-products" *ngIf="commonVariableService.tenentConfiguration.landingContentView=='PRODUCT'">
+                <div class="home-title-md">Let’s find you the</div>
+                <div class="home-title mb-4">best product</div>
+                <div class="row" style="min-height:500px">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 mobileWidt" *ngFor="let item of loanProducts[loanProductPageIndex];let i=index">
+                        <div class="product" (mouseover)="hoverIndex = i" (mouseout)="hoverIndex=null"
+                            [ngClass]="{'product-inactive': item.isActive == false}"
+                            [ngStyle]="{'box-shadow':hoverIndex == i ? getShadow(item.color) : '' }"
+                            (click)="navigatePage(item)" [style.border-color]="item.color">
+                            <img class="stay-tuned" *ngIf="!item.isActive" [src]="'../../../assets/icons/stay-tuned.png'"
+                                alt="img">
+                            <div class="product-image" [ngStyle]="{'background-color':getImgBg(item.color)}">
+                                <img [src]="item.image" alt="img">
+                            </div>
+                            <label class="product-label">
+                                {{item.name}}
+                            </label>
+                            <span class="product-info">
+                                {{item.info}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigate">
+                    <button  class="" *ngFor="let indx of loanProducts;let i= index" [ngClass]="{active: i==loanProductPageIndex}" (click)="loanProductPageIndex=i"></button>
+                </div>
+                
+            </div>
+            <div class="emiCalculator" *ngIf="commonVariableService.tenentConfiguration.landingContentView=='CALCULATOR'">
+                <mat-tab-group class="dynamic-tab-container"  mat-align-tabs="left" disableRipple animationDuration="0ms">
+                    <mat-tab *ngFor="let items of emiCalculatorData;let i=index" [label]="items.label">
+                        <div class="p-20">
+                            <!-- {{items.tabData | json}} -->
+                            <app-section-builder [config]="items.tabData" (status)="statusObserver($event,items)"></app-section-builder>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="connecting-bank mt-5">
+    <div class="outter-layout">
+        <div class="row d-flex">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 commonStyle left-section">
+                <mat-tab-group class="connect-content" (selectedIndexChange)="selectedCatgory($event)">
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <img [src]="'../../../assets/icons/home-icon-5.png'" class="me-2" alt="img">
+                            Mobile Banking
+                        </ng-template>
+                        <div class="connect-header">
+                            Connecting All Your Banking Needs
+                        </div>
+                        <div class="connecting-info">
+                            A smart mobile application you can control your banking needs
+                        </div>
+                        <div class="download-app">
+                            <span class="downloadAppHeader">Download our App on</span>
+                            <div class="mob-d-flex mob-j-c-b mob-w-100">
+                                <img [src]="'../../../assets/icons/home-icon-8.png'" width="150" class="me-3" alt="img">
+                                <img [src]="'../../../assets/icons/home-icon-9.png'" width="150" alt="img">
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <img [src]="'../../../assets/icons/home-icon-6.png'" class="me-2" alt="img">
+                            Online Banking
+                        </ng-template>
+                        <div class="connect-header">
+                            Easy Banking with simple ways
+                        </div>
+                        <div class="connecting-info">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        </div>
+                        <div class="download-app">
+                            <span class="downloadAppHeader">Your Online Banking Needs</span>
+                            <div>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3 mb-2">Online
+                                    Registration</button>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3 m-2">Net
+                                    Banking</button>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3">Fund
+                                    Transfer</button>
+                            </div>
+                        </div>
+                    </mat-tab>
+                    <mat-tab>
+                        <ng-template mat-tab-label>
+                            <img [src]="'../../../assets/icons/home-icon-7.png'" class="me-2" alt="img">
+                            Branch & ATM
+                        </ng-template>
+                        <div class="connect-header">
+                            Locate us Anytime, Anywhere 24/7
+                        </div>
+                        <div class="connecting-info">
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+                        </div>
+                        <div class="download-app">
+                            <span class="downloadAppHeader">Try Searching for</span>
+                            <div>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3 mb-2" (click)="goToNewLink()">Branches</button>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3 mb-2" (click)="goToNewLink()">ATMs</button>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3 mb-2" (click)="goToNewLink()">E-lobby</button>
+                                <button type="button" mat-stroked-button class="btn-stroked-orange ms-3" (click)="goToNewLink()">Zone Locator</button>
+                            </div>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12  right-section d-flex a-i-c">
+                <img class="img1" *ngIf="selectedCategoryTab == 0" [src]="'../../../assets/icons/home-icon-4.png'" alt="img">
+                <img class="img2 w-100" *ngIf="selectedCategoryTab == 1" [src]="'../../../assets/icons/home-icon-26.png'" alt="img">
+                <img class="img3 w-100" *ngIf="selectedCategoryTab == 2" [src]="'../../../assets/icons/branchAndAtm.png'" alt="img">
+                
+            </div>
+        </div>
+    </div>
+</div>

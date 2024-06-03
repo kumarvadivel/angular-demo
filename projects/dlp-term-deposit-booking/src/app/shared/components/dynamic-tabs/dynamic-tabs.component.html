@@ -1,0 +1,81 @@
+<div class="col-xxl-12 col-md-12 col-sm-12 col-lg-12 col-xl-12 col-12 tab-section">
+    <mat-tab-group animationDuration="0ms" class="dynamic-tab-container mob-w-100" disableRipple
+                   mat-align-tabs="start">
+        <mat-tab *ngFor="let items of tabsData" [label]="items.label">
+            <div *ngIf="items?.displayType === 'card'">
+                <div *ngTemplateOutlet="hasIcons; context:{items: items}"></div>
+            </div>
+            <div *ngIf="items?.displayType === 'bulletPoints'">
+                <div *ngTemplateOutlet="hasBulletPoints; context:{items: items}"></div>
+            </div>
+            <div *ngIf="items?.displayType === 'paragraph'">
+                <div *ngTemplateOutlet="hasParagraph; context:{items: items}"></div>
+            </div>
+            <div *ngIf="items?.displayType === 'accordion'" class="acc-sec">
+                <div *ngTemplateOutlet="hasAccordionMenu; context:{items: items}"></div>
+            </div>
+            <div *ngIf="items?.displayType === 'emiCalculator'">
+                <app-emi-calculator [emiCalcData]="items.LoanData"></app-emi-calculator>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+    <div class="terms-contitons-container">
+        <button (click)="termsAndConditions()" class="terms-conditions a-button">Terms & Conditions</button>
+    </div>
+</div>
+<ng-template #hasIcons let-items="items">
+    <mat-grid-list class="gridList" cols="2" rowHeight="2:1">
+        <mat-grid-tile *ngFor="let list of items.docReqData[commonVariableService.journey.constitution]">
+            <mat-card class="d-flex justify-content-between">
+                <mat-card-body class="d-flex a-i-c">
+                    <div class="d-flex a-i-c" mat-card-avatar>
+                        <img [src]="list.icon" alt="" class="mr-5" height="30" srcset="">
+                    </div>
+                    <p class="mb-0 text-small">{{list.label}}</p>
+                </mat-card-body>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+<ng-template #hasParagraph let-items="items">
+    <section>
+        <p class='mb-20 common-info' *ngFor="let list of items.displayData">{{list}}</p>
+    </section>
+</ng-template>
+<div>
+    <ng-template #hasBulletPoints let-items="items">
+        <div class="pt-3">
+            <ul *ngFor="let list of items.displayData">
+                <li class="eligibility-content">{{list.listItem || list}}</li>
+                <ul *ngFor="let str of list?.subList">
+                    <li class="eligibility-content">{{str}}</li>
+                </ul>
+            </ul>
+        </div>
+    </ng-template>
+</div>
+<div>
+    <ng-template #hasAccordionMenu let-items="items">
+        <mat-accordion *ngFor="let list of items.docReqData[commonVariableService.journey.constitution]">
+            <mat-expansion-panel (closed)="false" (opened)="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{list.label}}
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div>
+                    <mat-grid-list cols="2" rowHeight="3:1">
+                        <mat-grid-tile *ngFor="let list of list.data">
+                            <mat-card>
+                                <mat-card-body class="display-flex a-i-c">
+                                    <span class="pr-10"><img [src]="list.icon" alt="" srcset=""></span>
+                                    <span>{{list.label}}</span>
+                                </mat-card-body>
+                            </mat-card>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-template>
+</div>

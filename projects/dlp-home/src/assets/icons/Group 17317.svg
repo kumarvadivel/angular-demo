@@ -1,0 +1,26 @@
+<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 17317" id="Group_17317" transform="translate(13420 -174)">
+        <rect data-name="Rectangle 6004" fill="#fff" height="24" id="Rectangle_6004" opacity="0"
+              transform="translate(-13420 174)" width="24"/>
+        <g data-name="noun-agriculture-3093024 (1)" id="noun-agriculture-3093024_1_"
+           transform="translate(-13638.721 123.242)">
+            <path d="M310.518,56.46c0,2.046-.852,3.7-1.9,3.7s-1.9-1.658-1.9-3.7a5.725,5.725,0,0,1,1.9-3.7A5.735,5.735,0,0,1,310.518,56.46Z" data-name="Path 23333"
+                  fill="#fff"
+                  id="Path_23333" transform="translate(-78.398 0)"/>
+            <path d="M353.752,200.272c-1.445,1.445-3.228,2.016-3.972,1.271s-.174-2.517,1.274-3.972a5.706,5.706,0,0,1,3.972-1.274,5.753,5.753,0,0,1-1.274,3.975Z" data-name="Path 23334"
+                  fill="#fff"
+                  id="Path_23334" transform="translate(-119.286 -137.235)"/>
+            <path d="M353.752,325.925c-1.445,1.447-3.228,2.016-3.972,1.274s-.174-2.518,1.274-3.972a5.706,5.706,0,0,1,3.972-1.274A5.745,5.745,0,0,1,353.752,325.925Z" data-name="Path 23335"
+                  fill="#fff"
+                  id="Path_23335" transform="translate(-119.286 -257.405)"/>
+            <path d="M226,200.272c1.445,1.445,3.228,2.016,3.972,1.271s.174-2.517-1.274-3.972a5.706,5.706,0,0,0-3.972-1.274A5.823,5.823,0,0,0,226,200.272Z" data-name="Path 23336"
+                  fill="#fff"
+                  id="Path_23336" transform="translate(0 -137.235)"/>
+            <path d="M226,325.925c1.445,1.447,3.228,2.016,3.972,1.274s.174-2.518-1.274-3.972a5.706,5.706,0,0,0-3.972-1.274A5.815,5.815,0,0,0,226,325.925Z" data-name="Path 23337"
+                  fill="#fff"
+                  id="Path_23337" transform="translate(0 -257.405)"/>
+            <path d="M342.89,216.55h.6v12.89h-.6Z" data-name="Path 23338" fill="#fff"
+                  id="Path_23338" transform="translate(-112.973 -156.682)"/>
+        </g>
+    </g>
+</svg>

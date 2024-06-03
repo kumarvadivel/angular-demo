@@ -1,0 +1,45 @@
+// default theme starts 
+.defaultTheme{
+    --primary:#007dc5;
+    --primary_10:rgb(46 91 255 / 10%);
+    --primary_20:rgb(46 91 255 / 20%);
+    --primary_30:rgb(46 91 255 / 30%);
+    --primary_40:rgb(46 91 255 / 40%);
+    --primary_50:rgb(46 91 255 / 50%);
+    --primary_60:rgb(46 91 255 / 60%);
+    --primary_70:rgb(46 91 255 / 70%);
+    --primary_80:rgb(46 91 255 / 80%);
+    --primary_90:rgb(46 91 255 / 90%);
+    --primary_light:rgb(209, 218, 250);
+    --primary_light_10:rgb(240,248,253);
+} 
+.defaultTheme .header-info{
+    background-color:  var(--primary) !important;
+}
+.defaultTheme .connecting-bank {
+    background-color:  var(--primary) !important;
+}
+.defaultTheme .btn-orange {
+    background-color:  #F58220 ;
+}
+.defaultTheme  .btn-orange:disabled {
+    background-color: none !important;
+}
+.defaultTheme .blue-back-card{
+    background-color: var(--primary_light_10);
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid var(--primary_light);
+}
+.mat-slider-thumb {
+	background-color: var(--primary) !important;
+}
+
+.mat-slider-thumb-label {
+	background-color: var(--primary) !important;
+}
+
+.mat-slider-track-fill {
+	background-color: var(--primary) !important;
+}
+// default theme ends

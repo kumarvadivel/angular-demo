@@ -1,0 +1,19 @@
+<svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 17323" id="Group_17323" transform="translate(-687 -187)">
+        <circle cx="16" cy="16" data-name="Ellipse 5515" fill="#f9e9dc" id="Ellipse_5515" r="16"
+                transform="translate(687 187)"/>
+        <g data-name="Group 19019" id="Group_19019" transform="translate(5079.86 -3310.633)">
+            <path d="M21.748,7.944H17.8V5.972A1.971,1.971,0,0,0,15.832,4H11.888A1.971,1.971,0,0,0,9.916,5.972V7.944H5.972A1.963,1.963,0,0,0,4.01,9.916L4,20.762a1.971,1.971,0,0,0,1.972,1.972H21.748a1.971,1.971,0,0,0,1.972-1.972V9.916A1.971,1.971,0,0,0,21.748,7.944Zm-5.916,0H11.888V5.972h3.944Z" data-name="Path 24223"
+                  fill="#f58220"
+                  id="Path_24223" transform="translate(-4390.86 3500.633)"/>
+            <g data-name="Group 19018" id="Group_19018" transform="translate(-4381.32 3512)">
+                <circle cx="5" cy="5" data-name="Ellipse 319" fill="#fff" id="Ellipse_319" r="5"
+                        stroke="#f58220" stroke-width="1" transform="translate(-0.68 -1)"/>
+                <text data-name="₹" fill="#f58220" font-family="ProximaNova-Medium, Proxima Nova" font-size="8" font-weight="500"
+                      id="_" transform="translate(2.321 6.822)">
+                    <tspan x="0" y="0">₹</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

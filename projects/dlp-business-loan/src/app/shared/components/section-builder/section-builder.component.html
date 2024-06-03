@@ -1,0 +1,64 @@
+<section class="section-wrapper mt-5">
+    <div *ngFor="let section of config;let i=index" [class]="section.rootClassName">
+        <div  [ngClass]="{'row':!section.parentclassName}" [class]="section.parentclassName" *ngIf="section.sectionContent.isShow==true">
+            <div [class]="section.className" *ngIf="section.componentType == 'PARAGRAPH'">{{section.sectionContent.paragraphData}}<span (click)="popupOpen(link)" *ngFor="let link of section.sectionContent.endLinks" class="underscore-orange ml-10">{{link.label}}</span>
+            </div>
+            <div [class]="section.className" class="common-title" *ngIf="section.componentType == 'TITLE'">{{section.sectionContent.titleData}}
+                <div class="display-contents" *ngIf="section.sectionContent.endContent">
+                    <div *ngFor="let endContent of section.sectionContent.endContent">
+                        <img *ngIf="endContent.componentType=='ICON'" [class]="endContent.className" alt="icon" [src]="endContent.sectionContent.iconPath" alt="">
+                        
+                    </div>
+                </div>
+            </div>
+            <div [class]="section.className" *ngIf="section.componentType == 'FORM'">
+                <!-- {{section | json}} -->
+                <div *ngIf="section.sectionContent.showEditMode && !section.sectionContent.showUpdateButton" class="underscore-orange ml-10 float-right p-10 pr-20" (click)="editForm(section)">Edit</div>
+                <app-dynamic-fields *ngIf="section.sectionContent.isShow" [dynamicGroupList]="section.sectionContent.fields" 
+                [options]="section.sectionContent.options" 
+                [validityCheck]="section.sectionContent?.validityEmitter?.asObservable()" 
+                (formValidity)="formValidityBind($event,section)" 
+                [formValueEmit]="section.sectionContent?.formValueEmitter?.asObservable()" 
+                (formValue)="formValueBind($event,section)" 
+                (Status)="formStatus($event,section)"
+                (otherEvents)="otherEventsBind($event,section)"
+                [verificationExternalTrigger]="section.sectionContent?.verificationExternalTrigger?.asObservable()"></app-dynamic-fields>
+                <button class="btn-orange" *ngIf="section.sectionContent.showUpdateButton" (click)="formSectionSubmitAction(section)">{{section.sectionContent?.submitAction?.submitButtonLabel}}</button>
+            </div>
+            <div [class]="section.className" class="form-label" *ngIf="section.componentType == 'CAPCHA'">
+                <captcha (status)="statusBind($event,section);" [validityCheck]="section.sectionContent.validityEmitter.asObservable()"></captcha>
+            </div>
+            <div [class]="section.className" *ngIf="section.componentType == 'CONSENT'">
+                <consent [field]="section.sectionContent.config" (Status)="statusBind($event,section)"></consent>
+            </div>
+            <div [class]="section.className" class="" *ngIf="section.componentType=='OTP'">
+                <otp [field]="section.sectionContent.fields" [options]="section.sectionContent.options" (onSuccess)="otpCompleteEmit($ev)" (onError)="otpErrorEmit($ev)" (onAttemptsComplete)="otpAttemptsDone($ev)" (onOtpsucess)="otpComplete($ev)"></otp>
+            </div>
+            <div [class]="section.className" class="" *ngIf="section.componentType=='ORDERED_LIST'">
+                <ol>
+                    <li class="mb-15" *ngFor="let item of section.sectionContent.listItem; let i = index">{{ i + 1 }}. {{item}}</li>
+                </ol>
+            </div>
+            <div [class]="section.className" class="" *ngIf="section.componentType=='HTML_CONTENT'" [innerHTML]="section.sectionContent.htmlData">
+            </div>
+            <div [class]="section.className" *ngIf="section.componentType=='TABLE'">
+                <app-table [config]="section.sectionContent.config" (status)="tableStatus($event,i)"></app-table>
+            </div>
+            <div [class]="section.className" class="" *ngIf="section.componentType=='FILE_UPLOAD'">
+                <app-file-upload  [fileUploadList]="section.sectionContent.fields" [fileUploadComplete]="[fileUploadComplete]" [options]="section.sectionContent.options" [validityCheck]="section.sectionContent.validityEmitter.asObservable()"  [sendModalData]="sendModalData" [sendFormData]="formVal" ></app-file-upload>
+            </div>
+            <div [class]="section.className" class="" *ngIf="section.componentType=='CHART'">
+                <app-chart [config]="section.sectionContent.config" [updateChart]="section.sectionContent.updateChart.asObservable()"></app-chart>
+            </div>
+            <div *ngIf="section.componentType=='BUTTON'" [class]="section.className"  >
+                <button [class]="section.sectionContent.className" [id]="section.sectionContent.actionId" mat-flat-button [disabled]="buttonDisabledBinder(section)" (click)="buttonAction(section)"><span *ngIf="section.sectionContent.prefixIcon" [class]="section.sectionContent.prefixIcon.className">{{section.sectionContent.prefixIcon.iconName}}</span> {{section.sectionContent?.label}}</button>
+            </div>
+            <div *ngIf="section.componentType=='GRID'" [class]="section.className">
+                <app-section-builder [config]="section.sectionContent.items" (status)="gridSectionBuilderEmitter($event,section)"></app-section-builder>
+            </div>
+            <ng-template *ngIf="i==contentInsertIndex" [ngTemplateOutlet]="templateRef" [ngTemplateOutletContext]="{$implicit: item}">
+            </ng-template>
+            <ng-content *ngIf="i==contentInsertIndex"></ng-content>
+        </div>
+    </div>
+</section>

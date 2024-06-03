@@ -1,0 +1,64 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [
+      "node"
+    ]
+  },
+  "paths": {
+    "path": [
+      "./node_modules/stream-browserify"
+    ],
+    "exceljs": [
+      "node_modules/exceljs/dist/exceljs.min"
+    ],
+    "@kcc-ah-app/*": [
+      "projects/dlp-kcc-ah/src/app/*"
+    ],
+    "@kcc-ah-app-components/*": [
+      "projects/dlp-kcc-ah/src/app/components/*"
+    ],
+    "@kcc-ah-assets/*": [
+      "projects/dlp-kcc-ah/src/assets/*"
+    ],
+    "@kcc-ah-configuration/*": [
+      "projects/dlp-kcc-ah/src/configuration/*"
+    ],
+    "@kcc-ah-environments/*": [
+      "projects/dlp-kcc-ah/src/environments/*"
+    ]
+  },
+  "baseUrl": "./",
+  "types": [],
+  "sourceMap": true,
+  "declaration": false,
+  "downlevelIteration": true,
+  "experimentalDecorators": true,
+  "moduleResolution": "node",
+  "importHelpers": true,
+  "resolveJsonModule": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "useDefineForClassFields": false,
+  "target": "ES2022",
+  "module": "ES2022",
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "lib": [
+    "es2018",
+    "dom",
+    "ES2022"
+  ]
+}

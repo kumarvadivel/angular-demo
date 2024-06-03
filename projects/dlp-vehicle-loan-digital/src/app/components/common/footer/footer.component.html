@@ -1,0 +1,59 @@
+<div *ngIf="commonVariableService.appLayoutConfig.isShowJourneyFooter" class="footer">
+    <div class="footer-header">
+        <div class="container-fluid">
+            <div class="row media-block">
+                <div class="media-images">
+                    <img alt="img" class="me-3  play-store" [src]="'../../../assets/icons/home-icon-8.png'">
+                    <img alt="img" class="me-3  app-store" [src]="'../../../assets/icons/home-icon-9.png'">
+                    <img alt="img" class="me-4  facebook" [src]="'../../../assets/icons/home-icon-13.png'">
+                    <img alt="img" class="me-3  twitter" [src]="'../../../assets/icons/home-icon-12.png'">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4 ">
+                <span class="footer-label">Popular Products</span>
+                <div *ngFor="let product of popularProducts">
+                    <div class="row">
+                        <span class="footer-value">{{product.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Calculators</span>
+                <div *ngFor="let calc of  CalculatorsList">
+                    <div class="row">
+                        <span class="footer-value">{{calc.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content  col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Locate us</span>
+                <div *ngFor="let locate of  locateList">
+                    <div class="row">
+                        <span (click)="navigateTo(locate.url)" class="footer-value">{{locate.name}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Contact us</span>
+                <div class="row">
+                    <span class="footer-value" *ngFor="let contactUs of footerdata.contactus">{{contactUs}}</span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-content">
+                <div class="footer-value">{{footerdata.footervalue}}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="footer-bottom">
+                    <img alt="img" class="me-2" src="../../../assets/icons/home-icon-14.png">
+                    {{footerdata.footerbottom}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

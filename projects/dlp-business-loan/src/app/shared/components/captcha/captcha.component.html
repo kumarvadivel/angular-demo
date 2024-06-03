@@ -1,0 +1,14 @@
+
+<div class="captcha-wrapper row">
+    <label class="form-label required">CAPTCHA
+    </label>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <input type="text" name="captcha" maxlength="5" class="form-control form-control-lg"  ondrop="return false;" autocomplete="off"
+            placeholder="Enter the captcha " [(ngModel)]="captchaEntered" [alphaNumberOnly]="true" (input)="validateCaptcha()" (blur)="validateCaptcha(true)" appCopyPaste>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 d-flex align-items-center mob-mt-10 ">
+        <div class="captcha me-3"  draggable="false" >{{captcha}}</div>
+        <img class="me-3 cursorPointer " (click)="playCaptcha()" [src]="'../../../assets/icons/speaker.png'" alt="img">
+        <img class="cursorPointer" (click)="loadCaptcha()" [src]="'../../../assets/icons/refresh.png'" alt="img">
+    </div>
+</div>

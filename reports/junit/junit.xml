@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="246" failures="0" errors="0" time="14.465">
+  <testsuite name="[DynamicFieldsComponent]" errors="0" failures="0" skipped="0" timestamp="2024-05-09T04:59:18" time="13.479" tests="246">
+    <testcase classname="[DynamicFieldsComponent] [ngOnInit]should create" name="[DynamicFieldsComponent] [ngOnInit]should create" time="0.343">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [HardCodeValues] it should hard code field values for the field config" name="[DynamicFieldsComponent] [HardCodeValues] it should hard code field values for the field config" time="0.024">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapHardCodingValues] it should map the hard coding values" name="[DynamicFieldsComponent] [mapHardCodingValues] it should map the hard coding values" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verificationExternalTriggercaller]it should call the verficatio external trigger and validate verfication" name="[DynamicFieldsComponent] [verificationExternalTriggercaller]it should call the verficatio external trigger and validate verfication" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validitySubscriber] it should trigger verfication from external component" name="[DynamicFieldsComponent] [validitySubscriber] it should trigger verfication from external component" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [dropdownInputConfig] it should configure the dropdown input config" name="[DynamicFieldsComponent] [dropdownInputConfig] it should configure the dropdown input config" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [ngOnChanges]" name="[DynamicFieldsComponent] [ngOnChanges]" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkChildFilled] it should check child field is filled" name="[DynamicFieldsComponent] [checkChildFilled] it should check child field is filled" time="0.023">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapParentFilledKey] it should check the parent field is filled or not" name="[DynamicFieldsComponent] [mapParentFilledKey] it should check the parent field is filled or not" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getDependentFieldValue] it should get dependent field value" name="[DynamicFieldsComponent] [getDependentFieldValue] it should get dependent field value" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getchildFieldStatus] it should fetch child field status" name="[DynamicFieldsComponent] [getchildFieldStatus] it should fetch child field status" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [groupFieldBasedongroup] it should group fields based on its groupName" name="[DynamicFieldsComponent] [groupFieldBasedongroup] it should group fields based on its groupName" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [initialFormatFields] it should format the fields for initial values when it is pre filled" name="[DynamicFieldsComponent] [initialFormatFields] it should format the fields for initial values when it is pre filled" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMaxMinDate] it should format min and max Date" name="[DynamicFieldsComponent] [checkMaxMinDate] it should format min and max Date" time="0.023">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMaxMinDateLengthMoreThen4] it should format he min max if length more than 4" name="[DynamicFieldsComponent] [checkMaxMinDateLengthMoreThen4] it should format he min max if length more than 4" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMaxMinDateLength4] it should format the date given in the input" name="[DynamicFieldsComponent] [checkMaxMinDateLength4] it should format the date given in the input" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMaxMinDateLength3] it should format the date given in the input" name="[DynamicFieldsComponent] [checkMaxMinDateLength3] it should format the date given in the input" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [dateFromIndex] it get index from the args and buid a date" name="[DynamicFieldsComponent] [dateFromIndex] it get index from the args and buid a date" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [initialValueFormatting] it should format intial values" name="[DynamicFieldsComponent] [initialValueFormatting] it should format intial values" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [preview] it should toggle the field masking of a sensible field" name="[DynamicFieldsComponent] [preview] it should toggle the field masking of a sensible field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [check] it should check the checkbox" name="[DynamicFieldsComponent] [check] it should check the checkbox" time="0.022">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [dropdownChange] it should execute and map options whenever the dropdown is changes" name="[DynamicFieldsComponent] [dropdownChange] it should execute and map options whenever the dropdown is changes" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getGoldProductList] it should get the gold product list api and map it to common property" name="[DynamicFieldsComponent] [getGoldProductList] it should get the gold product list api and map it to common property" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [MultiInputFocusSystem] it should focus to the subsequent element if relevant keys are pressed" name="[DynamicFieldsComponent] [MultiInputFocusSystem] it should focus to the subsequent element if relevant keys are pressed" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [panNumberMerge] it should merge parts of pan number and make a single pan number" name="[DynamicFieldsComponent] [panNumberMerge] it should merge parts of pan number and make a single pan number" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [accountNumberMerge] it should merge parts of account number and make a single account number" name="[DynamicFieldsComponent] [accountNumberMerge] it should merge parts of account number and make a single account number" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [aadharNumberMerge] it should merge parts of aadhar number and make a single aadhar number" name="[DynamicFieldsComponent] [aadharNumberMerge] it should merge parts of aadhar number and make a single aadhar number" time="0.022">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [beforeChange] it should handle the before change event loop of a input field" name="[DynamicFieldsComponent] [beforeChange] it should handle the before change event loop of a input field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validationCheckForMandatory] it should check validation for a mandartory field" name="[DynamicFieldsComponent] [validationCheckForMandatory] it should check validation for a mandartory field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validationCheck] it should check validation for a field" name="[DynamicFieldsComponent] [validationCheck] it should check validation for a field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validateMobileNumber] it should validate the mobile number field with regex validation" name="[DynamicFieldsComponent] [validateMobileNumber] it should validate the mobile number field with regex validation" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkfieldVerification] it should check the verification status of the field" name="[DynamicFieldsComponent] [checkfieldVerification] it should check the verification status of the field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkFillingText] it should check filling for the text field" name="[DynamicFieldsComponent] [checkFillingText] it should check filling for the text field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkFilling] it should check wheather the field is filled or not" name="[DynamicFieldsComponent] [checkFilling] it should check wheather the field is filled or not" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [setErrorMessage] it should set the error  message for the min and max length validations" name="[DynamicFieldsComponent] [setErrorMessage] it should set the error  message for the min and max length validations" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkRegex] it should validate the regex for a field" name="[DynamicFieldsComponent] [checkRegex] it should validate the regex for a field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkColumnConfig] it should restrict the column size of the layout" name="[DynamicFieldsComponent] [checkColumnConfig] it should restrict the column size of the layout" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper] it should map the copy search array for the dropdown field" name="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper] it should map the copy search array for the dropdown field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper_l1] it should map the copy search array for the dropdown l1 method" name="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper_l1] it should map the copy search array for the dropdown l1 method" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper_l2]it should map the copy search array for the dropdown l1 method" name="[DynamicFieldsComponent] [copySearchArrayDropdownCommonMapper_l2]it should map the copy search array for the dropdown l1 method" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [copySearchArray] it should do the copy serach array for the field config" name="[DynamicFieldsComponent] [copySearchArray] it should do the copy serach array for the field config" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [PreFillDynamicGroupsDropDownSystemCommonMapper] it should prefill the groups dropdown fields" name="[DynamicFieldsComponent] [PreFillDynamicGroupsDropDownSystemCommonMapper] it should prefill the groups dropdown fields" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [PreFillDynamicGroupsDropDownSystem] it should prefill the dropdown values when it is populated" name="[DynamicFieldsComponent] [PreFillDynamicGroupsDropDownSystem] it should prefill the dropdown values when it is populated" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [premapchildOption_v1CommonMapper] it should premap a child option for a dependent field" name="[DynamicFieldsComponent] [premapchildOption_v1CommonMapper] it should premap a child option for a dependent field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [PremapchildOption_v1] it should premap the child option for a dependent field" name="[DynamicFieldsComponent] [PremapchildOption_v1] it should premap the child option for a dependent field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [resetOptions_v2CommonMapper] it should reset options for a dependent field" name="[DynamicFieldsComponent] [resetOptions_v2CommonMapper] it should reset options for a dependent field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [resetoptions_v2] it should reset options for a dependent field" name="[DynamicFieldsComponent] [resetoptions_v2] it should reset options for a dependent field" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapchildOption_v1CommonMapper] it should map the child option" name="[DynamicFieldsComponent] [mapchildOption_v1CommonMapper] it should map the child option" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapchildOption_v1] it should map the child optioon for the dropdown and auto complete fields" name="[DynamicFieldsComponent] [mapchildOption_v1] it should map the child optioon for the dropdown and auto complete fields" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDependentParentLabelsCommonMapper] it should map dependent parent fields label" name="[DynamicFieldsComponent] [mapDependentParentLabelsCommonMapper] it should map dependent parent fields label" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDependentParentLabels] it should map dependent parent labels" name="[DynamicFieldsComponent] [mapDependentParentLabels] it should map dependent parent labels" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getChildLabel] it should get the child label" name="[DynamicFieldsComponent] [getChildLabel] it should get the child label" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getchildLabel]it should map the child label" name="[DynamicFieldsComponent] [getchildLabel]it should map the child label" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationJson] it should execute the validation json rules for a field" name="[DynamicFieldsComponent] [runValidationJson] it should execute the validation json rules for a field" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationDefault] it should run validation rule for default" name="[DynamicFieldsComponent] [runValidationDefault] it should run validation rule for default" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationCopyValue] it should run validation rule for copy value" name="[DynamicFieldsComponent] [runValidationCopyValue] it should run validation rule for copy value" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationCalculation] it should run validation rule for calculation" name="[DynamicFieldsComponent] [runValidationCalculation] it should run validation rule for calculation" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationCalculationOnInitialState] it should run validation rule for calculation on initial stage" name="[DynamicFieldsComponent] [runValidationCalculationOnInitialState] it should run validation rule for calculation on initial stage" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationDateCalculation] it should run validation rule for date calculation" name="[DynamicFieldsComponent] [runValidationDateCalculation] it should run validation rule for date calculation" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationMandatory] it should run validation rule for mandatory" name="[DynamicFieldsComponent] [runValidationMandatory] it should run validation rule for mandatory" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationDisable] it should run validation rule for disable" name="[DynamicFieldsComponent] [runValidationDisable] it should run validation rule for disable" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationValidation] it should run validation rule for validation" name="[DynamicFieldsComponent] [runValidationValidation] it should run validation rule for validation" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationShowField] it should run validation rule for show field" name="[DynamicFieldsComponent] [runValidationShowField] it should run validation rule for show field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationProperty] it should run validation rule for property" name="[DynamicFieldsComponent] [runValidationProperty] it should run validation rule for property" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationApiEndpoint] it should run validation rule for api end point" name="[DynamicFieldsComponent] [runValidationApiEndpoint] it should run validation rule for api end point" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationCurrentDate] it should run validation rule for validation on current date" name="[DynamicFieldsComponent] [runValidationCurrentDate] it should run validation rule for validation on current date" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [applyJsonLogic] it should execute validation json" name="[DynamicFieldsComponent] [applyJsonLogic] it should execute validation json" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchLogicVaraiables] it should fetch the logic variables in a json" name="[DynamicFieldsComponent] [fetchLogicVaraiables] it should fetch the logic variables in a json" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapCustomKeyLogicVariable] it should map custom key for logic variable" name="[DynamicFieldsComponent] [mapCustomKeyLogicVariable] it should map custom key for logic variable" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [logicvariableDateDataExtractor] it should extract the logic variable date data " name="[DynamicFieldsComponent] [logicvariableDateDataExtractor] it should extract the logic variable date data " time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [logicvariableNumberDataExtractor] it should extract the logic variable data for number" name="[DynamicFieldsComponent] [logicvariableNumberDataExtractor] it should extract the logic variable data for number" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [logicvariableDataExtractor] it should extract logic variable data for all type of fields" name="[DynamicFieldsComponent] [logicvariableDataExtractor] it should extract logic variable data for all type of fields" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchlogicvariableData] it should fetch the logic variable data from the config" name="[DynamicFieldsComponent] [fetchlogicvariableData] it should fetch the logic variable data from the config" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getNumberFieldValue] it should get the number field value" name="[DynamicFieldsComponent] [getNumberFieldValue] it should get the number field value" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getAmountFieldValue] it should get the Amount field value" name="[DynamicFieldsComponent] [getAmountFieldValue] it should get the Amount field value" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getDateFieldValue] it should get the Date field value" name="[DynamicFieldsComponent] [getDateFieldValue] it should get the Date field value" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getTableFieldValue] it should get the Table field value" name="[DynamicFieldsComponent] [getTableFieldValue] it should get the Table field value" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleOnboardingVerification] it should handle onboarding verification" name="[DynamicFieldsComponent] [handleOnboardingVerification] it should handle onboarding verification" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getAddressFieldValue] it should get addressField value " name="[DynamicFieldsComponent] [getAddressFieldValue] it should get addressField value " time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [dateParseforTableFieldAddress] it should parse date for table field address" name="[DynamicFieldsComponent] [dateParseforTableFieldAddress] it should parse date for table field address" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getTableFieldValueForAddressField] it should parse the table field value for the address Field" name="[DynamicFieldsComponent] [getTableFieldValueForAddressField] it should parse the table field value for the address Field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapClearLogic] it should apply clear logic for the validation json" name="[DynamicFieldsComponent] [mapClearLogic] it should apply clear logic for the validation json" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDisableLogic]it should apply clear logic for the validation json" name="[DynamicFieldsComponent] [mapDisableLogic]it should apply clear logic for the validation json" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [clearItemValue] it should clear the item value of the field" name="[DynamicFieldsComponent] [clearItemValue] it should clear the item value of the field" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [clearAddressFields] it should clear address fields" name="[DynamicFieldsComponent] [clearAddressFields] it should clear address fields" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [returnParsevalues] it should return parse the values returned from the validation json based on its data type" name="[DynamicFieldsComponent] [returnParsevalues] it should return parse the values returned from the validation json based on its data type" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [parseDateValue] it should parse date values for the return parsing" name="[DynamicFieldsComponent] [parseDateValue] it should parse date values for the return parsing" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [parseNumberValue] it should parse Number values for the return parsing" name="[DynamicFieldsComponent] [parseNumberValue] it should parse Number values for the return parsing" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [logicVariableDateDataCommonMapperforInitialStateandActual] it should map date data for the logic variable" name="[DynamicFieldsComponent] [logicVariableDateDataCommonMapperforInitialStateandActual] it should map date data for the logic variable" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchLogicVariableDataForDateCalculation] it should fetch logic variable data for date calculation" name="[DynamicFieldsComponent] [fetchLogicVariableDataForDateCalculation] it should fetch logic variable data for date calculation" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDependentValidationAdditionalKeys] it should map the validation additional keys for validation" name="[DynamicFieldsComponent] [mapDependentValidationAdditionalKeys] it should map the validation additional keys for validation" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [callEnpointLogicNormalVersion] it should call the end point logic normal version" name="[DynamicFieldsComponent] [callEnpointLogicNormalVersion] it should call the end point logic normal version" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapErrorMessages_vEndpoint] it should map error messsages for the endpoint" name="[DynamicFieldsComponent] [mapErrorMessages_vEndpoint] it should map error messsages for the endpoint" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [callEndPointLogic] it should call endpoint logic" name="[DynamicFieldsComponent] [callEndPointLogic] it should call endpoint logic" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [callEnpointLogicConfigurationVersion] it should call the endpoint logic for the configuration version validation json" name="[DynamicFieldsComponent] [callEnpointLogicConfigurationVersion] it should call the endpoint logic for the configuration version validation json" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [branchParser] it should parse the branch data" name="[DynamicFieldsComponent] [branchParser] it should parse the branch data" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [buildEndPointParamsFromResultObj] it should build the endpoint object from the result obj" name="[DynamicFieldsComponent] [buildEndPointParamsFromResultObj] it should build the endpoint object from the result obj" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [buildParams] it should build params from the api" name="[DynamicFieldsComponent] [buildParams] it should build params from the api" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [toggleLoader] it should toggle the loader for the api call" name="[DynamicFieldsComponent] [toggleLoader] it should toggle the loader for the api call" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditEndpointMapDropDowns] it should mapForm for Edit for endpoint drop downs" name="[DynamicFieldsComponent] [mapFormForEditEndpointMapDropDowns] it should mapForm for Edit for endpoint drop downs" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapSomeDataTypevalueForEndpoint] it should map some data for endpoint logic" name="[DynamicFieldsComponent] [mapSomeDataTypevalueForEndpoint] it should map some data for endpoint logic" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFieldsForEndpointLogic] it should  map the fields for Endpoint logic" name="[DynamicFieldsComponent] [mapFieldsForEndpointLogic] it should  map the fields for Endpoint logic" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapErrorsForEndpointLogic] it should map for the errors from the endpoint logic" name="[DynamicFieldsComponent] [mapErrorsForEndpointLogic] it should map for the errors from the endpoint logic" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapErrorsForEndpointLogic_address] it should map errors for the endpoint logic address version" name="[DynamicFieldsComponent] [mapErrorsForEndpointLogic_address] it should map errors for the endpoint logic address version" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEdit_vEndpointLogic] it should map form for Edit end point version" name="[DynamicFieldsComponent] [mapFormForEdit_vEndpointLogic] it should map form for Edit end point version" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDataForDD] it should map data for Dropdowns/Auto complete" name="[DynamicFieldsComponent] [mapDataForDD] it should map data for Dropdowns/Auto complete" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDataForDropDown] it should map data for Dropdowns/Auto complete" name="[DynamicFieldsComponent] [mapDataForDropDown] it should map data for Dropdowns/Auto complete" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDataForDropDownEndPoints] it should map data for endppint logic address version" name="[DynamicFieldsComponent] [mapDataForDropDownEndPoints] it should map data for endppint logic address version" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDataForFormEndPointLogic_C] it should map Data for the endpoint logic" name="[DynamicFieldsComponent] [mapDataForFormEndPointLogic_C] it should map Data for the endpoint logic" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDataForFormEndPointLogic] it should map values for the address endpoint logic" name="[DynamicFieldsComponent] [mapDataForFormEndPointLogic] it should map values for the address endpoint logic" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapValuesForAddressEndpointLogic_c] it should map form for address Endpoint logic" name="[DynamicFieldsComponent] [mapValuesForAddressEndpointLogic_c] it should map form for address Endpoint logic" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapValuesForAddressEndpointLogic] it should map values for the address endp point logic" name="[DynamicFieldsComponent] [mapValuesForAddressEndpointLogic] it should map values for the address endp point logic" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapEndpointDropdownForEdit] it should check the map form for edit for dropdowns" name="[DynamicFieldsComponent] [mapEndpointDropdownForEdit] it should check the map form for edit for dropdowns" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkParentfilled] it should check wheather a parent field is filled or not" name="[DynamicFieldsComponent] [checkParentfilled] it should check wheather a parent field is filled or not" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [triggerAlwaysValidations] it should execute a trigger always validation json rule" name="[DynamicFieldsComponent] [triggerAlwaysValidations] it should execute a trigger always validation json rule" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [formulamapping] it should execute the validation json for a field" name="[DynamicFieldsComponent] [formulamapping] it should execute the validation json for a field" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [rulesForMapping] it should execute the validation json for the dependent fields" name="[DynamicFieldsComponent] [rulesForMapping] it should execute the validation json for the dependent fields" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [applyformulaCalculations] it should apply validation json rules for the intial load time" name="[DynamicFieldsComponent] [applyformulaCalculations] it should apply validation json rules for the intial load time" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [renderIcon] it should render the icon for a field" name="[DynamicFieldsComponent] [renderIcon] it should render the icon for a field" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [renderCardOption] it should render the card option for the field" name="[DynamicFieldsComponent] [renderCardOption] it should render the card option for the field" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [renderRadioIcons] it should render the radio field icons" name="[DynamicFieldsComponent] [renderRadioIcons] it should render the radio field icons" time="0.022">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [extractDynamicFieldsFormData] it should extract the formvalues for a dynamic fields" name="[DynamicFieldsComponent] [extractDynamicFieldsFormData] it should extract the formvalues for a dynamic fields" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processGroup] it should process the group data for the form exxtraction" name="[DynamicFieldsComponent] [processGroup] it should process the group data for the form exxtraction" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processRow]  it should process the row data for the form exxtraction" name="[DynamicFieldsComponent] [processRow]  it should process the row data for the form exxtraction" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processField] it should process the field data for the form exxtraction" name="[DynamicFieldsComponent] [processField] it should process the field data for the form exxtraction" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processAddressField]  it should process the address field data for the form exxtraction" name="[DynamicFieldsComponent] [processAddressField]  it should process the address field data for the form exxtraction" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processRegularField]  it should process the regular field data for the form exxtraction" name="[DynamicFieldsComponent] [processRegularField]  it should process the regular field data for the form exxtraction" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processAddressSubField] it should process address sub fields" name="[DynamicFieldsComponent] [processAddressSubField] it should process address sub fields" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processTableRow] it should process the table row config" name="[DynamicFieldsComponent] [processTableRow] it should process the table row config" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fieldHasPrefix] it should check wheather a field has prefix or not" name="[DynamicFieldsComponent] [fieldHasPrefix] it should check wheather a field has prefix or not" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [addressFieldHasPrefix] it should check wheather a field has prefix or not " name="[DynamicFieldsComponent] [addressFieldHasPrefix] it should check wheather a field has prefix or not " time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [formatDate] it should format the date for the fields " name="[DynamicFieldsComponent] [formatDate] it should format the date for the fields " time="0.03">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [findOptionByKey] it should find the option by the use of a key passed as arguments" name="[DynamicFieldsComponent] [findOptionByKey] it should find the option by the use of a key passed as arguments" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkFormState] it should check the form state of the group list" name="[DynamicFieldsComponent] [checkFormState] it should check the form state of the group list" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [markInvalidFields] it should mark the invalid fields with errors" name="[DynamicFieldsComponent] [markInvalidFields] it should mark the invalid fields with errors" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validateField] it should check and validate the field " name="[DynamicFieldsComponent] [validateField] it should check and validate the field " time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [MainMandatorySystem] it should check the main mandatory validation for the group list" name="[DynamicFieldsComponent] [MainMandatorySystem] it should check the main mandatory validation for the group list" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMandatoryFeilds] it should check mandatory fields in the group list" name="[DynamicFieldsComponent] [checkMandatoryFeilds] it should check mandatory fields in the group list" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processTextField] it should process text field in the gorup list" name="[DynamicFieldsComponent] [processTextField] it should process text field in the gorup list" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processOtherFieldTypes] it should process other types of fields" name="[DynamicFieldsComponent] [processOtherFieldTypes] it should process other types of fields" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [processNonMandatoryField] it should process the non mandatory fields for the group list" name="[DynamicFieldsComponent] [processNonMandatoryField] it should process the non mandatory fields for the group list" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkErrors] it should check the errors in the fields" name="[DynamicFieldsComponent] [checkErrors] it should check the errors in the fields" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkVerified] it should check the verification state of the group list" name="[DynamicFieldsComponent] [checkVerified] it should check the verification state of the group list" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mandatorySubFormMandatory] it should check mandatory for subform mandatory" name="[DynamicFieldsComponent] [mandatorySubFormMandatory] it should check mandatory for subform mandatory" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkAddressSanity] it should check the address sanity" name="[DynamicFieldsComponent] [checkAddressSanity] it should check the address sanity" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getAddressSubFieldStates] it should get address sub field states" name="[DynamicFieldsComponent] [getAddressSubFieldStates] it should get address sub field states" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [calculateFieldState] it should calculate field state" name="[DynamicFieldsComponent] [calculateFieldState] it should calculate field state" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [subformHasMandatory] it should check subform has mandatory" name="[DynamicFieldsComponent] [subformHasMandatory] it should check subform has mandatory" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [someSubfieldIsFilled] it should check some sub field is filled" name="[DynamicFieldsComponent] [someSubfieldIsFilled] it should check some sub field is filled" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [subfieldMandatoryAndNotFilled] it should check subfield mandatory and not filled" name="[DynamicFieldsComponent] [subfieldMandatoryAndNotFilled] it should check subfield mandatory and not filled" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [someMandatoryIsNotFilled] it should check subfiled mandatory is checked or not" name="[DynamicFieldsComponent] [someMandatoryIsNotFilled] it should check subfiled mandatory is checked or not" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [isAnythingFilled] it should check the field is filled or not" name="[DynamicFieldsComponent] [isAnythingFilled] it should check the field is filled or not" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [isFieldValid] it should the check field is valid" name="[DynamicFieldsComponent] [isFieldValid] it should the check field is valid" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkAllNonMandatory] it should check all non mandatory for the fields" name="[DynamicFieldsComponent] [checkAllNonMandatory] it should check all non mandatory for the fields" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditAddress] it should map form for the edit for addresses fields" name="[DynamicFieldsComponent] [mapFormForEditAddress] it should map form for the edit for addresses fields" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditDate] it should map form for edit for date fields" name="[DynamicFieldsComponent] [mapFormForEditDate] it should map form for edit for date fields" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditDropDowns] it should map Form for edit dropdowns" name="[DynamicFieldsComponent] [mapFormForEditDropDowns] it should map Form for edit dropdowns" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapValueDataForMapformForEdit] it should map value for the form data for the edit" name="[DynamicFieldsComponent] [mapValueDataForMapformForEdit] it should map value for the form data for the edit" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditTable] it should map form for the table fields" name="[DynamicFieldsComponent] [mapFormForEditTable] it should map form for the table fields" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditPrefixTypes] it should map form for edit for prefix fieldTypes" name="[DynamicFieldsComponent] [mapFormForEditPrefixTypes] it should map form for edit for prefix fieldTypes" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapOtherMapForFormKeys] it should map the other keys  for other field datatypes" name="[DynamicFieldsComponent] [mapOtherMapForFormKeys] it should map the other keys  for other field datatypes" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditBoolean] it should map the for edit boolean field" name="[DynamicFieldsComponent] [mapFormForEditBoolean] it should map the for edit boolean field" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEdit] it should map the form for the edit" name="[DynamicFieldsComponent] [mapFormForEdit] it should map the form for the edit" time="0.024">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapcbsShowHidefield] it should map and hide cbs fields" name="[DynamicFieldsComponent] [mapcbsShowHidefield] it should map and hide cbs fields" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchCommonPropertyApi] it should fetch the commonproperty api options" name="[DynamicFieldsComponent] [fetchCommonPropertyApi] it should fetch the commonproperty api options" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapGstSearch] it should map the gst search commonproperty type" name="[DynamicFieldsComponent] [mapGstSearch] it should map the gst search commonproperty type" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapStarGoldCommonProperty] it should map the star  gold commonproperty type" name="[DynamicFieldsComponent] [mapStarGoldCommonProperty] it should map the star  gold commonproperty type" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapDocumentType] it should map the document type" name="[DynamicFieldsComponent] [mapDocumentType] it should map the document type" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [gstSearchDropdownType] it should map the gst search dropdown" name="[DynamicFieldsComponent] [gstSearchDropdownType] it should map the gst search dropdown" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapCommonPropertyForTextfieldprefix] it should fetch and map the common property for the text field prefix" name="[DynamicFieldsComponent] [mapCommonPropertyForTextfieldprefix] it should fetch and map the common property for the text field prefix" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapPincodeMasterdropdown] it should map the pincode master dropdown" name="[DynamicFieldsComponent] [mapPincodeMasterdropdown] it should map the pincode master dropdown" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapTableCommonProperty] it shouls map the table field common property" name="[DynamicFieldsComponent] [mapTableCommonProperty] it shouls map the table field common property" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapCommonProperty] it should map the common property for the dropdown field" name="[DynamicFieldsComponent] [mapCommonProperty] it should map the common property for the dropdown field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapCustomCommonPropertymappingForDropDowns] it should map custom common property for dropdowns" name="[DynamicFieldsComponent] [mapCustomCommonPropertymappingForDropDowns] it should map custom common property for dropdowns" time="0.129">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [parseCommonPropertyToOptions] it should parse common property into options" name="[DynamicFieldsComponent] [parseCommonPropertyToOptions] it should parse common property into options" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [executeOtpEventCode] it should execute otp event code" name="[DynamicFieldsComponent] [executeOtpEventCode] it should execute otp event code" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [otpCompleteEmit] it should emit a event when the otp trigger is completed " name="[DynamicFieldsComponent] [otpCompleteEmit] it should emit a event when the otp trigger is completed " time="0.564">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [otpErrorEmit] it should emit the event back to the parent host when the otp has any error in it" name="[DynamicFieldsComponent] [otpErrorEmit] it should emit the event back to the parent host when the otp has any error in it" time="0.033">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [otpGenerateSuccess] it should emit the event back to the parent when the otp is sucess" name="[DynamicFieldsComponent] [otpGenerateSuccess] it should emit the event back to the parent when the otp is sucess" time="0.022">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [otpAttemptsDone] it should emit the event when otp attempts is done" name="[DynamicFieldsComponent] [otpAttemptsDone] it should emit the event when otp attempts is done" time="0.018">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyEmailField] it should verify email field" name="[DynamicFieldsComponent] [verifyEmailField] it should verify email field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [openAadharConsentPopup] it should open aadhar consent popup" name="[DynamicFieldsComponent] [openAadharConsentPopup] it should open aadhar consent popup" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyAadharField] it should verify aadhar field" name="[DynamicFieldsComponent] [verifyAadharField] it should verify aadhar field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyPanField] it should verify pan field" name="[DynamicFieldsComponent] [verifyPanField] it should verify pan field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyPanv2Field] it should verify pan v2 field" name="[DynamicFieldsComponent] [verifyPanv2Field] it should verify pan v2 field" time="0.025">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyField] it should verify a field" name="[DynamicFieldsComponent] [verifyField] it should verify a field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyMobileField] it should verifiy mobile field" name="[DynamicFieldsComponent] [verifyMobileField] it should verifiy mobile field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyUdyamField] it should verify udyam field" name="[DynamicFieldsComponent] [verifyUdyamField] it should verify udyam field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyGstField] it should verify gst field" name="[DynamicFieldsComponent] [verifyGstField] it should verify gst field" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [openErrorSnackBar] it should open error snackbar" name="[DynamicFieldsComponent] [openErrorSnackBar] it should open error snackbar" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [selectCardoptions] it should select card options for the field" name="[DynamicFieldsComponent] [selectCardoptions] it should select card options for the field" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [addNewRow] it should add a new row to a table field" name="[DynamicFieldsComponent] [addNewRow] it should add a new row to a table field" time="0.022">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [rowCompeted] it should mark a row as completed in  a table field" name="[DynamicFieldsComponent] [rowCompeted] it should mark a row as completed in  a table field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [calculateTableFooterdata] it should calculate table footer data" name="[DynamicFieldsComponent] [calculateTableFooterdata] it should calculate table footer data" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkTableFilled] it should check the table is filled" name="[DynamicFieldsComponent] [checkTableFilled] it should check the table is filled" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [ChangeFieldAccessModifier] it should change the field access modifier for the field" name="[DynamicFieldsComponent] [ChangeFieldAccessModifier] it should change the field access modifier for the field" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verificationCheck] it should check the field is verified" name="[DynamicFieldsComponent] [verificationCheck] it should check the field is verified" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [formatAutoCompleteValue] it should format auto complete value" name="[DynamicFieldsComponent] [formatAutoCompleteValue] it should format auto complete value" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [tableActionDelete] it should delete a table row" name="[DynamicFieldsComponent] [tableActionDelete] it should delete a table row" time="0.023">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [tableActionAccept] it should mark a table row as accepted " name="[DynamicFieldsComponent] [tableActionAccept] it should mark a table row as accepted " time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [tableActionEdit] it should mark the table action as edit for a row" name="[DynamicFieldsComponent] [tableActionEdit] it should mark the table action as edit for a row" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [tableAction] it should execute the table action methods repectively for each action code" name="[DynamicFieldsComponent] [tableAction] it should execute the table action methods repectively for each action code" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [tableValueChange] it should trigger when a field inside the table changes" name="[DynamicFieldsComponent] [tableValueChange] it should trigger when a field inside the table changes" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runvalidationJsonForTableValidationError] it should run validation json for a table field" name="[DynamicFieldsComponent] [runvalidationJsonForTableValidationError] it should run validation json for a table field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runvalidationJsonForTableValidationSnackBar] it should run validation json for table validation snackbar" name="[DynamicFieldsComponent] [runvalidationJsonForTableValidationSnackBar] it should run validation json for table validation snackbar" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [runValidationJsonForTable] it should run validation for table" name="[DynamicFieldsComponent] [runValidationJsonForTable] it should run validation for table" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchlogicvariableDataforTableCommonMapper] it should fetch logic variable data for the table" name="[DynamicFieldsComponent] [fetchlogicvariableDataforTableCommonMapper] it should fetch logic variable data for the table" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleNumberField] it should handle number field" name="[DynamicFieldsComponent] [handleNumberField] it should handle number field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleAmountField] it should format the amount field data" name="[DynamicFieldsComponent] [handleAmountField] it should format the amount field data" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleDateField] it should format the date field data" name="[DynamicFieldsComponent] [handleDateField] it should format the date field data" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleTableField] it should format the table field data" name="[DynamicFieldsComponent] [handleTableField] it should format the table field data" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [handleVerificationField] it should format the verification field data" name="[DynamicFieldsComponent] [handleVerificationField] it should format the verification field data" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchlogicvariableDataformTableCommonMapper_l1] it should fetch logic variable data from table common mappper" name="[DynamicFieldsComponent] [fetchlogicvariableDataformTableCommonMapper_l1] it should fetch logic variable data from table common mappper" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fetchlogicvariableDataforTable] it should fetch logic variable data for table" name="[DynamicFieldsComponent] [fetchlogicvariableDataforTable] it should fetch logic variable data for table" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [emitOtherEvent] it should emit other event for the form" name="[DynamicFieldsComponent] [emitOtherEvent] it should emit other event for the form" time="0.017">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [callEndpointLogicForTable] it should call endpoint logic for the table fields" name="[DynamicFieldsComponent] [callEndpointLogicForTable] it should call endpoint logic for the table fields" time="0.019">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapFormForEditApiEndpointForTable] it should hit the apiEndpoint logic in validation json for table fields" name="[DynamicFieldsComponent] [mapFormForEditApiEndpointForTable] it should hit the apiEndpoint logic in validation json for table fields" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapAddressFields] it should map address fields for the dynamic group list" name="[DynamicFieldsComponent] [mapAddressFields] it should map address fields for the dynamic group list" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapRegularField] it should map the regular field data for the dynamic group list" name="[DynamicFieldsComponent] [mapRegularField] it should map the regular field data for the dynamic group list" time="0.021">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapAddressField] it should map the address field data for the dynamic group list" name="[DynamicFieldsComponent] [mapAddressField] it should map the address field data for the dynamic group list" time="0.027">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [ShowGroupName] it should show the group name for the group" name="[DynamicFieldsComponent] [ShowGroupName] it should show the group name for the group" time="0.012">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [ParseInputRestrictionForNumberDataType] it should restrict the input for the number data type based on the basic input constraints" name="[DynamicFieldsComponent] [ParseInputRestrictionForNumberDataType] it should restrict the input for the number data type based on the basic input constraints" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [verifyDisableToggle] it should toggle the verify disable console" name="[DynamicFieldsComponent] [verifyDisableToggle] it should toggle the verify disable console" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fileChange] it should trigger when a file is selected from the select document window" name="[DynamicFieldsComponent] [fileChange] it should trigger when a file is selected from the select document window" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [uploadFieldDocument] it should upload the document api and the api to upload the document" name="[DynamicFieldsComponent] [uploadFieldDocument] it should upload the document api and the api to upload the document" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [fileInputTrigger] it should open the file upload console for file uploads" name="[DynamicFieldsComponent] [fileInputTrigger] it should open the file upload console for file uploads" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [autoSuggestCheck] it should trigger the debouncing effect to trigger the auto suggesstion api" name="[DynamicFieldsComponent] [autoSuggestCheck] it should trigger the debouncing effect to trigger the auto suggesstion api" time="0.023">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [callAutoSuggestionApi] it should call the suggesstion api to fetch data" name="[DynamicFieldsComponent] [callAutoSuggestionApi] it should call the suggesstion api to fetch data" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [blurSuggestion] it should blur the suggestion data when it is selected" name="[DynamicFieldsComponent] [blurSuggestion] it should blur the suggestion data when it is selected" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [selectSuggestion] it should select the suggesstion" name="[DynamicFieldsComponent] [selectSuggestion] it should select the suggesstion" time="0.016">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [udyamNumberMappingDataRemapping] it should parse udyam number for prepopulation" name="[DynamicFieldsComponent] [udyamNumberMappingDataRemapping] it should parse udyam number for prepopulation" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [parseDocumentTypes] it should parse document types" name="[DynamicFieldsComponent] [parseDocumentTypes] it should parse document types" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [findFieldNamevalue] it should find fieldName value" name="[DynamicFieldsComponent] [findFieldNamevalue] it should find fieldName value" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [mapForNormalField] it should map values for normal field" name="[DynamicFieldsComponent] [mapForNormalField] it should map values for normal field" time="0.025">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMaxOtherTypes] it should check min max other types" name="[DynamicFieldsComponent] [checkMinMaxOtherTypes] it should check min max other types" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMaxNumberTypes] it should check min max number types" name="[DynamicFieldsComponent] [checkMinMaxNumberTypes] it should check min max number types" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMaxForNonMandatoryFieldsOtherTypes]it should check min and max for non mandatory fields for other types" name="[DynamicFieldsComponent] [checkMinMaxForNonMandatoryFieldsOtherTypes]it should check min and max for non mandatory fields for other types" time="0.015">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMaxForReturnedErrors] it should check min and max for returned errors" name="[DynamicFieldsComponent] [checkMinMaxForReturnedErrors] it should check min and max for returned errors" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMaxForNonMandatoryFields] it should check min and max for non mandatory fields" name="[DynamicFieldsComponent] [checkMinMaxForNonMandatoryFields] it should check min and max for non mandatory fields" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [checkMinMax] it should check min and max for a field" name="[DynamicFieldsComponent] [checkMinMax] it should check min and max for a field" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validateFieldRange] it should validate field which are in range" name="[DynamicFieldsComponent] [validateFieldRange] it should validate field which are in range" time="0.02">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validateMinLength] it should validate min length for a field" name="[DynamicFieldsComponent] [validateMinLength] it should validate min length for a field" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [validateMaxLength] it should validate max length" name="[DynamicFieldsComponent] [validateMaxLength] it should validate max length" time="0.014">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [getFieldErrorText] it should get field error for Text Datatype" name="[DynamicFieldsComponent] [getFieldErrorText] it should get field error for Text Datatype" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [isFieldErrorRelatedToRange] it should map the field error related to min and max length" name="[DynamicFieldsComponent] [isFieldErrorRelatedToRange] it should map the field error related to min and max length" time="0.013">
+    </testcase>
+    <testcase classname="[DynamicFieldsComponent] [autoCompletePlaceholder] it should map the config for auto complete placeholder " name="[DynamicFieldsComponent] [autoCompletePlaceholder] it should map the config for auto complete placeholder " time="0.013">
+    </testcase>
+  </testsuite>
+</testsuites>

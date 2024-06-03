@@ -1,0 +1,41 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "paths": {
+        "@fd-app/*": [
+          "src/app/*"
+        ],
+        "@fd-app-components/*": [
+          "src/app/components/*"
+        ],
+        "@fd-assets/*": [
+          "src/assets/*"
+        ],
+        "@fd-configuration/*": [
+          "src/configuration/*"
+        ],
+        "@fd-environments/*": [
+          "src/environments/*"
+        ]
+      },
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "node",
+      "importHelpers": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "target": "es2020",
+      "module": "es2020",
+      "lib": [
+        "es2018",
+        "dom",
+        "ES2022"
+      ]
+    }
+  }
+  

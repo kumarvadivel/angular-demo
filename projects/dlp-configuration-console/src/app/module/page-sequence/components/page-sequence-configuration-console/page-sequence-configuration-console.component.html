@@ -1,0 +1,78 @@
+<div class="main-section" role="main">
+    <div class="configure-section">
+        <!-- <div class="common-title"> Constitutions</div>
+        <div *ngFor="let constitution of constitutions">
+            {{constitution}}
+        </div> -->
+        <div class="config-actions-section">
+            <button class="primary-btn" (click)="importConfig()">Import and Edit Config</button>
+            <button class="secondary-btn" (click)="clearConfig()">clear config</button>
+        </div>
+        <div class="sequence-config-section">
+            <app-section-builder [config]="pageSectionConfig" [refresh]="previewRefresh?.asObservable()" (status)="pageConfigurerEmitter($event)"></app-section-builder>
+        </div>
+        <div class="pageSequence-previewer" *ngIf="pagesData.length!=0">
+            <div class="common-title">Added Pages</div>
+            <div class="pages-wrapper">
+                <div style="flex-basis: 20%;" *ngFor="let page of pagesData;let i = index">
+                    <div class="card display-flex j-c-sb" style="justify-content: space-between;">
+                        <span>{{page.pageCode}}</span>
+                        <span class="material-symbols-outlined cursor-pointer" (click)="deletepage(i)">
+                            close
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="export-section">
+            <button class="primary-btn" (click)="exportConfig()">Export Config</button>
+        </div>
+    </div>
+
+    <div class="sequence-preview-section">
+        <div class="visual-preview">
+            <div class="common-title">Page sequence Preview</div>
+            <div class="common-info">Tip: you can drag and re-order the page sequence for journeyPages</div>
+            <div class="preview-group">
+                <div class="journeyPagessection" *ngIf="journeyPages.length!=0">
+                    <div class="common-info fw-bold">Journey Pages</div>
+                    <div style="display: flex;">
+                        <smooth-dnd-container [behaviour]="'contain'" (drop)="onDrop($event)">            
+                            <smooth-dnd-draggable *ngFor="let pages of journeyPages;let i =index">
+                              <div class="draggable-item">
+                                <div class="pageseq">
+                                    <div class="card display-flex flex-col" style="flex-direction: column;">
+                                        <span>{{pages.pageCode}}</span>
+                                        <div class="common-info">{{pages.url}}</div>
+                                    </div>
+                                    <span class="material-symbols-outlined" *ngIf="journeyPages.length>1 && i!=journeyPages.length-1">
+                                        arrow_downward
+                                    </span>
+                                </div>
+                              </div>
+                            </smooth-dnd-draggable>
+                          </smooth-dnd-container>
+                    </div>
+                </div>
+                <div class="otherPagessection" *ngIf="otherPages.length!=0">
+                    <div class="common-info fw-bold">Other Pages</div>
+                    <div class="display-flex" *ngFor="let pages of otherPages">
+                        <div class="pageseq">
+                            <div class="card display-flex flex-col" style="flex-direction: column;">
+                                <span>{{pages.pageCode}}</span>
+                                <div class="common-info">{{pages.url}}</div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="json-preview">
+            <ngx-json-viewer [json]="pageSectionConfig"></ngx-json-viewer>
+        </div> -->
+    </div>
+</div>
+<!-- <div class="card">
+    <ngx-json-viewer [json]="pageSectionConfig"></ngx-json-viewer>
+</div> -->

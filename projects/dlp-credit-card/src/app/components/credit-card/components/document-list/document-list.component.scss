@@ -1,0 +1,52 @@
+.document-card {
+    background-color: #f3f2f1;
+    padding: 30px 40px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: left;
+    margin-bottom: 15px;
+}
+
+.documentInfo {
+    display: flex;
+    align-items: center;
+
+    .doc-lbl {
+        white-space: nowrap;
+        font-size: 16px;
+        text-decoration: underline;
+        font-family: 'Proxima Nova Lt', sans-serif;
+        cursor: pointer;
+        color: #007dc5;
+    }
+
+    .or-text {
+        font-size: 14px;
+        font-family: 'Proxima Nova', sans-serif;
+        color: #565656 !important;
+        align-items: center;
+    }
+
+    .or-txt-pnl {
+        width: -webkit-fill-available;
+        text-align: center;
+    }
+}
+
+.uploaded-file {
+    color: #16AA56 !important;
+}
+
+.fileReceived {
+    background-color: #f5fff9;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.doc-list-padding {
+    padding: 0 1em;
+}

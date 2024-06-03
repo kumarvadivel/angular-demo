@@ -1,0 +1,41 @@
+
+<div class="group-wrapper" *ngFor="let group of fileUploadList">
+    <div *ngIf="group?.groupName!=null">
+        <label class="adressfieldLabelGroup form-label-lg mb-3">{{group?.groupName}}</label>
+    </div>
+    <div class="dynamicFormFields"
+        [ngClass]="{'twoColumnrowLayout':options?.columnSize == 2,'threeColumnrowLayout': options?.columnSize == 3}"
+        *ngFor="let row of group">
+        <div class="dynamic-fields-wrapper"
+            [ngClass]="{'field-display-none':field.showField == false,'w-100':options.columnSize==1 && options.layout=='sideLayout','oneColumnrowLayout': options.columnSize == 1}"
+            *ngFor="let field of row;">
+            <div class="field-wrapper w-100"
+                [ngClass]="{'sideFormlayout': options.layout == 'sideLayout' && field.fieldDataType != 'ADDRESS'}">
+                <div *ngIf="field?.showLabel" class="label-group">
+                    <label [attr.for]="field.fieldLabel" class="form-label d-flex"
+                        [ngClass]="{'form-label-lg adressfieldLabelGroup': field.fieldDataType == 'ADDRESS'}">{{field.fieldLabel}}
+                        <span *ngIf="field.isMandatory" class="requiredHastrick"></span>
+                        <div *ngIf="field.labelInfo!=null" class="floating-info mr-5"
+                            matTooltip="{{field.labelInfo}}">i</div>
+                        <div class="common-info " *ngIf="field.isVerified">
+                            <img [src]="'../../../../../assets/icons/tick.png'" class="display-flex" alt="img">
+                        </div>
+                    </label>
+                </div>
+                <div class="input-group w-100" [ngClass]="{'side':options.layout=='sideLayout' && field.fieldDataType!='RANGE'}">
+                    <div class="input-container input-group w-100" *ngIf="field.fieldDataType=='FILEUPLOAD'" >
+                        <button class="btn-stroked-orange w-100" (click)="fileUpload.click()" required>
+                            <img [src]="'../../../../assets/icons/upload.png'" class="me-2" alt="">
+                            chooseFile
+                        </button>
+                        <input type="file" required #fileUpload ng2FileSelect  accept=".pdf" multiple autocomplete="off"
+                             (change)="uploadFiles($event.target.files)" />
+                             <span>only .pdf files and max size sholud be 20 Mb</span>
+                             <span *ngIf="selectedFile" class="text-info"><strong>{{selectedFile}}</strong></span>
+                        <div *ngIf="showError">{{errorText}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

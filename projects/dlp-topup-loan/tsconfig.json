@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "@tl-app/*": [
+        "src/app/*"
+      ],
+      "@tl-app-components/*": [
+        "src/app/components/*"
+      ],
+      "@tl-assets/*": [
+        "src/assets/*"
+      ],
+      "@tl-configuration/*": [
+        "src/configuration/*"
+      ],
+      "@tl-environments/*": [
+        "src/environments/*"
+      ]
+    },
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom",
+      "ES2022"
+    ]
+  }
+}

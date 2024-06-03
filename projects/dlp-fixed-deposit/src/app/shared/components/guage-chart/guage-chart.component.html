@@ -1,0 +1,41 @@
+<div class="chart-wrapper">
+    <div class="row chart-title" *ngIf="config.title">
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12  col-12 mb-3">
+            <label class="loan-title form-label pl-15 pt-15">{{config.title}}</label>
+        </div>
+    </div>
+    <div class="row" >
+        <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 col-12 pr-0 display-block" style="display: block;">
+            <div class="lineResemble display-flex j-i-c gap-20" style="justify-content: center;">
+                <div class="display-flex gap-10 w-25">
+                    <div style="background-color:#007dc5; width:30%;height:10px; border-radius: 8px;"></div> 
+                    <div class="displayName common-info">Principle Amount</div> 
+                </div>
+                <div class="display-flex gap-10 w-25">
+                    <div style="background-color:#3ECF78 ; width:30%;height:10px; border-radius: 8px;"></div> 
+                    <div class="displayName common-info">Interest Paylable</div>
+                </div>
+             </div>
+            <div [hidden]="!chart" class="guage-canvas">
+            <canvas id="canvas"></canvas> 
+            </div>
+            <h2 class="total-emi">
+                <h4>EMI</h4>
+                <div>{{totalEmi}}</div>         
+            </h2>
+            </div>
+                    <div class="total-emi-details">
+                        <div>
+                            <p>Total Interest Payable:</p>
+                            <p class="amount">
+                                <strong> {{totalEmi}}</strong></p>
+                            </div>
+                       <div>
+                    <p>Total Payable:</p>
+                    <p class="amount">
+                        <strong> {{extraPaid}}</strong></p>
+                    </div>
+                    </div>
+    </div>
+   
+</div>

@@ -1,0 +1,62 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [
+      "node"
+    ]
+  },
+  "paths": {
+    "path": [
+      "./node_modules/stream-browserify"
+    ],
+    "exceljs": [
+      "node_modules/exceljs/dist/exceljs.min"
+    ],
+    "@tl-app/*": [
+      "projects/dlp-topup-loan/src/app/*"
+    ],
+    "@tl-app-components/*": [
+      "projects/dlp-topup-loan/src/app/components/*"
+    ],
+    "@tl-assets/*": [
+      "projects/dlp-topup-loan/src/assets/*"
+    ],
+    "@tl-configuration/*": [
+      "projects/dlp-topup-loan/src/configuration/*"
+    ],
+    "@tl-environments/*": [
+      "projects/dlp-topup-loan/src/environments/*"
+    ]
+  },
+  "baseUrl": "./",
+  "types": [],
+  "sourceMap": true,
+  "declaration": false,
+  "downlevelIteration": true,
+  "experimentalDecorators": true,
+  "moduleResolution": "node",
+  "importHelpers": true,
+  "resolveJsonModule": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "target": "es2020",
+  "module": "es2020",
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "lib": [
+    "es2018",
+    "dom"
+  ]
+}

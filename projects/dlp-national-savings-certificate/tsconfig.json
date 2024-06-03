@@ -1,0 +1,44 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "paths": {
+        "exceljs": [
+          "node_modules/exceljs/dist/exceljs.min"
+        ],
+        "@nsc-app/*": [
+          "src/app/*"
+        ],
+        "@nsc-app-components/*": [
+          "src/app/components/*"
+        ],
+        "@nsc-assets/*": [
+          "src/assets/*"
+        ],
+        "@nsc-configuration/*": [
+          "src/configuration/*"
+        ],
+        "@nsc-environments/*": [
+          "src/environments/*"
+        ]
+      },
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "node",
+      "importHelpers": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "useDefineForClassFields": false,
+      "target": "ES2022",
+      "module": "ES2022",
+      "lib": [
+        "es2018",
+        "dom",
+        "ES2022"
+      ]
+    }
+  }

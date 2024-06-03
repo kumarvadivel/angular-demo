@@ -1,0 +1,25 @@
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": ["node"]
+  },
+  "baseUrl": "./",
+  "types": [],
+  "sourceMap": true,
+  "declaration": false,
+  "downlevelIteration": true,
+  "experimentalDecorators": true,
+  "moduleResolution": "node",
+  "importHelpers": true,
+  "resolveJsonModule": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "target": "es2020",
+  "module": "es2020",
+  "exclude": ["src/test.ts", "src/**/*.spec.ts"],
+  "include": ["src/**/*.d.ts"],
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "lib": ["es2018", "dom"]
+}

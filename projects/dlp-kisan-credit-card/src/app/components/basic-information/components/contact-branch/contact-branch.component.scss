@@ -1,0 +1,22 @@
+.contact-branch-page-padding{
+    padding: 30px 25px;
+}
+.summary-error {
+    .caution-img{
+        // width: 10%;
+        margin-bottom: 3px;
+        margin-right: 8px;
+    }
+    background-color: #F4F9FC;
+    border-radius: 4px;
+    font-family: var(--brand-red);
+    padding: 28px;
+    color: #007DC5;
+    font-size: 13px;
+    font-weight: 500;
+    width: max-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+
+}

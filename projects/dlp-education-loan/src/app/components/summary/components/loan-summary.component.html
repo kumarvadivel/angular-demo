@@ -1,0 +1,167 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyl" *ngIf="!showloader">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mobileWidt commonStyle float-left pl-0 pr-0">
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs> 
+    </div>
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12  mobileWidt commonStyle main-cnt-pad" [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}">
+        <div  *ngIf="metaConfig.showStepper" [ngClass]="{'mb-30':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper  [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div class="containerscroll"> 
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-15':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper *ngIf="metaConfig.showSubStepper"  [stepperData]="journey.metaData.substepperData"></app-substepper>
+            </div>
+            <div class="row w-100">
+                
+                <div *ngIf="metaConfig.showRejectionSection">
+                    <div class="display-flex">
+                        <app-section-builder [config]="rejectionView" [contentInsertIndex]="1">
+                            <ng-template>
+                                <div class="summary-error mt-20"> We appreciate your effort for showing interest with our banking. </div>
+                                <div class="link mt-100 redLink fw-500" (click)="home()">
+                                    <a>Go Back to Home</a>
+                                </div>
+                            </ng-template>
+                        </app-section-builder>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><img [src]="'../../../assets/images/page-expired.png'" alt=""></div>
+                    </div>
+                </div>
+                <div class="display-flex" *ngIf="metaConfig.showMainContent==true">
+                    <div class="w-100">
+                        <div class="d-flex" style="gap: 10%;">
+                            <div class="">
+                                <div class="mt-5 align-items-center congradulation-text mb-20">
+                                    Congratulations, Mr.Vaibhav DHONDIRAM Jadhav
+                                </div>
+                                <div class="common-info ">
+                                    Your Education loan - Upto 10 lakhs application with an amount of <span>Rs. 761815</span> has been approved successfully. Our Branch officials will contact you for further formalities
+                                </div>
+                                <div class="form-label-lg mt-4">
+                                    Your Application Reference # AP0000219567
+                                </div>
+                            </div>
+                            <app-section-builder [config]="config" > 
+                            </app-section-builder>
+                            <div class="mobile-none summary-img">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><img [src]="'../../../assets/images/congrats-group.png'" alt=""></div>
+                            </div>
+                        </div>
+                        <div  class=" mt-4 mb-20 display-flex gap-20 flex-row">
+                            <div  class="col-lg-12 col-md-6 col-sm-12 col-xs-12 back-clr " *ngIf="metaConfig.showEmiCalculatorSection==true">
+                                <div class="loan-calculator w-100" >
+                                    <app-dynamic-fields [dynamicGroupList]="emiCalculatorConfig.fields" [options]="emiCalculatorConfig.options" [validityCheck]="emiCalculatorConfig.options.validityEmitter.asObservable()" (formValidity)="emiCalculatorConfig.options.formValidity = $event" [formValueEmit]="emiCalculatorConfig.options.formValueEmitter.asObservable()" (formValue)="emiCalculatorConfig.options.formValue=$event"></app-dynamic-fields>
+                                    <div  class="row mt-4  pe-3 mb-3">
+                                        <div  class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                            <button class=" btn-orange me-3 " (click)="generateRepaymentSchedule()"> Repayment Schedule</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="metaConfig.showBranchSection">
+                                <div class="summary-status  ng-star-inserted" *ngIf="branchConfig.status">
+                                    <img [src]="'../../../assets/icons/tick.png'" alt="" class="me-2"> {{branchConfig.status}}
+                                </div>
+                                <div class="row">
+                                    <div class="form-label-lg mt-4"> Your branch detail </div>
+                                    <div class="bank-detail-status medium">
+                                        <div class="mb-0 form-label-lg d-flex align-items-start">
+                                            <img [src]="'../../../assets/icons/building.png'" alt="">
+                                            <div class="details-content">Bank of India MEJA Branch <div class="address-content">
+                                                <span class="common-info">Vill & PO Meja, Midnapur Road, NH60 Dist. Bankura, West BangalMEJA, WEST BENGAL, 722143</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            <button class="btn-orange" *ngIf="$scope?.fetchEligibilityData?.output?.plEligOutput?.stpFlag=='STP' && journey.product.productCode=='PSL' && !journey.metaData.capturedData?.esignStatus?.data?.signAffixed && $scope.loanDetails.loanDetails.loanApplicationTextVariable54=='false'"(click)="esignContinue('ACCEPT')">Continue to E-sign</button>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="metaConfig.showAccountOpenBtn">
+                                <div class="form-label-xl mb-0 mt-5 d-flex">To Open a savings account with Bank Of India</div>
+                                <div class="common-info mt-3">
+                                    <button  class=" btn-orange button-text" (click)="Continue()">Continue to savings account
+                                    </button>
+                                </div>
+                            </div>
+                            </div>
+                        
+                            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12 back-clr" *ngIf="metaConfig.showRepaymentSchedule==true">
+                                <div class="loan-calculator w-100" >
+                                    <app-chart [config]="chartConfig"></app-chart>
+                                    <div  class="row">
+                                        <div class="placeDetails">
+                                            <div  class="placeLoanDetails display-flex flex-wrap">
+                                                <div  class="mb-3 d-flex flex-column medium a-i-c" *ngFor="let footer of chartFooter">
+                                                    <label  class="loan-label">{{footer.label}}</label>
+                                                    <span  class="loan-title">{{footer.prefix || ''}} {{footer.value}}</span>
+                                                </div>
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" *ngIf="metaConfig.showKccdataSection">
+                                <div class="contentSection">
+                                    <app-section-builder [config]="metaConfig.kccViewConfig"></app-section-builder>
+                                </div>
+                            </div>
+                        
+                        </div>
+                    <div *ngIf="metaConfig.showRepaymentSchedule==true">
+                        <div class="row mt-5 mb-3" >
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <label class="form-label-xl">Repayment Schedule</label>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-end">
+                                <button type="button" mat-stroked-button="" class="mat-focus-indicator btn-stroked-orange mat-stroked-button mat-button-base" (click)="downloadRepaymentSchedule()">
+                                    <span class="mat-button-wrapper"><img [src]="'../../../assets/icons/download_orange.png'" alt="" class="me-2"> Download Repayment Schedule </span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <app-table [config]="tableConfig"></app-table>
+                        
+                    </div>
+                    
+                    </div>
+                    <div class="mt-50" *ngIf="metaConfig.showGoldLoanEligiblityCalculator">
+                        <div class="topSection">
+                            <app-section-builder [config]="metaConfig.goldLoanEligiblityCalculator.topFormSection" (status)="topFormSectionTrigger($event)"></app-section-builder>
+                        </div>
+                        <div class="bottomSection display-flex gap-20">
+                            <div class="tableSection w-65">
+                                <app-dynamic-fields [dynamicGroupList]="metaConfig.goldLoanEligiblityCalculator.bottomSection.tableSection.fields" [options]="metaConfig.goldLoanEligiblityCalculator.bottomSection.tableSection.options" [formValueEmit]="metaConfig.goldLoanEligiblityCalculator.bottomSection.tableSection.options.formValueEmitter.asObservable()" (otherEvents)="goldLoanOtherEventBinder($event)" (formValue)="goldloanFormValueBinder($event)"></app-dynamic-fields>
+                            </div>
+                            <div class="chartSection w-35">
+                                <div class="chartwrapper back-clr">
+                                    <div class="chart-area">
+                                        <app-chart [config]="metaConfig.goldLoanEligiblityCalculator.bottomSection.chartSection" [updateChart]="metaConfig.goldLoanEligiblityCalculator.bottomSection.chartSection.updateChart.asObservable()"></app-chart>
+                                    </div>
+                                    <div class="bottonCont">
+                                        <div _ngcontent-ynp-c244="" class="noteInfo d-flex justify-content-around align-items-center mt-3 mb-3"> Your Loan Eligibility is <span _ngcontent-ynp-c244="" class="brand-text">{{metaConfig.goldLoanEligiblityCalculator.bottomSection.totalEligbleAmount}}</span></div>
+                                        <span _ngcontent-ynp-c244="" class="common-info-sm">Note : <span _ngcontent-ynp-c244="" class="common-info-xs">These are approximate values. The actual values will depend upon the valuation report by the bank authorized appraiser</span></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                
+                </div>
+                <div *ngIf="metaConfig.showRatingSection">
+                    <app-section-builder [config]="ratingSection"></app-section-builder>
+                    <div class="submit-section mb-20">
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex  align-items-center">
+                            <button class="btn-orange me-3 " (click)="ratingsAction('SUBMIT')">Submit</button>
+                            <button type="button"  class=" btn-stroked-orange ms-3" (click)="ratingsAction('CANCEL')">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

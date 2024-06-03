@@ -1,0 +1,16 @@
+<svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 17323" id="Group_17323" transform="translate(-687 -187)">
+        <circle cx="16" cy="16" data-name="Ellipse 5515" fill="#f9e9dc" id="Ellipse_5515" r="16"
+                transform="translate(687 187)"/>
+        <g data-name="Group 19020" id="Group_19020" transform="translate(488 -369)">
+            <g id="credit-card" transform="translate(205 565)">
+                <path d="M35.276,34.4H21.563A1.369,1.369,0,0,0,20.2,35.763v1.494a.244.244,0,0,0,.242.242H36.4a.244.244,0,0,0,.242-.242V35.763A1.355,1.355,0,0,0,35.276,34.4ZM36.4,38.861H20.442a.244.244,0,0,0-.242.242v4.681a1.369,1.369,0,0,0,1.363,1.363H35.276a1.369,1.369,0,0,0,1.363-1.363V39.1A.244.244,0,0,0,36.4,38.861Z" data-name="Path 24180"
+                      fill="#f58220"
+                      id="Path_24180" transform="translate(-16.86 -30.488)"/>
+                <path d="M6.363,27.127h.813a.15.15,0,0,0,.154-.154V21.479a2.016,2.016,0,0,1,2.022-2.022H21.284a.15.15,0,0,0,.154-.154V17.963A1.369,1.369,0,0,0,20.076,16.6H7.022A2.016,2.016,0,0,0,5,18.622v7.12A1.374,1.374,0,0,0,6.363,27.127Z" data-name="Path 24181"
+                      fill="#f58220"
+                      id="Path_24181" transform="translate(-5 -16.6)"/>
+            </g>
+        </g>
+    </g>
+</svg>

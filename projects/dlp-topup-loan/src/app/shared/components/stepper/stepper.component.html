@@ -1,0 +1,31 @@
+<div class="stepper mobileStepper">
+    <div *ngFor="let item of stepperData;let i=index" [style.width]="stepWidth" class="step">
+        <div [ngClass]="item.isCompleted ? 'outer-circle-completed' : ''" [ngClass]="{'outer-circle-completed': item.isCompleted,'active-border':item.isActive}"
+             class="outer-cirlce">
+            <img *ngIf="item.isCompleted" alt="img" [src]="'../../../assets/icons/tick-white.png'">
+            <div [ngClass]="item.isActive ? 'op-1 fw-600' : ''" class="step-name">
+                {{item.name}}
+            </div>
+            <div *ngIf="!item.isCompleted" [ngClass]="item.isActive ? 'step-text-active' : ''"
+                 class="step-text">{{i + 1}}
+            </div>
+        </div>
+        <div [ngClass]="{'completed-bg': item.isCompleted}" class="step-progress-bar">
+            <div *ngFor="let subStep of item.subStep" [ngClass]="{'active-bg': subStep.isActive,'completed-bg':item.isCompleted}"
+                 [style.width]="item.subStepWidth"
+                 class="sub-step steppermobileNone">
+                <span *ngIf="commonVariableService.appLayoutConfig.isShowSubStepper" [ngClass]="{'active-border': subStep.isActive,'completed-border':item.isCompleted}"
+                      [style.background-color]="subStep.isCompleted ? 'white' : ''"
+                      [style.border]="subStep.isActive ? '1px solid var(--brand-color)' : ''"
+                      class="step-splitter">
+                    <img *ngIf="subStep.isCompleted" alt="img" [src]="'../../../assets//icons/blue-tick-stepper.png'">
+                    <img *ngIf="!subStep.isActive || (subStep.isActive && !subStep.isCompleted)"
+                         alt="img" [src]="'../../../assets//icons/white-tick-stepper.png'">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="commonVariableService.appLayoutConfig.isShowStepperPercentage" class="complete-perc mob-top">
+        {{completePercentage}}% Completed
+    </div>
+</div>

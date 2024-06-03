@@ -1,0 +1,22 @@
+<div *ngIf="!showloader">
+   
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main-cnt-pad">
+       
+    
+      <div class="ml-20 common-title">Verify Your Details</div>
+      <div class="mb-15" *ngFor="let form of config"> 
+  
+          <div class="content">
+            <app-dynamic-fields [dynamicGroupList]="form.fields" [options]="form.options"
+            [validityCheck]="form.options.validityEmitter.asObservable()" [form]="form"
+            [formValueEmit]="form.options.formValueEmitter.asObservable()"
+            [verificationExternalTrigger]="form.options?.verificationExternalTrigger?.asObservable()"></app-dynamic-fields>
+          </div> 
+      
+      </div>
+      <div class="w-100 " style="display:flex;">
+        <button class="btn-orange mob-w-100" (click)="Continue()">{{metaConfig.fieldLabel}}</button>
+      </div>
+    </div>
+  </div>
+  <spinner *ngIf="showloader"></spinner>

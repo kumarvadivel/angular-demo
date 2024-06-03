@@ -1,0 +1,49 @@
+<div class="input-container w-100">
+    <div class="tableFormFields mb-20">
+        <div class="w-100 commonStyle table-responsive addressField" *ngIf="config">
+            <div *ngIf="config.title" class="common-title form-label">
+                {{config.title}}
+            </div>
+            <table aria-describedby="table-common" class="table table-responsive common-table">
+                <thead class="thead-light">
+                    <tr *ngIf="config.showHeaders==undefined || config.showHeaders==true" >
+                        <th class="mat-header-cell" *ngIf="config.showSerialNo">S.No</th>
+                        <th *ngFor="let headers of config.headers" class="mat-header-cell">{{headers.fieldLabel}}</th>
+                        <th class="mat-header-cell" *ngIf="config.showRecordActions">Actions</th> 
+                    </tr>
+                    <tr *ngIf="!config.showHeaders==undefined || !config.showHeaders==true">
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of config.data;let recordindex=index">
+                        <td *ngIf="config.showSerialNo">{{recordindex+1}}</td>
+                        <td *ngFor="let headers of config.headers" class="mat-cell" >
+                            <!-- TEXT -->
+                            <span [innerHtml]="data[headers.fieldName]"></span>
+                        </td>
+                         <td class="display-flex" *ngIf="config.showRecordActions"> 
+                            <div *ngFor="let action of config.recordActions">
+                                <img [src]="action.icon" width="30px" alt="action" (click)="actionEmitter(action,recordindex)">
+                            </div>
+                            
+                       </td> 
+                    </tr>
+                </tbody>
+                <tfoot *ngIf="config.showFooterAction">
+                    <tr role="row" class="mat-footer-row">
+                        <td class="mat-footer-cell" colspan="100%" *ngIf="config.showFooterAction"> 
+                            <a (click)="footerAction(config)" class="underscore-orange">{{config.footerActionLabel}}</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

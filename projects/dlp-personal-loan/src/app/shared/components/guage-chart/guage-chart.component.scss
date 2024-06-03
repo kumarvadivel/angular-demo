@@ -1,0 +1,28 @@
+.total-emi {
+  position: relative;
+  bottom: 94px;
+  text-align: center;
+  color: blue;
+}
+
+.total-emi h4 {
+  color: black
+}
+
+.total-emi-details {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.guage-canvas {
+  height: 155px;
+}
+
+.amount {
+  text-align: center;
+}
+
+.displayName {
+  position: relative;
+  bottom: 6px;
+}

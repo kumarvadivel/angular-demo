@@ -1,0 +1,17 @@
+.bgblue{
+    background-color: #eff8fd;
+ 
+   }
+.key-fact-details-container{
+   justify-content: space-between;
+   flex-wrap: wrap;
+   flex-grow: 1;
+   gap: 20px;
+}
+
+.key-fact-download > section > div {
+   display: none;
+}
+.submit-Btn{
+   justify-content: space-between;
+}

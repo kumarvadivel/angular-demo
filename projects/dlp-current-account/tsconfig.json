@@ -1,0 +1,41 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "paths": {
+        "@ca-app/*": [
+          "src/app/*"
+        ],
+        "@ca-app-components/*": [
+          "src/app/components/*"
+        ],
+        "@ca-assets/*": [
+          "src/assets/*"
+        ],
+        "@ca-configuration/*": [
+          "src/configuration/*"
+        ],
+        "@ca-environments/*": [
+          "src/environments/*"
+        ]
+      },
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "node",
+      "importHelpers": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "useDefineForClassFields": false,
+      "target": "ES2022",
+      "module": "ES2022",
+      "lib": [
+        "es2018",
+        "dom",
+        "ES2022"
+      ]
+    }
+  }

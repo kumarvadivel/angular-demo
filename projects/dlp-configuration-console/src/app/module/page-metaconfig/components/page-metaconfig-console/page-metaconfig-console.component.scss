@@ -1,0 +1,23 @@
+.pageMeta-config-console{
+    padding: 20px;
+    display: flex;
+    flex-grow: 0;
+    //flex-wrap: wrap;
+}
+.config-section,.config-preview-section{
+    flex-basis: 50%;
+    flex-grow: 0;
+    padding: 20px;
+    flex-shrink: 0;
+}
+.config-preview-section{
+    flex-grow: 0;
+    flex-shrink: 0;
+    .ngx-json-viewer{
+        max-width: 45vw;
+    }
+}
+.queue{
+    display: flex;
+    gap: 10px;
+}

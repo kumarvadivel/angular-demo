@@ -1,0 +1,50 @@
+<div class="input-container w-100">
+    <div class="tableFormFields mb-20">
+        <div *ngIf="config" class="w-100 commonStyle table-responsive addressField">
+            <div *ngIf="config.title" class="common-title form-label">
+                {{config.title}}
+            </div>
+            <table aria-describedby="table-common" class="table table-responsive common-table">
+                <thead class="thead-light">
+                <tr *ngIf="config.showHeaders==undefined || config.showHeaders==true">
+                    <th *ngIf="config.showSerialNo" class="mat-header-cell">S.No</th>
+                    <th *ngFor="let headers of config.headers" class="mat-header-cell">{{headers.fieldLabel}}</th>
+                    <th *ngIf="config.showRecordActions" class="mat-header-cell">Actions</th>
+                    <th *ngIf="config.showRecordEachRecordLevelActions" class="mat-header-cell">Actions</th>
+                </tr>
+                <tr *ngIf="!config.showHeaders==undefined || !config.showHeaders==true">
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let data of config.data;let recordindex=index">
+                    <td *ngIf="config.showSerialNo">{{recordindex + 1}}</td>
+                    <td *ngFor="let headers of config.headers" class="mat-cell">
+                        {{data[headers.fieldName]}}
+                    </td>
+                    <td *ngIf="config.showRecordActions" class="display-flex">
+                        <div *ngFor="let action of config.recordActions">
+                            <img *ngIf="action.icon" (click)="actionEmitter(action,recordindex)" [src]="action.icon" alt="action"
+                                 width="30px">
+                                 <button *ngIf="action.buttonLabel" [class]="action.className" (click)="actionEmitter(action,recordindex)">{{action.buttonLabel}}</button>
+                        </div>
+                    </td>
+                    <td *ngIf="config.showRecordEachRecordLevelActions" class="display-flex">
+                        <div *ngFor="let action of data.recordActions">
+                            <img *ngIf="action.icon && action.isDisplay===true" (click)="actionEmitter(action,recordindex)" [src]="action.icon" alt="action"
+                                 width="30px">
+                                 <button *ngIf="action.buttonLabel&& action.isDisplay===true" [class]="action.className" (click)="actionEmitter(action,recordindex)">{{action.buttonLabel}}</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot *ngIf="config.showFooterAction">
+                <tr class="mat-footer-row" role="row">
+                    <td *ngIf="config.showFooterAction" class="mat-footer-cell" colspan="100%">
+                        <a (click)="footerAction(config)" class="underscore-orange">{{config.footerActionLabel}}</a>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

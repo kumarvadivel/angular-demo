@@ -1,0 +1,214 @@
+<div class="row" *ngIf="commonVariableService.appLayoutConfig.isShowJourneyHeader">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="home-header">
+            <img *ngIf="environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                src="../../../assets/icons/logo_legend.png" alt="img" (click)="routeToHome()">
+                <img *ngIf="!environmentService.configData.appConfig.display_brandable_images" class="landing_logo header-logo img-responsive"
+                src="/assets/icons/lendingLogo.png" alt="img" (click)="routeToHome()">
+            <div class="float-left headerLeft-panel" >
+                <button class="float-left burgerIcon mr-20" aria-label="burgerIcon" (click)="showSideNav()">
+                    <div *ngIf="showMobileSideNav == false">
+                        <span class="burgerLine1"></span>
+                        <span class="burgerLine2"></span>
+                        <span class="burgerLine3"></span>
+                    </div>
+                    <div *ngIf="showMobileSideNav == true">
+                        <img class="closeImage" src="../../../assets/icons/close.png" alt="">
+                    </div>
+                </button>
+            </div>
+            <div class="w-100">
+                <nav class="navbarsidemenu colorWhite float-left w-100 nav-menu" *ngIf="showMobileSideNav == true"
+                    [ngClass]="{'nav-menu':showMobileSideNav== true}" aria-label="Primary Navigation">
+                    <div class="w-100">
+                        <ul class="navbar-nav bg-white w-100 ">
+                            <li class="sideMenuItem" *ngFor="let item of menu">
+                                <ul class="listStyle">
+                                    <li class="nav-item">
+                                        <span class="nav-link p-hor-20 link-color  display-flex w-100"
+                                            [ngClass]="{'activeSpan': item.isActive==true}"
+                                            (click)="goToActiveMenu(menu,item)">
+                                            {{item.name}}
+                                        </span>
+                                        <span class="icon-arrow" *ngIf="item.subMenu"
+                                            (click)="showSubMenu()"></span>
+                                        <ul class="children" *ngIf="item.subMenu.length !==0 && showmenu == true">
+                                            <li *ngFor="let subItem of item.subMenu"
+                                                [ngClass]="{'activeSubItem': subItem.isActive==true}"
+                                                (click)="goToActiveMenu(item.subMenu,subItem)">{{subItem.name}}</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="text-left pl-15" *ngIf="!isResumeApplication" (click)="resume()">Resume Application</li>
+                            <li class="text-left pl-15" *ngIf="isHome"><img src="../../../assets/icons/help.svg" class="me-3" alt="img">Help</li>
+                            <li class="text-left pl-15" *ngIf="isHome">
+                                <img src="../../../../../../../../../assets/icons/calculator.svg" alt="img" (click)="commonVariableService.tenentConfiguration.landingContentView='CALCULATOR'" *ngIf="commonVariableService.tenentConfiguration.landingContentView=='PRODUCT'">
+                                Loan Calculator
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="header-floating-nav">
+                    <div class="header-content">
+                        <ul class="menu-header">
+                            <li class="menu-header-label display-flex j-c-sb gap-15" (mouseover)="showProductContentMenu=false;showProductTiles=false" *ngFor="let item of menu;let i = index"
+                                [ngClass]="{'activeMenu': selectedMenu == i}" (click)="navigateSubMenu(i)">
+                                {{item.name}}
+                                <span *ngIf="selectedMenu == i" class="material-symbols-outlined f-25">
+                                    expand_more
+                                </span> 
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="d-flex header-sub">
+                        <img src="../../../assets/icons/left_nav.png" alt="img">
+                        <div class="header-info">
+                            <div>
+                                <ul class="sub-menu-header">
+                                    <li (mouseover)="hoverAlignData(then)" (mouseleave)="then.isHover=false;"
+                                        class="sub-menu-header-label"  *ngFor="let then of subMenu;let i = index" [ngClass]="{'disable-css': !then.isActive,'submenuhover':then.isActive }">
+                                        <img *ngIf="!then.isHover" [src]="then.image" class="me-2" alt="img">
+                                        <img *ngIf="then.isHover" [src]="then.hover_image" class="me-2" alt="img">
+                                        {{then.name}}
+                                    
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header-action">
+                                <button mat-flat-button class="btn-orange resume-btn me-3" *ngIf="!isResumeApplication" (click)="resume()">
+                                    <img src="../../../assets/icons/home-icon-16.png" alt="home-icon">
+                                    Resume Application</button>
+                                <img src="../../../assets/icons/help.svg" *ngIf="isHome" class="me-3" alt="img">
+                                <ng-container *ngIf="isHome">
+                                    <img src="../../../../../../../../../assets/icons/calculator.svg"   alt="img" (click)="commonVariableService.tenentConfiguration.landingContentView='CALCULATOR'" *ngIf="commonVariableService.tenentConfiguration.landingContentView=='PRODUCT'">
+                                    <svg width="16" height="18" viewBox="0 0 16 18" fill="none"  (click)="commonVariableService.tenentConfiguration.landingContentView='PRODUCT'" *ngIf="commonVariableService.tenentConfiguration.landingContentView=='CALCULATOR'">
+                                        <path d="M8 0L0 6V18H5V11H11V18H16V6L8 0Z" fill="white" />
+                                    </svg>
+                                </ng-container>
+                               
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="showProductContentMenu" (mouseover)="showProductContentMenu=true;" (mouseleave)="showProductContentMenu=false;showProductTiles=false"  class="submenu-panel ng-star-inserted " style="z-index: 999;">
+                        <div class="submenu-menus" style="z-index: 1001;" (mouseover)="showProductTiles=true;headerproducts=subMenus.products"  *ngFor="let subMenus of productListData">
+                            <div class="d-flex flex-direction-row align-items-center menu-bottom justify-content-between ng-star-inserted">
+                                <div class="d-flex flex-direction-row">
+                                    <img alt="" style="margin-left: 12px;" [src]="subMenus.icon" class="white-img" [ngClass]="{'white-img-hover': showProductTiles}" >
+                                    <div style="margin-left: 8px;">{{subMenus.label}}</div>
+                                </div>
+                                <span class="material-symbols-outlined">
+                                    keyboard_arrow_right
+                                </span>
+                            </div><!---->
+                        </div>
+                        <div  class="tiles-panel" (mouseover)="showProductTiles=true" *ngIf="showProductTiles">
+                            <div  class="submenu-tiles" >
+                                <a  class="ng-star-inserted txt-dec-none" (click)="initiateProduct(pro)" *ngFor="let pro of headerproducts">
+                                    <div  class="submenu-tile">
+                                        <div  class="tile-heading">
+                                        <img class="mr-15" alt="" [src]="pro.icon"> {{pro.label}}
+                                        </div>
+                                        <div  class="tile-desc"> {{pro.description}} </div>
+                                        <div  class="tile-expand">{{pro.actionLabel}}
+                                            <span class="material-symbols-outlined right-pointed-arrow f-20" style="margin-top: -2.5px;">
+                                                straight
+                                            </span>
+                                        </div>
+                                    </div>
+                                </a><!----><!----><!---->
+                                <div  class="br">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="showProductContentMenu" class="submenu-blur ng-star-inserted" (mouseover)="showProductContentMenu=false" style="z-index: 998;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="!this.commonVariableService.appLayoutConfig.isShowJourneyHeader" class="row ipadFix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header header-style mobileNone header-wrapper ">
+        <div class="header-branding">
+            <img *ngIf="environmentService.configData.appConfig.display_brandable_images" (click)="routeToHome()"
+                alt="img" class="header-logo img-responsive" [src]="'../../../assets/icons/logo_legend.png'"
+            >
+            <img *ngIf="!environmentService.configData.appConfig.display_brandable_images" (click)="routeToHome()"
+                alt="img" class="header-logo img-responsive" [src]="'assets/images/Integreat-logo_legend.webp'"
+            >
+        </div>
+        <div class="header-welcome-img">
+            <img alt="img" [src]="'assets/images/header.webp'">
+        </div>
+        <div class="header-cta">
+            <button (click)="routeToHome()" class="a-button z-index">
+                <img alt="img" class="me-3 pe-2 cursorPointer"
+                     [src]="'../../../assets/icons/home.png'" style="border-right:1px solid #dadada ;">
+            </button>
+            <span class="getHelp z-index">Having Trouble ?
+                <button (click)="getHelp()" class="redirectAction a-button">Get Help</button>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="mobileDisplay">
+    <ng-container *ngIf="!commonVariableService.appLayoutConfig.isShowJourneyHeader">
+        <div class="row">
+            <div class="col-xs-12 pr-0">
+                <div class="home-header">
+                    <img *ngIf="environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                src="../../../assets/icons/logo_legend.png" alt="img" (click)="routeToHome()">
+                <img *ngIf="!environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+                src="/assets/icons/lendingLogo.png" alt="img" (click)="routeToHome()">
+                    <div class="float-left headerLeft-panel">
+                        <button class="float-left burgerIcon mr-20" aria-label="burgerIcon" (click)="showSideNav()">
+                            <div *ngIf="showMobileSideNav == false">
+                                <span class="burgerLine1"></span>
+                                <span class="burgerLine2"></span>
+                                <span class="burgerLine3"></span>
+                            </div>
+                            <div *ngIf="showMobileSideNav == true">
+                                <img class="closeImage" src="../../../assets/icons/close.png" alt="">
+                            </div>
+                        </button>
+                    </div>
+                    <div class="w-100">
+                        <nav class="navbarsidemenu colorWhite float-left w-100 nav-menu"
+                            *ngIf="showMobileSideNav == true" [ngClass]="{'nav-menu':showMobileSideNav== true}" aria-label="Primary Navigation">
+                            <div class="w-100">
+                                <ul class="navbar-nav bg-white w-100 mobile-menubar" >
+                                    <li class="sideMenuItem">
+                                        <ul class="listStyle">
+                                            <li class="nav-item">
+                                                <span
+                                                    class="nav-link p-hor-20 link-color  display-flex w-100 activeSpan">
+                                                    <div>
+                                                        <span class="getHelp">Having Trouble ?
+                                                            <button (click)="getHelp()"
+                                                                class="redirectAction a-button">Get
+                                                                Help</button>
+                                                        </span>
+                                                    </div>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                    <div class="home-link home-mobile-link">
+                        <button class="a-button" (click)="routeToHome()">
+                            <img  src="../../../assets/icons/home.png"
+                                class="me-3 pe-2 cursorPointer" alt="img">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,49 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyle">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView"
+         class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 float-left mobileWidt pl-0 pr-0 commonStyle">
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs>
+    </div>
+    <div [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}"
+         class="col-lg-8 col-md-8 col-sm-12 col-12 float-left mobileWidt commonStyle main-cnt-pad">
+        <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-20':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div class="containerscroll">
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-20':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper [stepperData]="journey.metaData.substepperData">
+                </app-substepper>
+            </div>
+            <div class="w-100 mb-15">
+                <app-section-builder [config]="config"></app-section-builder>
+            </div>
+            <div class="status-checklist stepper flex-col mb-20">
+                <div *ngFor="let item of metaConfig.checkList;let i=index" class="step flex-col">
+                    <div class="display-flex a-i-c gap-10">
+                        <div [ngClass]="item.isCompleted ? 'outer-circle-completed' : ''"
+                             [ngClass]="{'outer-circle-completed': item.isCompleted,'active-border':item.isActive}"
+                             class="outer-cirlce display-flex">
+                            <img *ngIf="item.isCompleted" alt="img" [src]="'../../../assets/icons/tick-white.png'">
+                            <div *ngIf="!item.isCompleted" [ngClass]="item.isActive ? 'step-text-active' : ''"
+                                 class="step-text">{{i + 1}}
+                            </div>
+                        </div>
+                        <div [ngClass]="item.isActive ? 'op-1 fw-600' : ''" class="step-name-custom">
+                            {{item.name}}
+                        </div>
+                    </div>
+                    <div [ngClass]="{'ml-40': i==metaConfig.checkList.length-1}" class="display-flex gap-20">
+                        <div *ngIf="i!=metaConfig.checkList.length-1" [ngClass]="{'completed-bg': item.isCompleted}"
+                             class="step-progress-bar">
+                        </div>
+                        <div *ngIf="item.isActive" [ngClass]="item.isActive ? 'op-1 fw-600' : ''"
+                             class="step-name-custom">
+                            {{item.description}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

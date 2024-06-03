@@ -1,0 +1,43 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
+      ],
+      "@bl-app/*": [
+        "src/app/*"
+      ],
+      "@bl-app-components/*": [
+        "src/app/components/*"
+      ],
+      "@bl-assets/*": [
+        "src/assets/*"
+      ],
+      "@bl-configuration/*": [
+        "src/configuration/*"
+      ],
+      "@bl-environments/*": [
+        "src/environments/*"
+      ]
+    },
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom",
+      "ES2022"
+    ]
+  }
+}

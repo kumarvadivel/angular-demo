@@ -1,0 +1,7 @@
+<div class="content" role="main">
+    <app-section-builder [config]="pageConfig"></app-section-builder>
+    <div *ngFor="let route of routes">
+        <div class="link_consent_dynamic cursor-pointer" (click)="routetoPage(route)">{{route.label}}</div>
+    </div>
+
+</div>

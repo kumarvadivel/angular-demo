@@ -1,0 +1,49 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  brand-layout commonStyle">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mobileWidt commonStyle">
+        <carousel [data]="bannerList"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs> 
+    </div>
+    <div class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12  mobileWidt commonStyle main-cnt-pad" [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}">
+            <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-30':metaConfig.showStepper}"  class="w-100  pl-0 pr-0">
+                <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+             </div>
+        <div class="containerscroll" >
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-15':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper *ngIf="metaConfig.showSubStepper"  [stepperData]="journey.metaData.substepperData"></app-substepper>
+            </div>
+            <div class="w-100 mb-15">
+                <app-section-builder [config]="config" [contentInsertIndex]="2">
+                    <ng-template let-item>
+                    <div class="loanprogram-wrapper">
+                        <mat-radio-group class="form-conrol d-flex example-radio-group-vertical"
+                        #radioBtn="matRadioGroup" [(ngModel)]="loanProgramValue">
+                        <div *ngFor="let product of loanprogramData" class="col-sm-12 col-xs-12 col-lg-4 col-md-4" (click)="selectProduct(product)">
+                            
+                            <div class="product mb-4">
+                                <div class="d-flex align-items-center mb-2">
+                                    <mat-radio-button [value]="product.schemeCode">
+                                    </mat-radio-button>
+                                    <img  alt="" class="productImg" [src]="'../../../assets/icons/account.png'">
+                                </div>
+                                <label class="form-label form-label-lg">{{product.accountDescription}}</label>
+                                <ul>
+                                    <li class="">{{product.applicationValidation}}</li>
+                                </ul>
+                                <button href="#" class="underscore-brand align-bottom  a-button" (click)="showDescription(product)">Know More</button>
+                            </div>
+                        </div>
+                        </mat-radio-group>
+                    </div>
+                    </ng-template> 
+                </app-section-builder>
+                <div class="msgError" *ngIf="showMessage">
+                    {{'BOI.sbPensionMsg' | translate}}
+                </div>
+            </div>
+            <div class=" pb-5 content-padding">
+                <button class="btn-orange pro mob-w-100" (click)="continue()">Preview</button>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

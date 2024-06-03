@@ -1,0 +1,39 @@
+.body-container{
+    width: 100%;
+    display: flex;
+}
+
+.configuration-container ,.preview-container{
+    width: 50%;
+    display: flex;
+}
+.section-groups{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.configuration-container{
+    flex-direction: column;
+    gap: 20px;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.preview-container{
+    display: flex;
+    flex-direction: column;
+  padding: 0px 50px;
+}
+.section-selector-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.preview-box{
+    border: 1px solid;
+    border-radius: 8px;
+    min-height: 80vh;
+}
+.section-preview-container{
+    display: flex;
+}

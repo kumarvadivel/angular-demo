@@ -1,0 +1,19 @@
+<svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 13028" id="Group_13028" transform="translate(-585 -56)">
+        <rect data-name="Rectangle 4095" fill="#fff" height="24" id="Rectangle_4095" opacity="0"
+              transform="translate(585 56)" width="24"/>
+        <g data-name="Group 8440" id="Group_8440" transform="translate(589 59)">
+            <path d="M.5,9.334h.922A5.016,5.016,0,0,1,2.592,7.693L2,5.334H3A2.981,2.981,0,0,1,5.283,6.405,4.956,4.956,0,0,1,6,6.334h4a5.005,5.005,0,0,1,4.9,4h1.35a.751.751,0,0,0,.734-.9.77.77,0,0,0-.766-.6H16.19A.188.188,0,0,1,16,8.646V8.021a.188.188,0,0,1,.188-.188,1.79,1.79,0,0,1,1.8,1.519,1.751,1.751,0,0,1-1.734,1.981H15a4.98,4.98,0,0,1-2,3.978v2.522a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5v-1.5H6v1.5a.5.5,0,0,1-.5.5h-2a.5.5,0,0,1-.5-.5V15.312a5,5,0,0,1-.978-.978H.5a.5.5,0,0,1-.5-.5v-4A.5.5,0,0,1,.5,9.334Zm4,2a.5.5,0,1,0-.5-.5A.5.5,0,0,0,4.5,11.334Z" data-name="Icon awesome-piggy-bank"
+                  fill="#007dc5"
+                  id="Icon_awesome-piggy-bank" transform="translate(-0.651 0.085)"/>
+            <g data-name="Group 8439" id="Group_8439" transform="translate(3.031)">
+                <circle cx="5" cy="5" data-name="Ellipse 319" fill="#007dc5" id="Ellipse_319" r="5"
+                        stroke="#fff" stroke-width="1" transform="translate(-0.68 -1)"/>
+                <text data-name="₹" fill="#fff" font-family="ProximaNova-Medium, Proxima Nova" font-size="8" font-weight="500"
+                      id="_" transform="translate(2.321 6.822)">
+                    <tspan x="0" y="0">₹</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,139 @@
+<div *ngIf="!showloader" class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyl">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView"
+         class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 mobileWidt commonStyle float-left pl-0 pr-0">
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+    </div>
+    <div [ngClass]="{'w-100':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}"
+         class="col-xxl-8 col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12  mobileWidt commonStyle main-cnt-pad">
+        <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-30':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div class="containerscroll">
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-15':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper *ngIf="metaConfig.showSubStepper"
+                                [stepperData]="journey.metaData.substepperData"></app-substepper>
+            </div>
+            <div class="row w-100">
+                <div *ngIf="metaConfig.showRejectionSection">
+                    <div class="display-flex">
+                        <app-section-builder [config]="rejectionView" [contentInsertIndex]="1">
+                            <ng-template>
+                                <div class="summary-error mt-20"> We appreciate your effort for showing interest with
+                                    our banking.
+                                </div>
+                                <div (click)="home()" class="link mt-100 redLink fw-500">
+                                    <a>Go Back to Home</a>
+                                </div>
+                            </ng-template>
+                        </app-section-builder>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><img
+                            alt="" [src]="'../../../assets/images/page-expired.webp'">
+                        </div>
+                        
+                    </div>
+                </div>
+                <div *ngIf="metaConfig.showMainContent==true" class="display-flex">
+                    <div class="w-100">
+                        <div class="d-flex" style="gap: 25%;">
+                            <app-section-builder (status)="sectionBuilderEmitter($event)" [config]="config"
+                                                 [contentInsertIndex]="metaConfig.refNoInx">
+                            </app-section-builder>
+                            <div class="mobile-none summary-img">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><img
+                                        alt="" [src]="'../../../assets/images/congrats-group.webp'"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="metaConfig.showBranchSection">
+                                <div *ngIf="branchConfig.status" class="summary-status  mt-20 ng-star-inserted">
+                                    <img alt="" class="me-2" [src]="'../../../assets/icons/tick.png'">
+                                    {{branchConfig.status}}
+                                </div>
+                                <div class="row">
+                                    <div class="form-label-lg mt-4"> Your branch detail</div>
+                                    <div class="bank-detail-status medium">
+                                        <div class="mb-0 form-label-lg d-flex align-items-start">
+                                            <img alt="" [src]="'../../../assets/icons/building.png'">
+                                            <div class="details-content">{{branchConfig.branchDetails.name}}
+                                                <div
+                                                        class="address-content">
+                                                    <span
+                                                            class="common-info">{{branchConfig.branchDetails.address}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="metaConfig.showRatingSection">
+                                <app-section-builder [config]="ratingSection"></app-section-builder>
+                                <div class="submit-section mb-20">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex  align-items-center">
+                                        <button (click)="ratingsAction('SUBMIT')" class="btn-orange me-3 ">Submit</button>
+                                        <button (click)="ratingsAction('CANCEL')" class=" btn-stroked-orange ms-3"
+                                                type="button">Cancel
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="metaConfig.showRepaymentSchedule==true"
+                                 class="col-lg-12 col-md-6 col-sm-12 col-xs-12 back-clr">
+                                <div class="loan-calculator w-100">
+                                    <app-chart [config]="chartConfig"></app-chart>
+                                    <div class="row">
+                                        <div class="placeDetails">
+                                            <div class="placeLoanDetails display-flex flex-wrap">
+                                                <div *ngFor="let footer of chartFooter"
+                                                     class="mb-3 d-flex flex-column medium a-i-c">
+                                                    <label class="loan-label">{{footer.label}}</label>
+                                                    <span class="loan-title">{{footer.prefix || ''}}
+                                                        {{footer.value}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="metaConfig.showKccdataSection" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="contentSection">
+                                    <app-section-builder [config]="metaConfig.kccViewConfig"></app-section-builder>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="metaConfig.showRepaymentSchedule==true">
+                            <div class="row mt-5 mb-3">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <label class="form-label-xl">Repayment Schedule</label>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex justify-content-end">
+                                    <button (click)="downloadRepaymentSchedule()" class="mat-focus-indicator btn-stroked-orange mat-stroked-button mat-button-base"
+                                            mat-stroked-button=""
+                                            type="button">
+                                        <span class="mat-button-wrapper"><img
+                                                alt="" class="me-2" [src]="'../../../assets/icons/download_orange.png'">
+                                            Download Repayment Schedule </span>
+                                        <span class="mat-ripple mat-button-ripple" matripple=""></span>
+                                        <span class="mat-button-focus-overlay"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            <app-table [config]="tableConfig"></app-table>
+                        </div>
+                        <div *ngIf="metaConfig.showProceedSection" class="row mt-5 mb-3">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+                                <label class="form-label-xl">Please accept to proceed further</label>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <button (click)="confirmAction('YES')" class="btn-orange me-3 ">Yes</button>
+                                <button (click)="confirmAction('NO')" class=" btn-stroked-orange" type="button">No
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

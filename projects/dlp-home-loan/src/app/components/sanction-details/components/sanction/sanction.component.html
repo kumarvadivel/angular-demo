@@ -1,0 +1,173 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-xl-12 col-md-12  col-sm-12 col-12 commonStyle main-cnt-pad mobileWidt">
+    <div class="">
+        <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-30':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+            <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+        </div>
+        <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-15':metaConfig.showSubStepper}" class="w-100">
+            <app-substepper [stepperData]="journey.metaData.substepperData"></app-substepper>
+        </div>
+        <div class="w-100 containerscroll">
+            <app-section-builder [config]="config">
+            </app-section-builder>
+            <div *ngIf="metaConfig.customData.isshowEnhancedDetails == false">
+                <div class=" w-100 mob">
+                    <div *ngIf="showSanctionInformation == true" class="display-flex mob-flex-col mb-50">
+                        <div *ngFor="let sanctionData of metaConfig.showSanctionInformation.content"
+                             class="w-25 mobileWidt">
+                            <label class="clr-lt-grey mb-20 common-title f-15">{{sanctionData.title}}</label>
+                            <div class="f-24"><strong>{{formatAmount(sanctionData.amount)}}</strong></div>
+                        </div>
+                    </div>
+                    <div *ngIf="showEnhanceSanction == true"
+                         class="display-flex justify-content-between p-20 mb-50 color-grey br-10 border border-radius-8 mob-flex-col">
+                        <div>
+                            <label
+                                    class="clr-lt-grey mb-20 common-title f-15">{{metaConfig.customData.sanctionTitle}}</label>
+                            <div class="f-24"><strong>{{formatAmount(metaConfig.customData.sanctionedAmount)}}</strong>
+                            </div>
+                        </div>
+                        <div (click)="enhanceSanction()" *ngIf="metaConfig.customData.showEnhanceButton" class="text-nowrap pt-10" style="cursor:pointer ;">
+                            <button class="btn-orange mobileButton w-100"
+                                    mat-flat-button>{{metaConfig.customData.EnhanceSanctionButtonlabel}}</button>
+                        </div>
+                    </div>
+                    <app-section-builder  *ngIf="slideContent == true"
+                                         [config]="metaConfig.slideContent">
+                    </app-section-builder>
+                    <div class="row ">
+                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-12 col-12 ">
+                            <div class="col-xxl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                                <div class="display-flex mb-20 common-title f-20">
+                                    <label>Edit Loan Amount</label>
+                                </div>
+                                <div *ngIf="metaConfig.showEmical"
+                                     class=" bg-sidenav border-radius-8 bgblue p-5 display-flex flex-col">
+                                    <app-emi-calculator (valueEmit)="valueBind($event)"
+                                                        [emiCalcData]="metaConfig.customData"></app-emi-calculator>
+                                    <div class="mb-5 p-20">
+                                        <button (click)="fetchRepaymentSchedule()" class="btn-orange  mr-5 float-right"
+                                                mat-flat-button>Calculate
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6 col-sm-6 col-md-12 col-12">
+                            <div class="col-xxl-12 col-lg-12 col-sm-12 col-md-12">
+                                <div class="col-xxl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                                    <div class="display-flex mb-20 common-title f-20">
+                                        <label>Review Loan Details</label>
+                                    </div>
+                                    <div class="bg-sidenav border-radius-8 bgblue p-5">
+                                        <div class="display-flex mb-20">
+                                            <div class="loan-calculator w-100">
+                                                <app-chart [config]="chartConfig"
+                                                           [updateChart]="chartConfig.updateChart.asObservable()"></app-chart>
+                                                <div class="total-emi-details">
+                                                    <div>
+                                                        <p class="common-info fw-bold">Total Interest Payable:</p>
+                                                        <p class="amount">
+                                                            <strong>
+                                                                {{formatAmount(metaConfig.customData.totalInterestPaid)}}</strong>
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="common-info fw-bold">Total Payable:</p>
+                                                        <p class="amount">
+                                                            <strong>
+                                                                {{formatAmount(metaConfig.customData.totalPayable)}}</strong>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showSubmit" class="btn-pnl pr-5 ml-10 payment">
+                    <button (click)="continue()" [disabled]="metaConfig.customData.sanctionProceedBtnEnable==false" class="btn-orange mt-4 mob-w-100"
+                            mat-flat-button>{{metaConfig.fieldLabel}}</button>
+                </div>
+            </div>
+            <div *ngIf="metaConfig.customData.isshowEnhancedDetails == true"
+                 class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                <div
+                        class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12  br-10 border border-radius-8 mob-flex-col ">
+                    <div
+                            class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12  mob-p-15 p-20 enhance-section-container">
+                        <div class="display-flex justify-content-between  br-10 mob-flex-col">
+                            <div class="">
+                                <label class="form-label-lg f-20">{{metaConfig.customData.sanctionTitle}}</label>
+                                <div class="f-24">
+                                    <strong>{{formatAmount(metaConfig.customData.sanctionedAmount)}}</strong></div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12 ">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                                <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12 row">
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-sm-3 col-md-12 col-12 ">
+                                        <label class="label-disp mb-2" for="loan">Requested Loan Amount(₹)</label>
+                                        <div class="form-group x-large">
+                                            <input [(ngModel)]="metaConfig.customData.enhancedsanctionedAmount" autocomplete="off" class="form-control" id=""
+                                                   name="loanAmount"
+                                                   type="number">
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3 col-sm-3 col-md-12 col-12">
+                                        <label class="label-disp mb-2" for="loan">Requested tenure</label>
+                                        <div class="form-group">
+                                            <div class="form-group x-large">
+                                                <input [(ngModel)]="metaConfig.customData.enhancedtenure" autocomplete="off" class="form-control" id=""
+                                                       name="loanAmount"
+                                                       type="number">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                            <div class=" w-50 mob-w-100">
+                                <div class="title-area">
+                                    <div class="fw-500"> {{metaConfig.customData.BranchDetails.title}}</div>
+                                    <div (click)="Editbranch()" class="float-right cursor-pointer">
+                                        <span class="material-icons-outlined">
+                                            edit
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="bank-detail-status w-100">
+                                    <div
+                                            class="mb-0 form-label-lg d-flex align-items-start border p-20  bgblue border-radius-8">
+                                        <img alt="" [src]="'../../../assets/icons/building.png'">
+                                        <div class="details-content">{{metaConfig.customData.BranchDetails.name}}
+                                            <div
+                                                    class="address-content">
+                                                <span
+                                                        class="common-info">{{metaConfig.customData.BranchDetails.address}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12 col-sm-12 col-md-12 col-12 gap-1">
+                                <button
+                                        (click)="enhanceSanctionSubmit()"
+                                        class="col-xl-4 col-lg-4 col-sm-5 col-md-6 col-12 ml-5 mob-ml-0 mob-mb-5 btn-orange ">{{metaConfig.customData.visitBank}}</button>
+                                <button
+                                        (click)="returntoSanctionPage()"
+                                        *ngIf="this.$scope.fetchEligibilityData.output?.plEligOutput?.stpFlag=='STP'"
+                                        class="col-xl-4 col-lg-4 col-sm-5 col-md-5 col-12 ml-5 mob-ml-0 mob-mb-5 secondary-btn">{{metaConfig.customData.continueCurrentSanction}}{{formatAmount(metaConfig.customData.loanAmount)}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <spinner *ngIf="showloader"></spinner>

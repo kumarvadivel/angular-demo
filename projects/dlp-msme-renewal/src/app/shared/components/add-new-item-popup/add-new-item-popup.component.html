@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="popup-page">
+            <div *ngIf="!data?.hideTitle" class="header-wrapper">
+                <h3 class="form-label form-label-lg mb-0" >{{data.title}}</h3>
+                <img  class="ml-97"*ngIf="!data.actionItems" [src]="'../../../assets/icons/close.png'" mat-dialog-close alt="img">
+            </div>
+            <div class="content-area">
+                <app-section-builder [config]="data.popupContent"></app-section-builder>
+            </div>
+            <div  class="product-view-footer  w-100 p-15 display-flex button-section" *ngIf="data.actionItems">
+                <button *ngFor="let action of data.actionItems" (click)="actionClick(action)"  mat-stroked-button class="btn-stroked-orange me-3 ">{{action.actionLabel}}</button>
+            </div>
+            <div class="w-100 float-left popup-btn-panel" *ngIf="data.showBtns">
+                <div class="btn-panel">
+                    <button (click)="addRecord()" class="btn-orange mr-15 mob-w-100 mb-20" >Save</button>
+                    <button (click)="cancelRecord()" class="btn-light mob-w-100 mr-15" >Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>
+

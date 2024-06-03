@@ -3,59 +3,148 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-demo": {
+    "dlp-saving-account": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
         }
       },
-      "root": "",
-      "sourceRoot": "src",
+      "root": "projects/dlp-saving-account",
+      "sourceRoot": "projects/dlp-saving-account/src",
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "ngx-build-plus:browser",
           "options": {
-            "outputPath": "dist/angular-demo",
-            "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
+            "outputPath": "dist/dlp-saving-account",
+            "index": "projects/dlp-saving-account/src/index.html",
+            "main": "projects/dlp-saving-account/src/main.ts",
+            "polyfills": "projects/dlp-saving-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-saving-account/tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "projects/dlp-saving-account/src/assets/images/favicon.webp",
+							"projects/dlp-saving-account/src/assets",  
+							"projects/dlp-saving-account/src/app.config.json",
+              "projects/dlp-saving-account/src/favicon.ico",
+              "projects/dlp-saving-account/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+							"node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-saving-account/src/styles.scss",
+							"projects/dlp-saving-account/src/assets/styles/common.scss",
+							"projects/dlp-saving-account/src/assets/styles/mobile.scss",
+							"projects/dlp-saving-account/src/assets/styles/themeColor.scss",
+              "projects/dlp-saving-account/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-saving-account/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-saving-account/src/assets/fonts/roboto/stylesheet.css"
+						],
+            "scripts": [
+							"node_modules/crypto-js/crypto-js.js",
+              "projects/dlp-saving-account/src/serviceworker.js"
+						],
+            "allowedCommonJsDependencies": [
+							"crypto-js",
+							"seedrandom",
+							"typed-function",
+							"javascript-natural-sort",
+							"complex.js",
+							"fraction.js",
+							"escape-latex",
+							"html2pdf.js",
+							"json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+						],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-saving-account/webpack.config.js"
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
                 }
               ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-saving-account/src/environments/environment.ts",
+                  "with": "projects/dlp-saving-account/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
               "outputHashing": "all"
+
             },
             "development": {
-              "optimization": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -64,39 +153,4125 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-demo:build:production"
+              "buildTarget": "dlp-saving-account:build:production"
             },
             "development": {
-              "buildTarget": "angular-demo:build:development"
+              "buildTarget": "dlp-saving-account:build:development-server"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-saving-account:build"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
+            "main": "projects/dlp-saving-account/src/test.ts",
+            "polyfills": "projects/dlp-saving-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-saving-account/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-saving-account/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "projects/dlp-saving-account/src/favicon.ico",
+              "projects/dlp-saving-account/src/assets"
+            ],
+            "styles": ["projects/dlp-saving-account/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-gold-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-gold-loan",
+      "sourceRoot": "projects/dlp-gold-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-gold-loan",
+            "index": "projects/dlp-gold-loan/src/index.html",
+            "main": "projects/dlp-gold-loan/src/main.ts",
+            "polyfills": "projects/dlp-gold-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-gold-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-gold-loan/src/assets/images/favicon.webp",
+              "projects/dlp-gold-loan/src/assets",
+              "projects/dlp-gold-loan/src/manifest.webmanifest",
+              "projects/dlp-gold-loan/src/serviceworker.js",
+              "projects/dlp-gold-loan/src/app.config.json",
+              "projects/dlp-gold-loan/src/favicon.ico"
+            ],            
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-gold-loan/src/styles.scss",
+							"projects/dlp-gold-loan/src/assets/styles/common.scss",
+							"projects/dlp-gold-loan/src/assets/styles/mobile.scss",
+							"projects/dlp-gold-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-gold-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-gold-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-gold-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-gold-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-gold-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-gold-loan/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "10kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-gold-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-gold-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-gold-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-gold-loan/src/test.ts",
+            "polyfills": "projects/dlp-gold-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-gold-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-gold-loan/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-gold-loan/src/favicon.ico",
+              "projects/dlp-gold-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-gold-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-credit-card": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-credit-card",
+      "sourceRoot": "projects/dlp-credit-card/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-credit-card",
+            "index": "projects/dlp-credit-card/src/index.html",
+            "main": "projects/dlp-credit-card/src/main.ts",
+            "polyfills": "projects/dlp-credit-card/src/polyfills.ts",
+            "tsConfig": "projects/dlp-credit-card/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-credit-card/src/assets/images/favicon.webp",
+              "projects/dlp-credit-card/src/assets",
+              "projects/dlp-credit-card/src/manifest.webmanifest",
+              "projects/dlp-credit-card/src/serviceworker.js",
+              "projects/dlp-credit-card/src/app.config.json",
+              "projects/dlp-credit-card/src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-credit-card/src/styles.scss",
+							"projects/dlp-credit-card/src/assets/styles/common.scss",
+							"projects/dlp-credit-card/src/assets/styles/mobile.scss",
+							"projects/dlp-credit-card/src/assets/styles/themeColor.scss",
+              "projects/dlp-credit-card/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-credit-card/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-credit-card/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-credit-card/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "50kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-credit-card/src/environments/environment.ts",
+                  "with": "projects/dlp-credit-card/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "50kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-credit-card:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-credit-card:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-credit-card:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-credit-card/src/test.ts",
+            "polyfills": "projects/dlp-credit-card/src/polyfills.ts",
+            "tsConfig": "projects/dlp-credit-card/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-credit-card/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-credit-card/src/favicon.ico",
+              "projects/dlp-credit-card/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-credit-card/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-kisan-credit-card": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-kisan-credit-card",
+      "sourceRoot": "projects/dlp-kisan-credit-card/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-kisan-credit-card",
+            "index": "projects/dlp-kisan-credit-card/src/index.html",
+            "main": "projects/dlp-kisan-credit-card/src/main.ts",
+            "polyfills": "projects/dlp-kisan-credit-card/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kisan-credit-card/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-kisan-credit-card/src/assets/images/favicon.webp",
+              "projects/dlp-kisan-credit-card/src/assets",
+              "projects/dlp-kisan-credit-card/src/manifest.webmanifest",
+              "projects/dlp-kisan-credit-card/src/serviceworker.js",
+              "projects/dlp-kisan-credit-card/src/app.config.json",
+              "projects/dlp-kisan-credit-card/src/favicon.ico"
+            ], 
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-kisan-credit-card/src/styles.scss",
+							"projects/dlp-kisan-credit-card/src/assets/styles/common.scss",
+							"projects/dlp-kisan-credit-card/src/assets/styles/mobile.scss",
+							"projects/dlp-kisan-credit-card/src/assets/styles/themeColor.scss",
+              "projects/dlp-kisan-credit-card/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-kisan-credit-card/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-kisan-credit-card/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+							"seedrandom",
+							"typed-function",
+							"javascript-natural-sort",
+							"complex.js",
+							"fraction.js",
+							"escape-latex",
+							"html2pdf.js",
+							"encrypt-storage",
+							"json-logic-js/logic.js",
+              "html2canvas",
+              "raf",
+              "rgbcolor",
+              "core-js"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-kisan-credit-card/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-kisan-credit-card/src/environments/environment.ts",
+                  "with": "projects/dlp-kisan-credit-card/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-kisan-credit-card:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-kisan-credit-card:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-kisan-credit-card:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-kisan-credit-card/src/test.ts",
+            "polyfills": "projects/dlp-kisan-credit-card/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kisan-credit-card/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-kisan-credit-card/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-kisan-credit-card/src/favicon.ico",
+              "projects/dlp-kisan-credit-card/src/assets"
+            ],
+            "styles": ["projects/dlp-kisan-credit-card/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-pmmy-mudra-loans": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-pmmy-mudra-loans",
+      "sourceRoot": "projects/dlp-pmmy-mudra-loans/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-pmmy-mudra-loans",
+            "index": "projects/dlp-pmmy-mudra-loans/src/index.html",
+            "main": "projects/dlp-pmmy-mudra-loans/src/main.ts",
+            "polyfills": "projects/dlp-pmmy-mudra-loans/src/polyfills.ts",
+            "tsConfig": "projects/dlp-pmmy-mudra-loans/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-pmmy-mudra-loans/src/manifest.webmanifest",
+              "projects/dlp-pmmy-mudra-loans/src/serviceworker.js",
+              "projects/dlp-pmmy-mudra-loans/src/app.config.json",
+              "projects/dlp-pmmy-mudra-loans/src/favicon.ico",
+              "projects/dlp-pmmy-mudra-loans/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-pmmy-mudra-loans/src/styles.scss",
+							"projects/dlp-pmmy-mudra-loans/src/assets/styles/common.scss",
+							"projects/dlp-pmmy-mudra-loans/src/assets/styles/mobile.scss",
+							"projects/dlp-pmmy-mudra-loans/src/assets/styles/themeColor.scss",
+              "projects/dlp-pmmy-mudra-loans/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-pmmy-mudra-loans/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-pmmy-mudra-loans/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "moment",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-pmmy-mudra-loans/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-pmmy-mudra-loans/src/environments/environment.ts",
+                  "with": "projects/dlp-pmmy-mudra-loans/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-pmmy-mudra-loans/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-pmmy-mudra-loans/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-pmmy-mudra-loans/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-pmmy-mudra-loans/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-pmmy-mudra-loans:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-pmmy-mudra-loans:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-pmmy-mudra-loans:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-pmmy-mudra-loans/src/test.ts",
+            "polyfills": "projects/dlp-pmmy-mudra-loans/src/polyfills.ts",
+            "tsConfig": "projects/dlp-pmmy-mudra-loans/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-pmmy-mudra-loans/karma.conf.js",
+            "assets": [
+              "projects/dlp-pmmy-mudra-loans/src/favicon.ico",
+              "projects/dlp-pmmy-mudra-loans/src/assets"
+            ],
+            "styles": ["projects/dlp-pmmy-mudra-loans/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-education-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-education-loan",
+      "sourceRoot": "projects/dlp-education-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+
+          "options": {
+            "outputPath": "dist/dlp-education-loan",
+            "index": "projects/dlp-education-loan/src/index.html",
+            "main": "projects/dlp-education-loan/src/main.ts",
+            "polyfills": "projects/dlp-education-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-education-loan/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+             "assets": [
+              "projects/dlp-education-loan/src/manifest.webmanifest",
+              "projects/dlp-education-loan/src/serviceworker.js",
+              "projects/dlp-education-loan/src/app.config.json",
+              "projects/dlp-education-loan/src/favicon.ico",
+              "projects/dlp-education-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/dlp-education-loan/src/styles.scss",
+              "projects/dlp-education-loan/src/assets/styles/common.scss",
+              "projects/dlp-education-loan/src/assets/styles/mobile.scss",
+              "projects/dlp-education-loan/src/assets/styles/themeColor.scss"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/crypto-js/crypto-js.js",
+              "node_modules/underscore/underscore-min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "projects/dlp-education-loan/src/serviceworker.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "lodash"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true, 
+            "commonChunk": false,
+            "extraWebpackConfig": "projects/dlp-education-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-education-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-education-loan/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-education-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-education-loan:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-education-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-education-loan/src/test.ts",
+            "polyfills": "projects/dlp-education-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-education-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-education-loan/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-education-loan/src/favicon.ico",
+              "projects/dlp-education-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-education-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-home-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-home-loan",
+      "sourceRoot": "projects/dlp-home-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-home-loan",
+            "index": "projects/dlp-home-loan/src/index.html",
+            "main": "projects/dlp-home-loan/src/main.ts",
+            "polyfills": "projects/dlp-home-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-home-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-home-loan/src/manifest.webmanifest",
+              "projects/dlp-home-loan/src/serviceworker.js",
+              "projects/dlp-home-loan/src/app.config.json",
+              "projects/dlp-home-loan/src/favicon.ico",
+              "projects/dlp-home-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-home-loan/src/styles.scss",
+							"projects/dlp-home-loan/src/assets/styles/common.scss",
+							"projects/dlp-home-loan/src/assets/styles/mobile.scss",
+							"projects/dlp-home-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-home-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-home-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-home-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": false,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-home-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-home-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-home-loan/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-home-loan/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-home-loan/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-home-loan/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-home-loan/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-home-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-home-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-home-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-home-loan/src/test.ts",
+            "polyfills": "projects/dlp-home-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-home-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-home-loan/karma.conf.js",
+            "assets": [
+              "projects/dlp-home-loan/src/favicon.ico",
+              "projects/dlp-home-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-home-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-topup-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-topup-loan",
+      "sourceRoot": "projects/dlp-topup-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            
+            "outputPath": "dist/dlp-topup-loan",
+            "index": "projects/dlp-topup-loan/src/index.html",
+            "main": "projects/dlp-topup-loan/src/main.ts",
+            "polyfills": "projects/dlp-topup-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-topup-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-topup-loan/src/manifest.webmanifest",
+              "projects/dlp-topup-loan/src/serviceworker.js",
+              "projects/dlp-topup-loan/src/app.config.json",
+              "projects/dlp-topup-loan/src/favicon.ico",
+              "projects/dlp-topup-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-topup-loan/src/styles.scss",
+							"projects/dlp-topup-loan/src/assets/styles/common.scss",
+							"projects/dlp-topup-loan/src/assets/styles/mobile.scss",
+							"projects/dlp-topup-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-topup-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-topup-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-topup-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": false,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-topup-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-topup-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-topup-loan/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-topup-loan/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-topup-loan/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-topup-loan/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-topup-loan/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-topup-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-topup-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-topup-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-topup-loan/src/test.ts",
+            "polyfills": "projects/dlp-topup-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-topup-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-topup-loan/karma.conf.js",
+            "assets": [
+              "projects/dlp-topup-loan/src/favicon.ico",
+              "projects/dlp-topup-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-topup-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-current-account": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-current-account",
+      "sourceRoot": "projects/dlp-current-account/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-current-account",
+            "index": "projects/dlp-current-account/src/index.html",
+            "main": "projects/dlp-current-account/src/main.ts",
+            "polyfills": "projects/dlp-current-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-current-account/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-current-account/src/assets/images/favicon.webp",
+							"projects/dlp-current-account/src/assets",  
+							"projects/dlp-current-account/src/app.config.json"
+            ],
+            "styles": [
+							"node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-current-account/src/styles.scss",
+							"projects/dlp-current-account/src/assets/styles/common.scss",
+							"projects/dlp-current-account/src/assets/styles/mobile.scss",
+							"projects/dlp-current-account/src/assets/styles/themeColor.scss",
+              "projects/dlp-current-account/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-current-account/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-current-account/src/assets/fonts/roboto/stylesheet.css"
+						],
+            "scripts": [
+							
+							"node_modules/crypto-js/crypto-js.js",
+              "projects/dlp-current-account/src/serviceworker.js"
+						],
+            "allowedCommonJsDependencies": [
+							"crypto-js",
+							"seedrandom",
+							"typed-function",
+							"javascript-natural-sort",
+							"complex.js",
+							"fraction.js",
+							"escape-latex",
+							"html2pdf.js",
+							"json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+
+						],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-current-account/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-current-account/src/environments/environment.ts",
+                  "with": "projects/dlp-current-account/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-current-account:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-current-account:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-current-account:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-current-account/src/test.ts",
+            "polyfills": "projects/dlp-current-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-current-account/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-current-account/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-current-account/src/favicon.ico",
+              "projects/dlp-current-account/src/assets"
+            ],
+            "styles": ["projects/dlp-current-account/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-personal-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-personal-loan",
+      "sourceRoot": "projects/dlp-personal-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-personal-loan",
+            "index": "projects/dlp-personal-loan/src/index.html",
+            "main": "projects/dlp-personal-loan/src/main.ts",
+            "polyfills": "projects/dlp-personal-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-personal-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-personal-loan/src/manifest.webmanifest",
+              "projects/dlp-personal-loan/src/serviceworker.js",
+              "projects/dlp-personal-loan/src/app.config.json",
+              "projects/dlp-personal-loan/src/favicon.ico",
+              "projects/dlp-personal-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/dlp-personal-loan/src/styles.scss",
+              "projects/dlp-personal-loan/src/assets/styles/common.scss",
+              "projects/dlp-personal-loan/src/assets/styles/mobile.scss",
+              "projects/dlp-personal-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-personal-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-personal-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-personal-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": false,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-personal-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-personal-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-personal-loan/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-personal-loan/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-personal-loan/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-personal-loan/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-personal-loan/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+                "aot": true,
+                "deleteOutputPath": false, 
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": true,
+                "sourceMap": false,
+                "optimization": {
+                  "scripts": true,
+                  "styles": {
+                    "minify": true,
+                    "inlineCritical": false
+                  }
+                },
+                "namedChunks": true, 
+                "commonChunk": true,
+                "outputHashing": "all"
+              
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+                "aot": true,
+                "deleteOutputPath": false, 
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": true,
+                "sourceMap": true,
+                "optimization": {
+                  "scripts": true,
+                  "styles": {
+                    "minify": true,
+                    "inlineCritical": false
+                  }
+                },
+                "namedChunks": true, 
+                "commonChunk": true,
+                "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-personal-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-personal-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-personal-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-personal-loan/src/test.ts",
+            "polyfills": "projects/dlp-personal-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-personal-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-personal-loan/karma.conf.js",
+            "assets": [
+              "projects/dlp-personal-loan/src/favicon.ico",
+              "projects/dlp-personal-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-personal-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-vehicle-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-vehicle-loan",
+      "sourceRoot": "projects/dlp-vehicle-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-vehicle-loan",
+            "index": "projects/dlp-vehicle-loan/src/index.html",
+            "main": "projects/dlp-vehicle-loan/src/main.ts",
+            "polyfills": "projects/dlp-vehicle-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-vehicle-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-vehicle-loan/src/manifest.webmanifest",
+              "projects/dlp-vehicle-loan/src/serviceworker.js",
+              "projects/dlp-vehicle-loan/src/app.config.json",
+              "projects/dlp-vehicle-loan/src/favicon.ico",
+              "projects/dlp-vehicle-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-vehicle-loan/src/styles.scss",
+							"projects/dlp-vehicle-loan/src/assets/styles/common.scss",
+							"projects/dlp-vehicle-loan/src/assets/styles/mobile.scss",
+							"projects/dlp-vehicle-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-vehicle-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-vehicle-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-vehicle-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-vehicle-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-vehicle-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-vehicle-loan/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "projects/dlp-vehicle-loan/src/app/services/common-variable-service.ts",
+                  "with": "projects/dlp-vehicle-loan/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                },                {
+                  "replace": "projects/dlp-vehicle-loan/src/app/services/utils/data.ts",
+                  "with": "projects/dlp-vehicle-loan/src/configuration/mock-replacements-configurations/data.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-vehicle-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-vehicle-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-vehicle-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-vehicle-loan/src/test.ts",
+            "polyfills": "projects/dlp-vehicle-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-vehicle-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-vehicle-loan/karma.conf.js",
+            "assets": [
+              "projects/dlp-vehicle-loan/src/favicon.ico",
+              "projects/dlp-vehicle-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-vehicle-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-vehicle-loan-digital": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-vehicle-loan-digital",
+      "sourceRoot": "projects/dlp-vehicle-loan-digital/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-vehicle-loan-digital",
+            "index": "projects/dlp-vehicle-loan-digital/src/index.html",
+            "main": "projects/dlp-vehicle-loan-digital/src/main.ts",
+            "polyfills": "projects/dlp-vehicle-loan-digital/src/polyfills.ts",
+            "tsConfig": "projects/dlp-vehicle-loan-digital/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-vehicle-loan-digital/src/manifest.webmanifest",
+              "projects/dlp-vehicle-loan-digital/src/serviceworker.js",
+              "projects/dlp-vehicle-loan-digital/src/app.config.json",
+              "projects/dlp-vehicle-loan-digital/src/favicon.ico",
+              "projects/dlp-vehicle-loan-digital/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-vehicle-loan-digital/src/styles.scss",
+							"projects/dlp-vehicle-loan-digital/src/assets/styles/common.scss",
+							"projects/dlp-vehicle-loan-digital/src/assets/styles/mobile.scss",
+							"projects/dlp-vehicle-loan-digital/src/assets/styles/themeColor.scss",
+              "projects/dlp-vehicle-loan-digital/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-vehicle-loan-digital/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-vehicle-loan-digital/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": false,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-vehicle-loan-digital/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-vehicle-loan-digital/src/environments/environment.ts",
+                  "with": "projects/dlp-vehicle-loan-digital/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace": "projects/dlp-vehicle-loan-digital/src/app/services/common-variable-service.ts",
+                  "with": "projects/dlp-vehicle-loan-digital/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                },                {
+                  "replace": "projects/dlp-vehicle-loan-digital/src/app/services/utils/data.ts",
+                  "with": "projects/dlp-vehicle-loan-digital/src/configuration/mock-replacements-configurations/data.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-vehicle-loan-digital:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-vehicle-loan-digital:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-vehicle-loan-digital:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-vehicle-loan-digital/src/test.ts",
+            "polyfills": "projects/dlp-vehicle-loan-digital/src/polyfills.ts",
+            "tsConfig": "projects/dlp-vehicle-loan-digital/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-vehicle-loan-digital/karma.conf.js",
+            "assets": [
+              "projects/dlp-vehicle-loan-digital/src/favicon.ico",
+              "projects/dlp-vehicle-loan-digital/src/assets"
+            ],
+            "styles": ["projects/dlp-vehicle-loan-digital/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-pensioner-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-pensioner-loan",
+      "sourceRoot": "projects/dlp-pensioner-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/dlp-pensioner-loan",
+            "index": "projects/dlp-pensioner-loan/src/index.html",
+            "main": "projects/dlp-pensioner-loan/src/main.ts",
+            "polyfills": "projects/dlp-pensioner-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-pensioner-loan/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-pensioner-loan/src/favicon.ico",
+              "projects/dlp-pensioner-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-pensioner-loan/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-pensioner-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-pensioner-loan/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-pensioner-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-pensioner-loan:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-pensioner-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-pensioner-loan/src/test.ts",
+            "polyfills": "projects/dlp-pensioner-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-pensioner-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-pensioner-loan/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-pensioner-loan/src/favicon.ico",
+              "projects/dlp-pensioner-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-pensioner-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-business-loan": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-business-loan",
+      "sourceRoot": "projects/dlp-business-loan/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-business-loan",
+            "index": "projects/dlp-business-loan/src/index.html",
+            "main": "projects/dlp-business-loan/src/main.ts",
+            "polyfills": "projects/dlp-business-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-business-loan/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-business-loan/src/manifest.webmanifest",
+              "projects/dlp-business-loan/src/serviceworker.js",
+              "projects/dlp-business-loan/src/app.config.json",
+              "projects/dlp-business-loan/src/favicon.ico",
+              "projects/dlp-business-loan/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-business-loan/src/styles.scss",
+							"projects/dlp-business-loan/src/assets/styles/common.scss",
+							"projects/dlp-business-loan/src/assets/styles/mobile.scss",
+							"projects/dlp-business-loan/src/assets/styles/themeColor.scss",
+              "projects/dlp-business-loan/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-business-loan/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-business-loan/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "moment",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-business-loan/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-business-loan/src/environments/environment.ts",
+                  "with": "projects/dlp-business-loan/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-business-loan/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-business-loan/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-business-loan/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-business-loan/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-business-loan:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-business-loan:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-business-loan:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-business-loan/src/test.ts",
+            "polyfills": "projects/dlp-business-loan/src/polyfills.ts",
+            "tsConfig": "projects/dlp-business-loan/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-business-loan/karma.conf.js",
+            "assets": [
+              "projects/dlp-business-loan/src/favicon.ico",
+              "projects/dlp-business-loan/src/assets"
+            ],
+            "styles": ["projects/dlp-business-loan/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-loan-against-property": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-loan-against-property",
+      "sourceRoot": "projects/dlp-loan-against-property/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/dlp-loan-against-property",
+            "index": "projects/dlp-loan-against-property/src/index.html",
+            "main": "projects/dlp-loan-against-property/src/main.ts",
+            "polyfills": "projects/dlp-loan-against-property/src/polyfills.ts",
+            "tsConfig": "projects/dlp-loan-against-property/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-loan-against-property/src/favicon.ico",
+              "projects/dlp-loan-against-property/src/assets"
+            ],
+            "styles": ["projects/dlp-loan-against-property/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-loan-against-property/src/environments/environment.ts",
+                  "with": "projects/dlp-loan-against-property/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-loan-against-property:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-loan-against-property:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-loan-against-property:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-loan-against-property/src/test.ts",
+            "polyfills": "projects/dlp-loan-against-property/src/polyfills.ts",
+            "tsConfig": "projects/dlp-loan-against-property/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-loan-against-property/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-loan-against-property/src/favicon.ico",
+              "projects/dlp-loan-against-property/src/assets"
+            ],
+            "styles": ["projects/dlp-loan-against-property/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-term-deposit-booking": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-term-deposit-booking",
+      "sourceRoot": "projects/dlp-term-deposit-booking/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-term-deposit-booking",
+            "index": "projects/dlp-term-deposit-booking/src/index.html",
+            "main": "projects/dlp-term-deposit-booking/src/main.ts",
+            "polyfills": "projects/dlp-term-deposit-booking/src/polyfills.ts",
+            "tsConfig": "projects/dlp-term-deposit-booking/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-term-deposit-booking/src/manifest.webmanifest",
+              "projects/dlp-term-deposit-booking/src/serviceworker.js",
+              "projects/dlp-term-deposit-booking/src/app.config.json",
+              "projects/dlp-term-deposit-booking/src/favicon.ico",
+              "projects/dlp-term-deposit-booking/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-term-deposit-booking/src/styles.scss",
+							"projects/dlp-term-deposit-booking/src/assets/styles/common.scss",
+							"projects/dlp-term-deposit-booking/src/assets/styles/mobile.scss",
+							"projects/dlp-term-deposit-booking/src/assets/styles/themeColor.scss",
+              "projects/dlp-term-deposit-booking/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-term-deposit-booking/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-term-deposit-booking/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-term-deposit-booking/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-term-deposit-booking/src/environments/environment.ts",
+                  "with": "projects/dlp-term-deposit-booking/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "6mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-term-deposit-booking:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-term-deposit-booking:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-term-deposit-booking:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-term-deposit-booking/src/test.ts",
+            "polyfills": "projects/dlp-term-deposit-booking/src/polyfills.ts",
+            "tsConfig": "projects/dlp-term-deposit-booking/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-term-deposit-booking/karma.conf.js",
+            "assets": [
+              "projects/dlp-term-deposit-booking/src/favicon.ico",
+              "projects/dlp-term-deposit-booking/src/assets"
+            ],
+            "styles": ["projects/dlp-term-deposit-booking/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-msme-renewal": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-msme-renewal",
+      "sourceRoot": "projects/dlp-msme-renewal/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-msme-renewal",
+            "index": "projects/dlp-msme-renewal/src/index.html",
+            "main": "projects/dlp-msme-renewal/src/main.ts",
+            "polyfills": "projects/dlp-msme-renewal/src/polyfills.ts",
+            "tsConfig": "projects/dlp-msme-renewal/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-msme-renewal/src/manifest.webmanifest",
+              "projects/dlp-msme-renewal/src/serviceworker.js",
+              "projects/dlp-msme-renewal/src/app.config.json",
+              "projects/dlp-msme-renewal/src/favicon.ico",
+              "projects/dlp-msme-renewal/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-msme-renewal/src/styles.scss",
+							"projects/dlp-msme-renewal/src/assets/styles/common.scss",
+							"projects/dlp-msme-renewal/src/assets/styles/mobile.scss",
+							"projects/dlp-msme-renewal/src/assets/styles/themeColor.scss",
+              "projects/dlp-msme-renewal/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-msme-renewal/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-msme-renewal/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-msme-renewal/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-msme-renewal/src/environments/environment.ts",
+                  "with": "projects/dlp-msme-renewal/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-msme-renewal/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-msme-renewal/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-msme-renewal/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-msme-renewal/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-msme-renewal:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-msme-renewal:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-msme-renewal:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-msme-renewal/src/test.ts",
+            "polyfills": "projects/dlp-msme-renewal/src/polyfills.ts",
+            "tsConfig": "projects/dlp-msme-renewal/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-msme-renewal/karma.conf.js",
+            "assets": [
+              "projects/dlp-msme-renewal/src/favicon.ico",
+              "projects/dlp-msme-renewal/src/assets"
+            ],
+            "styles": ["projects/dlp-msme-renewal/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-home":  {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-home",
+      "sourceRoot": "projects/dlp-home/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-home",
+            "index": "projects/dlp-home/src/index.html",
+            "main": "projects/dlp-home/src/main.ts",
+            "polyfills": "projects/dlp-home/src/polyfills.ts",
+            "tsConfig": "projects/dlp-home/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-home/src/manifest.webmanifest",
+              "projects/dlp-home/src/serviceworker.js",
+              "projects/dlp-home/src/app.config.json",
+              "projects/dlp-home/src/favicon.ico",
+              "projects/dlp-home/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-home/src/styles.scss",
+							"projects/dlp-home/src/assets/styles/common.scss",
+							"projects/dlp-home/src/assets/styles/mobile.scss",
+							"projects/dlp-home/src/assets/styles/themeColor.scss",
+              "projects/dlp-home/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-home/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-home/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-home/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-home/src/environments/environment.ts",
+                  "with": "projects/dlp-home/src/environments/environment.prod.ts"
+                },
+                {
+                  "replace":"projects/dlp-home/src/app/services/utils/data.ts",
+                  "with":"projects/dlp-home/src/configuration/mock-replacements-configurations/data.ts"
+                },
+                {
+                  "replace":"projects/dlp-home/src/app/services/common-variable-service.ts",
+                  "with":"projects/dlp-home/src/configuration/mock-replacements-configurations/common-variable-service.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-home:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-home:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-home:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-home/src/test.ts",
+            "polyfills": "projects/dlp-home/src/polyfills.ts",
+            "tsConfig": "projects/dlp-home/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-home/karma.conf.js",
+            "assets": [
+              "projects/dlp-home/src/favicon.ico",
+              "projects/dlp-home/src/assets"
+            ],
+            "styles": ["projects/dlp-home/src/styles.scss"],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-configuration-console": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "projects/dlp-configuration-console/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/dlp-configuration-console/",
+            "index": "projects/dlp-configuration-console/src/index.html",
+            "main": "projects/dlp-configuration-console/src/main.ts",
+            "polyfills": "projects/dlp-configuration-console/src/polyfills.ts",
+            "tsConfig": "projects/dlp-configuration-console/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-configuration-console/src/favicon.ico",
+              "projects/dlp-configuration-console/src/assets",
+              "projects/dlp-configuration-console/src/app.config.json",
+              "projects/dlp-configuration-console/src/favicon.ico",
+              "projects/dlp-configuration-console/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-configuration-console/src/styles.scss",
+							"projects/dlp-configuration-console/src/assets/styles/common.scss",
+							"projects/dlp-configuration-console/src/assets/styles/mobile.scss",
+							"projects/dlp-configuration-console/src/assets/styles/themeColor.scss",
+              "projects/dlp-configuration-console/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-configuration-console/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-configuration-console/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "smooth-dnd",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "json-logic-js/",
+              "encrypt-storage"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "10mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-configuration-console/src/environments/environment.ts",
+                  "with": "projects/dlp-configuration-console/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-configuration-console:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-configuration-console:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-configuration-console:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-configuration-console/src/test.ts",
+            "polyfills": "projects/dlp-configuration-console/src/polyfills.ts",
+            "tsConfig": "projects/dlp-configuration-console/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-configuration-console/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-configuration-console/src/favicon.ico",
+              "projects/dlp-configuration-console/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-configuration-console/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-sukanya-samriddhi-account": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-sukanya-samriddhi-account",
+      "sourceRoot": "projects/dlp-sukanya-samriddhi-account/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-sukanya-samriddhi-account",
+            "index": "projects/dlp-sukanya-samriddhi-account/src/index.html",
+            "main": "projects/dlp-sukanya-samriddhi-account/src/main.ts",
+            "polyfills": "projects/dlp-sukanya-samriddhi-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-sukanya-samriddhi-account/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-sukanya-samriddhi-account/src/manifest.webmanifest",
+              "projects/dlp-sukanya-samriddhi-account/src/serviceworker.js",
+              "projects/dlp-sukanya-samriddhi-account/src/app.config.json",
+              "projects/dlp-sukanya-samriddhi-account/src/favicon.ico",
+              "projects/dlp-sukanya-samriddhi-account/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-sukanya-samriddhi-account/src/styles.scss",
+							"projects/dlp-sukanya-samriddhi-account/src/assets/styles/common.scss",
+							"projects/dlp-sukanya-samriddhi-account/src/assets/styles/mobile.scss",
+							"projects/dlp-sukanya-samriddhi-account/src/assets/styles/themeColor.scss",
+              "projects/dlp-sukanya-samriddhi-account/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-sukanya-samriddhi-account/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-sukanya-samriddhi-account/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-sukanya-samriddhi-account/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-sukanya-samriddhi-account/src/environments/environment.ts",
+                  "with": "projects/dlp-sukanya-samriddhi-account/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-sukanya-samriddhi-account:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-sukanya-samriddhi-account:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-sukanya-samriddhi-account:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-sukanya-samriddhi-account/src/test.ts",
+            "polyfills": "projects/dlp-sukanya-samriddhi-account/src/polyfills.ts",
+            "tsConfig": "projects/dlp-sukanya-samriddhi-account/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-sukanya-samriddhi-account/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-sukanya-samriddhi-account/src/favicon.ico",
+              "projects/dlp-sukanya-samriddhi-account/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-sukanya-samriddhi-account/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-national-savings-certificate": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-national-savings-certificate",
+      "sourceRoot": "projects/dlp-national-savings-certificate/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-national-savings-certificate",
+            "index": "projects/dlp-national-savings-certificate/src/index.html",
+            "main": "projects/dlp-national-savings-certificate/src/main.ts",
+            "polyfills": "projects/dlp-national-savings-certificate/src/polyfills.ts",
+            "tsConfig": "projects/dlp-national-savings-certificate/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-national-savings-certificate/src/manifest.webmanifest",
+              "projects/dlp-national-savings-certificate/src/serviceworker.js",
+              "projects/dlp-national-savings-certificate/src/app.config.json",
+              "projects/dlp-national-savings-certificate/src/favicon.ico",
+              "projects/dlp-national-savings-certificate/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-national-savings-certificate/src/styles.scss",
+							"projects/dlp-national-savings-certificate/src/assets/styles/common.scss",
+							"projects/dlp-national-savings-certificate/src/assets/styles/mobile.scss",
+							"projects/dlp-national-savings-certificate/src/assets/styles/themeColor.scss",
+              "projects/dlp-national-savings-certificate/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-national-savings-certificate/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-national-savings-certificate/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-national-savings-certificate/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-national-savings-certificate/src/environments/environment.ts",
+                  "with": "projects/dlp-national-savings-certificate/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-national-savings-certificate:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-national-savings-certificate:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-national-savings-certificate:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-national-savings-certificate/src/test.ts",
+            "polyfills": "projects/dlp-national-savings-certificate/src/polyfills.ts",
+            "tsConfig": "projects/dlp-national-savings-certificate/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-national-savings-certificate/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-national-savings-certificate/src/favicon.ico",
+              "projects/dlp-national-savings-certificate/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-national-savings-certificate/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-public-provident-fund": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-public-provident-fund",
+      "sourceRoot": "projects/dlp-public-provident-fund/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-public-provident-fund",
+            "index": "projects/dlp-public-provident-fund/src/index.html",
+            "main": "projects/dlp-public-provident-fund/src/main.ts",
+            "polyfills": "projects/dlp-public-provident-fund/src/polyfills.ts",
+            "tsConfig": "projects/dlp-public-provident-fund/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-public-provident-fund/src/assets/images/favicon.png",
+							"projects/dlp-public-provident-fund/src/assets",  
+							"projects/dlp-public-provident-fund/src/app.config.json",
+              "projects/dlp-public-provident-fund/src/favicon.ico",
+              "projects/dlp-public-provident-fund/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-public-provident-fund/src/styles.scss",
+							"projects/dlp-public-provident-fund/src/assets/styles/common.scss",
+							"projects/dlp-public-provident-fund/src/assets/styles/mobile.scss",
+							"projects/dlp-public-provident-fund/src/assets/styles/themeColor.scss",
+              "projects/dlp-public-provident-fund/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-public-provident-fund/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-public-provident-fund/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              
+              "node_modules/crypto-js/crypto-js.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-public-provident-fund/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-public-provident-fund/src/environments/environment.ts",
+                  "with": "projects/dlp-public-provident-fund/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "20mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-public-provident-fund:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-public-provident-fund:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-public-provident-fund:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-public-provident-fund/src/test.ts",
+            "polyfills": "projects/dlp-public-provident-fund/src/polyfills.ts",
+            "tsConfig": "projects/dlp-public-provident-fund/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-public-provident-fund/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-public-provident-fund/src/favicon.ico",
+              "projects/dlp-public-provident-fund/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-public-provident-fund/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-kcc-renewal": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-kcc-renewal",
+      "sourceRoot": "projects/dlp-kcc-renewal/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-kcc-renewal",
+            "index": "projects/dlp-kcc-renewal/src/index.html",
+            "main": "projects/dlp-kcc-renewal/src/main.ts",
+            "polyfills": "projects/dlp-kcc-renewal/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kcc-renewal/tsconfig.app.json",
+            "assets": [
+							"projects/dlp-kcc-renewal/src/serviceworker.js",
+							"projects/dlp-kcc-renewal/src/app.config.json",
+              "projects/dlp-kcc-renewal/src/favicon.ico",
+              "projects/dlp-kcc-renewal/src/assets"
+            ],
+            "styles": [
+							"node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-kcc-renewal/src/styles.scss",
+							"projects/dlp-kcc-renewal/src/assets/styles/common.scss",
+							"projects/dlp-kcc-renewal/src/assets/styles/mobile.scss",
+							"projects/dlp-kcc-renewal/src/assets/styles/themeColor.scss",
+              "projects/dlp-kcc-renewal/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-kcc-renewal/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-kcc-renewal/src/assets/fonts/roboto/stylesheet.css"
+						],
+            "scripts": [
+							"node_modules/crypto-js/crypto-js.js"
+						],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": false,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-kcc-renewal/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-kcc-renewal/src/environments/environment.ts",
+                  "with": "projects/dlp-kcc-renewal/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+                "aot": true,
+                "deleteOutputPath": false, 
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": true,
+                "sourceMap": true,
+                "optimization": {
+                  "scripts": true,
+                  "styles": {
+                    "minify": true,
+                    "inlineCritical": false
+                  }
+                },
+                "namedChunks": true, 
+                "commonChunk": true,
+                "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-kcc-renewal:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-kcc-renewal:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-kcc-renewal:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-kcc-renewal/src/test.ts",
+            "polyfills": "projects/dlp-kcc-renewal/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kcc-renewal/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-kcc-renewal/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-kcc-renewal/src/favicon.ico",
+              "projects/dlp-kcc-renewal/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-kcc-renewal/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-fixed-deposit": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-fixed-deposit",
+      "sourceRoot": "projects/dlp-fixed-deposit/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-fixed-deposit",
+            "index": "projects/dlp-fixed-deposit/src/index.html",
+            "main": "projects/dlp-fixed-deposit/src/main.ts",
+            "polyfills": "projects/dlp-fixed-deposit/src/polyfills.ts",
+            "tsConfig": "projects/dlp-fixed-deposit/tsconfig.app.json",
+            "assets": [
+              "projects/dlp-fixed-deposit/src/assets/images/favicon.webp",
+              "projects/dlp-fixed-deposit/src/assets",
+              "projects/dlp-fixed-deposit/src/app.config.json",
+              "projects/dlp-fixed-deposit/src/favicon.ico",
+              "projects/dlp-fixed-deposit/src/assets"
+            ],
+            "styles": [
+              "node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "projects/dlp-fixed-deposit/src/styles.scss",
+              "projects/dlp-fixed-deposit/src/assets/styles/common.scss",
+              "projects/dlp-fixed-deposit/src/assets/styles/mobile.scss",
+              "projects/dlp-fixed-deposit/src/assets/styles/themeColor.scss",
+              "projects/dlp-fixed-deposit/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-fixed-deposit/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-fixed-deposit/src/assets/fonts/roboto/stylesheet.css"
+            ],
+            "scripts": [
+              "node_modules/crypto-js/crypto-js.js",
+              "projects/dlp-fixed-deposit/src/serviceworker.js"
+            ],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "html2pdf.js",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false,
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": true,
+            "namedChunks": true,
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-fixed-deposit/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-fixed-deposit/src/environments/environment.ts",
+                  "with": "projects/dlp-fixed-deposit/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true,
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "10mb",
+                  "maximumError": "15mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "1mb",
+                  "maximumError": "15mb"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true,
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development-server": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-fixed-deposit:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-fixed-deposit:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-fixed-deposit:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-fixed-deposit/src/test.ts",
+            "polyfills": "projects/dlp-fixed-deposit/src/polyfills.ts",
+            "tsConfig": "projects/dlp-fixed-deposit/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-fixed-deposit/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-fixed-deposit/src/favicon.ico",
+              "projects/dlp-fixed-deposit/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-fixed-deposit/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "dlp-kcc-ah": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/dlp-kcc-ah",
+      "sourceRoot": "projects/dlp-kcc-ah/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:browser",
+          "options": {
+            "outputPath": "dist/dlp-kcc-ah",
+            "index": "projects/dlp-kcc-ah/src/index.html",
+            "main": "projects/dlp-kcc-ah/src/main.ts",
+            "polyfills": "projects/dlp-kcc-ah/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kcc-ah/tsconfig.app.json",
+            "assets": [
+							"projects/dlp-kcc-ah/src/serviceworker.js",
+							"projects/dlp-kcc-ah/src/app.config.json",
+              "projects/dlp-kcc-ah/src/favicon.ico",
+              "projects/dlp-kcc-ah/src/assets"
+            ],
+            "styles": [
+							"node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"projects/dlp-kcc-ah/src/styles.scss",
+							"projects/dlp-kcc-ah/src/assets/styles/common.scss",
+							"projects/dlp-kcc-ah/src/assets/styles/mobile.scss",
+							"projects/dlp-kcc-ah/src/assets/styles/themeColor.scss",
+              "projects/dlp-kcc-ah/src/assets/fonts/proxima-nova/stylesheet.css",
+              "projects/dlp-kcc-ah/src/assets/fonts/proxima-nova-semi-bold/stylesheet.css",
+              "projects/dlp-kcc-ah/src/assets/fonts/roboto/stylesheet.css"
+						],
+            "scripts": [
+							"node_modules/crypto-js/crypto-js.js"
+						],
+            "allowedCommonJsDependencies": [
+              "crypto-js",
+              "seedrandom",
+              "typed-function",
+              "javascript-natural-sort",
+              "complex.js",
+              "fraction.js",
+              "escape-latex",
+              "json-logic-js/logic.js",
+              "encrypt-storage",
+              "exceljs",
+              "file-saver"
+            ],
+            "aot": true,
+            "deleteOutputPath": false, 
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": false,
+            "optimization": true,
+            "namedChunks": true, 
+            "commonChunk": true,
+            "extraWebpackConfig": "projects/dlp-kcc-ah/webpack.config.js"
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/dlp-kcc-ah/src/environments/environment.ts",
+                  "with": "projects/dlp-kcc-ah/src/environments/environment.prod.ts"
+                }
+              ],
+              "aot": true,
+              "deleteOutputPath": false, 
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "buildOptimizer": true,
+              "sourceMap": false,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
+              "namedChunks": true, 
+              "commonChunk": true,
+              "outputHashing": "all"
+            },
+            "development": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "1mb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "25kb",
+                  "maximumError": "25kb"
+                }
+              ],
+                "aot": true,
+                "deleteOutputPath": false, 
+                "vendorChunk": true,
+                "extractLicenses": false,
+                "buildOptimizer": true,
+                "sourceMap": true,
+                "optimization": {
+                  "scripts": true,
+                  "styles": {
+                    "minify": true,
+                    "inlineCritical": false
+                  }
+                },
+                "namedChunks": true, 
+                "commonChunk": true,
+                "outputHashing": "all"
+            },
+            "development-server":{
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "dlp-kcc-ah:build:production"
+            },
+            "development": {
+              "buildTarget": "dlp-kcc-ah:build:development-server"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "dlp-kcc-ah:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/dlp-kcc-ah/src/test.ts",
+            "polyfills": "projects/dlp-kcc-ah/src/polyfills.ts",
+            "tsConfig": "projects/dlp-kcc-ah/tsconfig.spec.json",
+            "karmaConfig": "projects/dlp-kcc-ah/karma.conf.js",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "projects/dlp-kcc-ah/src/favicon.ico",
+              "projects/dlp-kcc-ah/src/assets"
+            ],
+            "styles": [
+              "projects/dlp-kcc-ah/src/styles.scss"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "947b0794-c7fc-414a-ba79-80a48cd4ed29"
   }
 }

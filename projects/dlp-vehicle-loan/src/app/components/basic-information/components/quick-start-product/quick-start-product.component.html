@@ -1,0 +1,7 @@
+<div class="display-flex quick-initiate">
+    <img  *ngIf="environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive "
+    [src]="'assets/icons/loader.gif'" alt="img">
+    <img  *ngIf="!environmentService.configData.appConfig.display_brandable_images" class="header-logo img-responsive"
+    [src]="'assets/images/loader-integreat.gif'" alt="img">
+    <span class="common-info">Initialising the Loan Application for You</span>
+</div>

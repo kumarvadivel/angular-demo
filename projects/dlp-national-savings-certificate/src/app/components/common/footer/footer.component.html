@@ -1,0 +1,62 @@
+<div *ngIf="commonVariableService.appLayoutConfig.isShowJourneyFooter" class="footer">
+    <div class="footer-header">
+        <div class="container-fluid">
+            <div class="row media-block">
+                <div
+                    class="media-images">
+                    <img class="me-3  play-store" [src]="'../../../assets/icons/home-icon-8.png'" alt="img">
+                    <img class="me-3  app-store" [src]="'../../../assets/icons/home-icon-9.png'" alt="img">
+                    <img class="me-4  facebook" [src]="'../../../assets/icons/home-icon-13.png'" alt="img">
+                    <img class="me-3  twitter" [src]="'../../../assets/icons/home-icon-12.png'" alt="img">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4 ">
+                <span class="footer-label">Popular Products</span>
+                <div *ngFor="let product of popularProducts">
+                    <div class="row">
+                    <span class="footer-value">{{product.name}}</span>
+                </div>
+                </div>
+            </div>
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Calculators</span>
+                <div *ngFor="let calc of  CalculatorsList">
+                    <div class="row">
+                    <span class="footer-value">{{calc.name}}</span>
+                </div>
+                </div>
+            </div>
+            <div class="footer-content  col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Locate us</span>
+                <div *ngFor="let locate of  locateList">
+                    <div class="row">
+                    <span  class="footer-value" (click)="navigateTo(locate.url)">{{locate.name}}</span>
+                </div>
+                </div>
+            </div>
+            <div class="footer-content col-lg-3 col-md-4 col-sm-4 col-xs-4">
+                <span class="footer-label">Contact us</span>
+                <div class="row">
+                        <span class="footer-value">Call : 1800 103 1906 ( Tollfree ) for general Enquires</span>
+                        <span class="footer-value">Call : 1800 220 229 ( Tollfree ) for covid support</span>
+                        <span class="footer-value">Call : (022) – 40919191 ( Chargable Number ) for 24x7</span>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-content">
+                <div class="footer-value">Site best viewed at 1366x768 resolution in Chrome 55 +, IE 10 +, Firefox 47 +,
+                    Android 10+ & latest version</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="footer-bottom">
+                    <img [src]="'../../../assets/icons/home-icon-14.png'" class="me-2" alt="img">
+                    2021 Bank of India. All rights reserved | Disclaimer | Privacy Policy
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,158 @@
+.singlelabel-line-clamp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    color: #565656;
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+.singlelabel-line-clamp-color {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    color: #060606;
+    font-size: 16px;
+    font-family: var(--font-family);
+    font-weight: bold;
+}
+
+.singlelabel-line-clamp-bullet {
+    color: #4c4a4a;
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+.orangeknowmorelink {
+    font-size: 16px !important;
+    padding: 0px 40px;
+
+}
+
+.comparecardcharges {
+    text-align: right;
+}
+
+.orangebadge {
+    padding-top: 10px;
+    color: white;
+    background-color: darkorange;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.paddingcardbody {
+    padding-top: 2rem;
+}
+
+.container {
+    font-size: 16px;
+    line-height: 16px;
+    height: 32px;
+    overflow: hidden;
+}
+
+.show {
+    overflow: visible;
+    height: auto;
+}
+
+.showmorebtn {
+    margin-bottom: 10px;
+    padding: 4px;
+}
+
+.limittext {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: inherit;
+    height: 10rem;
+}
+
+.orange {
+    &.disabled {
+        background-color: gray !important;
+    }
+
+    background-color: var(--brand-orange);
+    color: #ffffff;
+    height: 48px;
+    font-size: 17px;
+    font-family: var(--font-family-lt);
+    font-weight: 400;
+    padding: 0 30px !important;
+    border: none;
+    border-radius: 7px;
+}
+
+.marin-left-30 {
+    margin-left: 30px;
+}
+
+.white {
+    background-color: rgb(252, 248, 248);
+    color: var(--brand-orange);
+    height: 48px;
+    font-size: 17px;
+    font-family: var(--font-family-lt);
+    font-weight: 400;
+    padding: 0 30px !important;
+    border-radius: 7px;
+    // src: "./assets//icons/green-tick.png";
+    border: 1px solid var(--brand-orange);
+}
+
+.bordergray {
+    border: 1px solid #b8bbb7;
+    // transition: 0.50s;
+}
+
+.borderblue {
+    border: 2px solid #197dfc;
+    // transition: 0.50s;
+}
+
+
+@mixin cc-tickWithBackgroundColor($bkgColor) {
+    background-color: $bkgColor;
+    transform: scale(1.1);
+    border-radius: 50%;
+    padding: 4px;
+    color: white;
+}
+
+.cc-selectedBlueTick {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    @include cc-tickWithBackgroundColor(var(--brand-color));
+}
+
+.cc-selectedOrangeTick {
+    @include cc-tickWithBackgroundColor(var(--brand-orange));
+    margin-right: 15px;
+}
+
+.cc-selectedToggleButton {
+    display: inline-flex;
+    justify-content: space-around;
+    width: 150px;
+    align-items: center;
+
+    .cc-selectedToggleButtonLabel {
+        display: inline-flex;
+    }
+}
+
+.form-content {
+    padding: 0 2em;
+}
+
+.mb-15 {
+    margin-bottom: 15px;
+}
+.card-body{
+    img{
+        aspect-ratio: auto 640 / 360;
+    }
+}

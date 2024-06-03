@@ -1,0 +1,39 @@
+<div class="row rounded no-margin" [ngClass]="commonVariableService.isConsentValid?' form-control is-invalid': ''" [matTooltip]="isInvalid ? 'Please Check All Consents' : ''" [matTooltipPosition]="'below'" [matTooltipClass]="'below'">
+    <ng-container *ngFor="let item of field.options;let i=index"  >
+        <mat-checkbox [disableRipple]="true" class="check-box-checkValidaity display-flex flex-row pl-0 mb-15" [(ngModel)]="item.completed" (click)="consentCheck($event)" (ngModelChange)="checkValidity()" [disabled]="item.disabled||false">
+            <div class="row">
+                <div class="singlelabel-line-clamp">
+                    <p class="mb-0" *ngIf="item.consentType=='STATIC'">{{item.label}}
+                    <span *ngIf="item.endLinks">
+                        <button class="term-condition-wrap a-button privacy-color" *ngFor="let endLink of item.endLinks;let j=index" (click)="openEndLink(endLink)">
+                            {{endLink.label}}
+                        </button>
+                        </span>
+                    </p>
+                    <div *ngIf="item.consentType=='APIFETCH'">
+                        <ng-template [ngIf]="item.isMultiLabel">
+                            <ol id="multiLabel{{i}}" class="lower-alpha" (click)="notClick($event)">
+                                <li>
+                                    <div [ngClass]="isExpandIndex.includes(i) ? '' : 'h-120'"
+                                        (mousedown)="$event.stopPropagation()"
+                                        class="singlelabel-line-clamp" [innerHTML]="item.label">
+                                    </div>
+                                </li>
+                            </ol>
+                        </ng-template>
+                        <ng-template [ngIf]="!item.isMultiLabel">
+                            <span (mousedown)="$event.stopPropagation()"
+                                [innerHTML]="item.label"></span>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <a (click)="notClick($event)" *ngIf="item.isMultiLabel && !isExpandIndex.includes(i)"
+                class="underscore-brand displayBlock pl-2" id="viewMore{{i}}" (click)="viewMore(i)">View More</a>
+            <a (click)="notClick($event)" *ngIf="item.isMultiLabel && isExpandIndex.includes(i)"
+                class="underscore-brand displayBlock pl-2" id="less{{i}}" (click)="less(i)">View Less</a>
+
+        </mat-checkbox>
+
+    </ng-container>
+</div>

@@ -1,0 +1,21 @@
+:host::ng-deep .ngx-otp-input {
+  width: 80% !important;
+}
+
+.text-info {
+  cursor: pointer;
+}
+
+.otp-timer {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.resendOTP {
+  color: #919191 !important;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}

@@ -1,0 +1,57 @@
+<div class="content" role="main">
+    <div class="body-container">
+      <div class="configuration-container">
+        <div class="display-flex j-c-sb">
+          <button class="primary-btn" (click)="importConfig()">Import and Edit Configuration</button>
+          <button class="secondary-btn" (click)="clearConfig()">clear config</button>
+        </div>
+        <div class="section-selector-container">
+          <div class="common-title">Select a section</div>
+          <div class="section-groups">
+              <button class="primary-btn gap-10" *ngFor="let component of componentTypes" (click)="SelectSection(component)">{{component}}</button>
+          </div>
+          <div class="section-config-console" *ngIf="currentSection!=null">
+            <div class="common-title">Configure section</div>
+            <div *ngIf="currentSection" class="display-flex flex-col">
+              <app-section-builder  [config]="sectionConfigurationfields" (status)="configurationFieldEmitter($event)"  [refresh]="formSectionMeta.refresh.asObservable()"></app-section-builder>
+            </div>
+          </div>
+          <div class="section-submit-console display-flex gap-10">
+            <!-- <button class="secondary-btn" (click)="submitSection()">Preview</button> -->
+            <button class="primary-btn" (click)="submitSection()">Add Section</button>
+          </div>
+        </div>
+        <div class="section-queue-previewer" *ngIf="mainConfig.length">
+          <div class="common-title">Section Queue</div>
+          <div class="section-preview-container">
+            <smooth-dnd-container [behaviour]="'contain'" [orientation]="'horizontal'" (drop)="onsectionDrop($event)">
+              <smooth-dnd-draggable *ngFor="let section of mainConfig;let i= index">
+                <div class="draggable-item">
+                  <div class="card display-flex j-c-sb" >
+                      <span>{{section.componentType}}</span>
+                      <span class="material-symbols-outlined cursor-pointer" (click)="deleteSection(i)">
+                          close
+                      </span>
+                  </div>
+              </div>
+              </smooth-dnd-draggable>
+            </smooth-dnd-container>
+            
+          </div>
+        </div>
+        <div class="export-section">
+          <button class="primary-btn" (click)="exportConfig()">Export Config</button>
+        </div>
+      </div>
+      <div class="preview-container ">
+        <div class="common-info f-16 mb-20"><span class="fw-bold">Tip:</span> drag and rearrange the sections</div>
+        <div class="preview-box">
+          <app-section-builder  [config]="mainConfig" [refresh]="previewRefresh?.asObservable()" [editMode]="true"></app-section-builder>
+        </div>
+      </div>
+    </div>
+  
+    
+    
+    
+  </div>

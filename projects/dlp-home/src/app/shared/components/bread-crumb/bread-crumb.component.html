@@ -1,0 +1,13 @@
+<!-- <p>bread-crumb works!</p> -->
+
+<div class="row no-margin pb-20 pt-20">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mob-pl-0 mob-pr-0 pl-0 pr-0">
+        <ul class="breadcrumb">
+            <li *ngFor="let item of breadCrumbList; let i =index; let first = first; let last = last">
+                <button  class="a-button"
+                [ngClass]="{'activeElem':!last, 'inactiveElem': last}"
+                                    routerLinkActive="router-link-active" (click)="navigateTo(item)">{{item.label}}</button>
+                </li>
+        </ul>
+    </div>
+</div>

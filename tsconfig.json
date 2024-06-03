@@ -1,32 +1,159 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types": ["node"],
+    "paths": {
+      "path": [
+        "./node_modules/stream-browserify"
+      ],
+      "exceljs":[
+        "node_modules/exceljs/dist/exceljs.min"
+      ],
+      "@home-app/*":["projects/dlp-home/src/app/*"],
+      "@home-environments/*": ["projects/dlp-home/src/environments/*"], 
+      "@sba-app/*": ["projects/dlp-saving-account/src/app/*"], 
+      "@sba-app-components/*": ["projects/dlp-saving-account/src/app/components/*"], 
+      "@sba-assets/*": ["projects/dlp-saving-account/src/assets/*"],
+      "@sba-configuration/*": ["projects/dlp-saving-account/src/configuration/*"],
+      "@sba-environments/*": ["projects/dlp-saving-account/src/environments/*"], 
+      "@gl-app/*": ["projects/dlp-gold-loan/src/app/*"], 
+      "@gl-app-components/*": ["projects/dlp-gold-loan/src/app/components/*"], 
+      "@gl-assets/*": ["projects/dlp-gold-loan/src/assets/*"],
+      "@gl-configuration/*": ["projects/dlp-gold-loan/src/configuration/*"],
+      "@gl-environments/*": ["projects/dlp-gold-loan/src/environments/*"], 
+      "@cc-app/*": ["projects/dlp-credit-card/src/app/*"], 
+      "@cc-app-components/*": ["projects/dlp-credit-card/src/app/components/*"], 
+      "@cc-assets/*": ["projects/dlp-credit-card/src/assets/*"],
+      "@cc-configuration/*": ["projects/dlp-credit-card/src/configuration/*"],
+      "@cc-environments/*": ["projects/dlp-credit-card/src/environments/*"], 
+      "@pmmy-app/*": ["projects/dlp-pmmy-mudra-loans/src/app/*"], 
+      "@pmmy-app-components/*": ["projects/dlp-pmmy-mudra-loans/src/app/components/*"], 
+      "@pmmy-assets/*": ["projects/dlp-pmmy-mudra-loans/src/assets/*"],
+      "@pmmy-configuration/*": ["projects/dlp-pmmy-mudra-loans/src/configuration/*"],
+      "@pmmy-environments/*": ["projects/dlp-pmmy-mudra-loans/src/environments/*"], 
+      "@msme-app/*": ["projects/dlp-msme-renewal/src/app/*"], 
+      "@msme-app-components/*": ["projects/dlp-msme-renewal/src/app/components/*"], 
+      "@msme-assets/*": ["projects/dlp-msme-renewal/src/assets/*"],
+      "@msme-configuration/*": ["projects/dlp-msme-renewal/src/configuration/*"],
+      "@msme-environments/*": ["projects/dlp-msme-renewal/src/environments/*"],
+      "@bl-app/*": ["projects/dlp-business-loan/src/app/*"], 
+      "@bl-app-components/*": ["projects/dlp-business-loan/src/app/components/*"], 
+      "@bl-assets/*": ["projects/dlp-business-loan/src/assets/*"],
+      "@bl-configuration/*": ["projects/dlp-business-loan/src/configuration/*"],
+      "@bl-environments/*": ["projects/dlp-business-loan/src/environments/*"], 
+      "@pl-app/*": ["projects/dlp-personal-loan/src/app/*"], 
+      "@pl-app-components/*": ["projects/dlp-personal-loan/src/app/components/*"], 
+      "@pl-assets/*": ["projects/dlp-personal-loan/src/assets/*"],
+      "@pl-configuration/*": ["projects/dlp-personal-loan/src/configuration/*"],
+      "@pl-environments/*": ["projects/dlp-personal-loan/src/environments/*"], 
+      "@tlad-app/*": ["projects/dlp-term-deposit-booking/src/app/*"], 
+      "@tlad-app-components/*": ["projects/dlp-term-deposit-booking/src/app/components/*"], 
+      "@tlad-assets/*": ["projects/dlp-term-deposit-booking/src/assets/*"],
+      "@tlad-configuration/*": ["projects/dlp-term-deposit-booking/src/configuration/*"],
+      "@tlad-environments/*": ["projects/dlp-term-deposit-booking/src/environments/*"], 
+      "@vl-app/*": ["projects/dlp-vehicle-loan/src/app/*"], 
+      "@vl-app-components/*": ["projects/dlp-vehicle-loan/src/app/components/*"], 
+      "@vl-assets/*": ["projects/dlp-vehicle-loan/src/assets/*"],
+      "@vl-configuration/*": ["projects/dlp-vehicle-loan/src/configuration/*"],
+      "@vl-environments/*": ["projects/dlp-vehicle-loan/src/environments/*"], 
+      "@vldigi-app/*": ["projects/dlp-vehicle-loan-digital/src/app/*"], 
+      "@vldigi-app-components/*": ["projects/dlp-vehicle-loan-digital/src/app/components/*"], 
+      "@vldigi-assets/*": ["projects/dlp-vehicle-loan-digital/src/assets/*"],
+      "@vldigi-configuration/*": ["projects/dlp-vehicle-loan-digital/src/configuration/*"],
+      "@vldigi-environments/*": ["projects/dlp-vehicle-loan-digital/src/environments/*"], 
+      "@nsc-app/*": ["projects/dlp-national-savings-certificate/src/app/*"], 
+      "@nsc-app-components/*": ["projects/dlp-national-savings-certificate/src/app/components/*"], 
+      "@nsc-assets/*": ["projects/dlp-national-savings-certificate/src/assets/*"],
+      "@nsc-configuration/*": ["projects/dlp-national-savings-certificate/src/configuration/*"],
+      "@nsc-environments/*": ["projects/dlp-national-savings-certificate/src/environments/*"], 
+      "@ppf-app/*": ["projects/dlp-public-provident-fund/src/app/*"], 
+      "@ppf-app-components/*": ["projects/dlp-public-provident-fund/src/app/components/*"], 
+      "@ppf-assets/*": ["projects/dlp-public-provident-fund/src/assets/*"],
+      "@ppf-configuration/*": ["projects/dlp-public-provident-fund/src/configuration/*"],
+      "@ppf-environments/*": ["projects/dlp-public-provident-fund/src/environments/*"], 
+      "@ssa-app/*": ["projects/dlp-sukanya-samriddhi-account/src/app/*"], 
+      "@ssa-app-components/*": ["projects/dlp-sukanya-samriddhi-account/src/app/components/*"], 
+      "@ssa-assets/*": ["projects/dlp-sukanya-samriddhi-account/src/assets/*"],
+      "@ssa-configuration/*": ["projects/dlp-sukanya-samriddhi-account/src/configuration/*"],
+      "@ssa-environments/*": ["projects/dlp-sukanya-samriddhi-account/src/environments/*"],
+      "@ca-app/*": ["projects/dlp-current-account/src/app/*"], 
+      "@ca-app-components/*": ["projects/dlp-current-account/src/app/components/*"], 
+      "@ca-assets/*": ["projects/dlp-current-account/src/assets/*"],
+      "@ca-configuration/*": ["projects/dlp-current-account/src/configuration/*"],
+      "@ca-environments/*": ["projects/dlp-current-account/src/environments/*"],  
+      "@hl-app/*": ["projects/dlp-home-loan/src/app/*"], 
+      "@hl-app-components/*": ["projects/dlp-home-loan/src/app/components/*"], 
+      "@hl-assets/*": ["projects/dlp-home-loan/src/assets/*"],
+      "@hl-configuration/*": ["projects/dlp-home-loan/src/configuration/*"],
+      "@hl-environments/*": ["projects/dlp-home-loan/src/environments/*"], 
+      "@tl-app/*": ["projects/dlp-topup-loan/src/app/*"], 
+      "@tl-app-components/*": ["projects/dlp-topup-loan/src/app/components/*"], 
+      "@tl-assets/*": ["projects/dlp-topup-loan/src/assets/*"],
+      "@tl-configuration/*": ["projects/dlp-topup-loan/src/configuration/*"],
+      "@tl-environments/*": ["projects/dlp-topup-loan/src/environments/*"], 
+      "@kcc-renewal-app/*": ["projects/dlp-kcc-renewal/src/app/*"], 
+      "@kcc-renewal-app-components/*": ["projects/dlp-kcc-renewal/src/app/components/*"], 
+      "@kcc-renewal-assets/*": ["projects/dlp-kcc-renewal/src/assets/*"],
+      "@kcc-renewal-configuration/*": ["projects/dlp-kcc-renewal/src/configuration/*"],
+      "@kcc-renewal-environments/*": ["projects/dlp-kcc-renewal/src/environments/*"], 
+      "@kcc-app/*": [
+        "projects/dlp-kisan-credit-card/src/app/*"
+      ],
+      "@kcc-app-components/*": [
+        "projects/dlp-kisan-credit-card/src/app/components/*"
+      ],
+      "@kcc-assets/*": [
+        "projects/dlp-kisan-credit-card/src/assets/*"
+      ],
+      "@kcc-configuration/*": [
+        "projects/dlp-kisan-credit-card/src/configuration/*"
+      ],
+      "@kcc-environments/*": [
+        "projects/dlp-kisan-credit-card/src/environments/*"
+      ],
+      "@el-app/*": ["projects/dlp-education-loan/src/app/*"],
+      "@el-app-components/*": ["projects/dlp-education-loan/src/app/components/*"],
+      "@el-assets/*": ["projects/dlp-education-loan/src/assets/*"],
+      "@el-configuration/*": ["projects/dlp-education-loan/src/configuration/*"],
+      "@el-environments/*": ["projects/dlp-education-loan/src/environments/*"],
+      "@fd-app/*": ["projects/dlp-fixed-deposit/src/app/*"], 
+      "@fd-app-components/*": ["projects/dlp-fixed-deposit/src/app/components/*"], 
+      "@fd-assets/*": ["projects/dlp-fixed-deposit/src/assets/*"],
+      "@fd-configuration/*": ["projects/dlp-fixed-deposit/src/configuration/*"],
+      "@fd-environments/*": ["projects/dlp-fixed-deposit/src/environments/*"], 
+      "@kcc-ah-app/*": ["projects/dlp-kcc-ah/src/app/*"],
+      "@kcc-ah-app-components/*": [
+        "projects/dlp-kcc-ah/src/app/components/*"
+      ],
+      "@kcc-ah-assets/*": [
+        "projects/dlp-kcc-ah/src/assets/*"
+      ],
+      "@kcc-ah-configuration/*": [
+        "projects/dlp-kcc-ah/src/configuration/*"
+      ],
+      "@kcc-ah-environments/*": [
+        "projects/dlp-kcc-ah/src/environments/*"
+      ],
+    },
+    "baseUrl": ".",
     "outDir": "./dist/out-tsc",
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
+    "downlevelIteration": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
     "target": "ES2022",
     "module": "ES2022",
-    "useDefineForClassFields": false,
     "lib": [
-      "ES2022",
-      "dom"
+      "es2018",
+      "dom",
+      "es2020",
+      "ES2022"
     ]
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
   }
 }

@@ -1,0 +1,392 @@
+
+  //text component
+  .disabled-bg{
+    background-color: #ebebeb;
+}
+.error-message-container{
+        top: 2em;
+    right: -1em;
+}
+
+//mobile number css
+.digit-group {
+    display: flex;
+    width: 408px;
+    gap: 10px;
+    input {
+        display: flex;
+        width: 33.33%;
+        height: 48px !important;
+        line-height: 50px;
+        text-align: center;
+        font-family: var(--font-family);
+        color: white;
+        font-weight: 500;
+        font-size: 14px !important;
+        text-transform: uppercase;
+        &:last-child{
+            margin-right: 0px;
+            width: 78px;
+        }
+    }
+}
+
+:host::ng-deep .input-group-text {
+    background-color: transparent;
+    font-size: 14px !important;
+    font-family: var(--font-family);
+    color: var(--brand-orange);
+    border: 1px solid #c6c6c6;
+    border-radius: 4px;
+    font-weight: 400;
+}
+.example-radio-group-vertical {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+
+  ///slide toggle css
+  :host ::ng-deep .mat-slide-toggle-bar {
+    height: 26px;
+    width: 42px;
+    border-radius: 14px;
+}
+:host ::ng-deep .mat-slide-toggle-thumb-container {
+    top: 4px;
+    left: 4px;
+}
+
+
+:host::ng-deep .mat-slide-toggle-content{
+    font-size: 17px !important;
+    font-family: var(--font-family);
+    color: #565656 !important;
+}
+
+//radio css
+:host::ng-deep .mat-radio-label-content{
+    font-size: 16px;
+    color: #222629;
+    font-family: var(--font-family);
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+}
+
+:host::ng-deep .mat-radio-button{
+    margin-right: 5px;
+}
+
+//datepicker
+.datePicker{
+    display: flex;
+    // border: 1px solid #ced4da;
+    border-radius: .3rem;
+    >input{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: none !important;
+    }
+}
+
+:host::ng-deep .mat-icon-button{
+    height: 48px;
+}
+
+
+mat-datepicker-toggle{
+    border: 1px solid #dddddd;
+    border-left: none;
+    height: 48px;
+    border-radius: .3rem;
+     border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+}
+mat-datepicker-toggle.is-invalid{
+    border: 1px solid #dc3545;
+    border-left: none;
+}
+//button toggle
+:host::ng-deep .mat-button-toggle-vertical {
+    height: 140px;
+    justify-content: space-between;
+    border: none;
+    width: 100%;
+    border-radius: 0px;
+}
+
+:host::ng-deep .mat-button-toggle {
+    border: 2px solid #c6c6c6 !important;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #2a2a2a;
+    font-weight: 500;
+    font-family: var(--font-family-lt);
+}
+:host::ng-deep .mat-button-toggle-button {
+    height: 56px;
+}
+:host::ng-deep .mat-button-toggle-checked {
+    background-color: #eaf4fa;
+    color: #007dc5 !important;
+    font-size: 14px;
+    border: 2px solid var(--brand-color) !important;
+}
+
+:host::ng-deep .mat-button-toggle-label-content {
+    display: flex !important;
+    align-items: center;
+}
+
+//dropdown css
+option{
+    border-radius: 4px;
+    color: #222629 !important;
+    font-family: var(--font-family-ft);
+    font-size: 14px !important;
+    text-transform: capitalize;
+    border: none;
+    font-weight: 400;
+    line-height: 1.42857143;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+}
+
+//autocomplete css
+:host::ng-deep .mat-option-text{
+    color: #222629 !important;
+    font-family: var(--font-family-ft);
+    font-size: 18px !important;
+    text-transform: capitalize;
+}
+
+
+:host::ng-deep .mat-autocomplete-panel{
+    display: none;
+}
+
+ngx-select-dropdown{
+        padding: 0;
+        .ngx-dropdown-container{ 
+            .ngx-dropdown-button{
+                border: none;
+            }
+        }
+}
+
+.otpContainer{
+    div{
+        width: 100%;
+    }
+}
+
+//CSS for dynamic form elements
+.dynamicFormFields{
+    float: left;
+    width: 100%;
+}
+.dynamicFormFields.twoColumnrowLayout,.dynamicFormFields.threeColumnrowLayout{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+.dynamicFormFields .dynamic-fields-wrapper{
+    margin-bottom: 30px;
+    width: 50%;
+}
+.dynamicFormFields.twoColumnrowLayout .dynamic-fields-wrapper{
+    float: left;
+    width: 50%;
+    padding: 0px 20px 0px 0px;
+    margin: 0px 0px 30px 0px;
+}
+.dynamicFormFields.threeColumnrowLayout .dynamic-fields-wrapper{
+    float: left;
+    width: 33.33%;
+    padding: 0px 20px 0px 0px;
+    margin: 0px 0px 30px 0px;
+}
+.prefixDropdown{
+    padding: 0px 10px;
+    width: 15%;
+}
+.dynamicFormFields .dynamic-fields-wrapper.addressLayout{
+    width: 100%;
+    padding: 0px;
+}
+.dynamicAddressType{
+    float: left;
+    width: 100%;
+}
+.dynamicAddressType.twoColumnrowLayout,.dynamicAddressType.threeColumnrowLayout{
+    display: flex;
+    flex-wrap: wrap;
+}
+.dynamicAddressType .dynamic-fields-wrapper{
+    margin-bottom: 30px;
+    width: 50%;
+}
+.adressfieldLabelGroup{
+    padding: 0px 0px;
+}
+.groupError{
+    padding: 0px 0px;
+}
+.group-wrapper {
+    float: left;
+    width: 100%;
+}
+.field-display-none{
+    display: none;
+}
+.field-wrapper.sideFormlayout {
+    display: flex;
+    align-items:center
+}
+.field-wrapper.sideFormlayout .label-group{
+    width:50%
+}
+.field-wrapper.sideFormlayout .input-group{
+     width:50%
+}
+
+
+:host::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb {
+    transform: scale(0.7);
+}
+
+:host::ng-deep .mat-slider {
+    width: 100%;
+}
+
+:host::ng-deep .mat-slider-track-background{
+    background-color: var(--brand-color) !important;
+}
+.side{
+    width: 25% !important;
+    margin-left: auto;
+}
+.oneColumnrowLayout{
+    width: 100% !important;
+}
+.rating-highlight {
+    background-color: #fffade!important;
+    border: 1px solid gold!important;
+}
+.flex-container{
+    display: flex;
+    gap: 15%;
+}
+.cardoptions{
+    border: 1px solid lightgrey;
+    border-radius: 8px;
+}
+.cardoptions  * :hover{
+    background-color: #fffade!important;
+    cursor: pointer;
+}
+
+.thead-light {
+   background-color:#f8f8f8;
+}
+.common-table {
+    font-family: Roboto,Helvetica Neue,sans-serif;
+}
+th{
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #2a2a2a;
+    font-family: var(--font-family-lt);
+}
+.underscore-orange{
+    color: #F58220;
+    font-size: 16px;
+    text-decoration: underline;
+
+}
+
+.form-label-xl {
+    font-size: 18px;
+    color: #2a2a2a;
+    font-weight: 500;
+    font-family: var(--font-family-lt);
+}
+.accountNumber input:last-child{
+    width: 90% !important;
+}
+.accountNumber input:nth-child(2){
+    width: 20% !important;
+
+} 
+.accountNumber input:first-child{
+    width: 25%;
+}
+.file-input-dynamic-fields{
+    padding: 15px;
+    gap: 10px;
+    background: var(--primary_light_10);
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    color: var(--primary) !important;
+}
+.load-img-file{
+    height: 30px;
+    width: 30px;
+}
+.autocomplete-popover {
+    position: absolute;
+    margin-top: 9%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    max-height: 200px;
+    overflow: auto;
+    overflow-x: hidden;
+    z-index: 999;
+    box-shadow: 0px 1px 6px 1px rgba(110, 109, 110, 1);
+}
+
+.autocompleteField{
+    box-shadow: 0px 0px 0px 0px white;
+}
+.autocomplete-options{
+    padding: 15px 25px;
+    font-family: var(--font-family);
+}
+.autocomplete-options:hover{
+    background-color: var(--brand-color);
+    color: white;
+}
+.fieldlabel-f-16{
+    label{
+        font-size: 16px;
+    }
+}
+.auto_complete_arrow {
+    position: absolute;
+    right: 11px;
+    top: 11px;
+}
+.auto-complete-disabled{
+    background-color: #ebebeb !important;
+}
+.removeBottomMargin{
+    margin-bottom: 0px !important;
+}
+.reduceBottomMarign{
+    margin-bottom: 15px !important;
+}
+.masking-section-wrapper{
+    text-align: center;
+    padding: 10px;
+    color: lightslategray;
+    cursor: pointer;
+  }
+  .digit-group .secretkey{
+    font-family: 'password',sans-serif !important;
+  }

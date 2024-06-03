@@ -1,0 +1,1469 @@
+{
+  "banner": {
+    "individual": {
+      "carouselImages": [
+        {
+          "image": "assets/images/feedback/Landing-Loan.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/Home-Loan.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/kisan-card.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/MSME-Loan.png",
+          "title": "",
+          "description": ""
+        }
+      ]
+    },
+    "company": {
+      "carouselImages": [
+        {
+          "image": "assets/images/feedback/Landing-Loan.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/Home-Loan.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/kisan-card.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/MSME-Loan.png",
+          "title": "",
+          "description": ""
+        }
+      ]
+    },
+    "group": {
+      "carouselImages": [
+        {
+          "image": "assets/images/Digital-Product.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/Home-Loan.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/kisan-card.png",
+          "title": "",
+          "description": ""
+        },
+        {
+          "image": "assets/images/MSME-Loan.png",
+          "title": "",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "pageSequenceData": {
+    "journeyPages": {
+      "individual": [
+        {
+          "pageIndex": 0,
+          "pageCode": "EMAIL_VERIFY",
+          "pageName": "Email Verify",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": null,
+          "lastPage": false,
+          "url": "product/basicinfo/email-id-verification"
+        },
+        {
+          "pageIndex": 1,
+          "pageCode": "STUDENT_DETAILS",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Student Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/student-details"
+        },
+        {
+          "pageIndex": 2,
+          "pageCode": "EMPLOYMENT_DETAILS",
+          "pageName": "Employment Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Employment Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/employement-details"
+        },
+        {
+          "pageIndex": 3,
+          "pageCode": "ADMISSION_DETAILS",
+          "pageName": "Admission Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Admission Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/admission-details"
+        },
+        {
+          "pageIndex": 4,
+          "pageCode": "CO-APPLICANT_DETAILS",
+          "pageName": "Co-Applicant Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Co-Applicant Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/coApplicant-details"
+        },
+        {
+          "pageIndex": 5,
+          "pageCode": "CO-APPLICANT_EMPLOYMENT_DETAILS",
+          "pageName": "Co-Applicant Employment Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Co-Applicant Employment Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/coApplicantEmp-details"
+        },
+        {
+          "pageIndex": 6,
+          "pageCode": "DOCUMENT_UPLOAD_V2",
+          "pageName": "Document Upload",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Document Upload Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/document-upload-v2"
+        },
+        {
+          "pageIndex": 7,
+          "pageCode": "COLLEGE_DETAILS",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "College Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/college-details"
+        },
+        {
+          "pageIndex": 8,
+          "pageCode": "COURSE_DETAILS",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Course Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/course-details"
+        },
+        {
+          "pageIndex": 9,
+          "pageCode": "SCHOLAR_FINANCE",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Scholar Finance Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/scholar-finance"
+        },
+        {
+          "pageIndex": 10,
+          "pageCode": "LOAN_DETAILS",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Loan Details Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/loan-details"
+        },
+        {
+          "pageIndex": 11,
+          "pageCode": "LOAN_SUMMARY",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Loan Summary Verification Completed",
+          "lastPage": false,
+          "url": "product/custom-information/loan-summary"
+        }
+      ]
+    },
+    "otherPages": {
+      "individual": [
+        {
+          "pageIndex": 0,
+          "pageCode": "EMAIL_VERIFY",
+          "pageName": "Email Verify",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": null,
+          "lastPage": false,
+          "url": "product/basicinfo/email-id-verification"
+        },
+        {
+          "pageIndex": 1,
+          "pageCode": "STUDENT_DETAILS",
+          "pageName": "Student Details",
+          "status": "INITIALIZED",
+          "subStatus": null,
+          "subStatusChangeDescription": "Student Details Verification Completed",
+          "lastPage": false,
+          "url": ""
+        }
+      ]
+    }
+  },
+  "stepperData": {
+    "individual": [
+      {
+        "name": "Basic Information",
+        "info": "10MinVerifyYou",
+        "isActive": true,
+        "isCompleted": false,
+        "subStep": [
+          {
+            "id": "001",
+            "pageCode": "EMAIL_VERIFY",
+            "name": "Email",
+            "isActive": false,
+            "isCompleted": false
+          }
+        ]
+      },
+      {
+        "name": "Basic Information",
+        "info": "10MinVerifyYou",
+        "isActive": true,
+        "isCompleted": false,
+        "subStep": [
+          {
+            "id": "001",
+            "pageCode": "STUDENT DETAILS",
+            "name": "Details",
+            "isActive": false,
+            "isCompleted": false
+          }
+        ]
+      }
+    ]
+  },
+  "tabsData": [
+    {
+      "displayType": "accordion",
+      "name": "docRequired",
+      "label": "Document Required",
+      "docReqData": {
+        "Individual": [
+          {
+            "name": "idproof",
+            "label": "ID Proof",
+            "data": [
+              {
+                "label": "Pan Card",
+                "icon": "assets/icons/pan.png"
+              },
+              {
+                "label": "Aadhar Card",
+                "icon": "assets/icons/aadhaar.png"
+              },
+              {
+                "label": "Voter Id Card",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Driving license",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Passport",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Others",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "name": "addressproof ",
+            "label": "Address Proof",
+            "data": [
+              {
+                "label": "Telephone bill",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Electricity bill",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Property tax",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Aadhar card",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Voter Id Card ",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Driving license",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Passport",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "udyamregistration",
+            "label": "Udyam Registration",
+            "data": [
+              {
+                "label": "Udyam Registration",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "financialstatement",
+            "label": "Financial Statement",
+            "data": [
+              {
+                "label": "Bank Statement",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Income Tax Return",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "GST Return",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ],
+        "Sole Proprietorship": [
+          {
+            "name": "idproof",
+            "label": "ID Proof",
+            "data": [
+              {
+                "label": "Pan Card",
+                "icon": "assets/icons/pan.png"
+              },
+              {
+                "label": "Aadhaar Card",
+                "icon": "assets/icons/aadhaar.png"
+              },
+              {
+                "label": "Voter Id Card",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Driving license",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Passport",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Others",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "name": "addressproof ",
+            "label": "Address Proof",
+            "data": [
+              {
+                "label": "Telephone bill",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Electricity bill",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Property tax",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Aadhaar card",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Voter Id Card ",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Driving license",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "Passport",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "udyamregistration",
+            "label": "Udyam Registration",
+            "data": [
+              {
+                "label": "Udyam Registration",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "bankstatement",
+            "label": "Bank Statement",
+            "data": [
+              {
+                "label": "Bank Statement",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ],
+        "Partnership": [
+          {
+            "name": "panofthefirm",
+            "label": "PAN of the Firm",
+            "data": [
+              {
+                "label": "PAN of the Firm",
+                "icon": "assets/icons/pan.png"
+              }
+            ]
+          },
+          {
+            "name": "Partners KYC ",
+            "label": "Partners KYC",
+            "data": [
+              {
+                "label": "KYC Documents",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "udyamregistration",
+            "label": "Udyam Registration",
+            "data": [
+              {
+                "label": "Udyam Registration",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Consent froms",
+            "label": "Consent froms",
+            "data": [
+              {
+                "label": "Consent froms",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Udyam Aadhar Memorandum",
+            "label": "Udyam Aadhar Memorandum",
+            "data": [
+              {
+                "label": "Udyam Aadhar Memorandum",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "GST Registration",
+            "label": "GST Registration",
+            "data": [
+              {
+                "label": "GST Registration",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "GST Returns",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Promotores/Directors Shareholding",
+            "label": "Promotores/Directors Shareholding",
+            "data": [
+              {
+                "label": "Shareholding Documents",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Bank statement",
+            "label": "Bank statement",
+            "data": [
+              {
+                "label": "Bank statement",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ],
+        "Public Limited": [
+          {
+            "name": "PAN",
+            "label": "PAN",
+            "data": [
+              {
+                "label": "PAN Card",
+                "icon": "assets/icons/pan.png"
+              }
+            ]
+          },
+          {
+            "name": "Udyam Aadhar Memorandum ",
+            "label": "Udyam Aadhar Memorandum",
+            "data": [
+              {
+                "label": "Udyam Aadhar Memorandum",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "GST Registration",
+            "label": "GST Registration",
+            "data": [
+              {
+                "label": "GST Registration",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "GST Returns",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "bankstatement",
+            "label": "Bank Statement",
+            "data": [
+              {
+                "label": "Bank Statement",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Promotores/Directors Shareholding",
+            "label": "Promotores/Directors Shareholding",
+            "data": [
+              {
+                "label": "Shareholding Documents",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Bureau to be checked for Entity",
+            "label": "Bureau to be checked for Entity",
+            "data": [
+              {
+                "label": "Bureau to be checked for Entity",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ],
+        "Private Limited": [
+          {
+            "name": "PAN",
+            "label": "PAN",
+            "data": [
+              {
+                "label": "Pan Card",
+                "icon": "assets/icons/pan.png"
+              }
+            ]
+          },
+          {
+            "name": "Udyam Aadhar Memorandum ",
+            "label": "Udyam Aadhar Memorandum",
+            "data": [
+              {
+                "label": "Udyam Aadhar Memorandum",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "GST Registration",
+            "label": "GST Registration",
+            "data": [
+              {
+                "label": "GST Registration",
+                "icon": "assets/icons/file_black.png"
+              },
+              {
+                "label": "GST Returns",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "bankstatement",
+            "label": "Bank Statement",
+            "data": [
+              {
+                "label": "Bank Statement",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Promotores/Directors Shareholding",
+            "label": "Promotores/Directors Shareholding",
+            "data": [
+              {
+                "label": "Shareholding Documents",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Bureau to be checked for Entity",
+            "label": "Bureau to be checked for Entity",
+            "data": [
+              {
+                "label": "Bureau to be checked for Entity",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ],
+        "Limited Liability Partnership": [
+          {
+            "name": "LLP PAN",
+            "label": "LLP PAN",
+            "data": [
+              {
+                "label": "LLP PAN",
+                "icon": "assets/icons/pan.png"
+              }
+            ]
+          },
+          {
+            "name": "Udyam Aadhar Memorandum ",
+            "label": "Udyam Aadhar Memorandum",
+            "data": [
+              {
+                "label": "Udyam Aadhar Memorandum",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "GST registration",
+            "label": "GST registration",
+            "data": [
+              {
+                "label": "GST Returns",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Promotores/Directors Shareholding",
+            "label": "Promotores/Directors Shareholding",
+            "data": [
+              {
+                "label": "Shareholding Documents",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Bank statement",
+            "label": "Bank statement",
+            "data": [
+              {
+                "label": "Bank statement",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          },
+          {
+            "displayType": "accordion",
+            "name": "Bureau to be checked for Entity",
+            "label": "Bureau to be checked for Entity",
+            "data": [
+              {
+                "label": "Bureau to be checked for Entity",
+                "icon": "assets/icons/file_black.png"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "displayType": "bulletPoints",
+      "name": "charges",
+      "label": "Charges",
+      "displayData": [
+        "Processing Charges will be 1 % of Loan Amount or minimum Rs. 2500/-"
+      ]
+    },
+    {
+      "displayType": "emiCalculator",
+      "name": "emiCalculator",
+      "label": "EMI Calculator",
+      "LoanData": {
+        "interest": 8.25,
+        "minLoanAmount": 10000,
+        "maxLoanAmount": 1000000,
+        "minTenure": 1,
+        "maxTenure": 84
+      }
+    }
+  ],
+  "pageSectionConfig": {
+    "individual": {
+      "EMAIL_VERIFY": [
+        {
+          "componentType": "TITLE",
+          "className": "mb-5",
+          "validateSection": false,
+          "mandatory": false,
+          "sectionContent": {
+            "isShow": true,
+            "titleData": "Enter Your Email Id"
+          }
+        },
+        {
+          "componentType": "PARAGRAPH",
+          "validateSection": false,
+          "mandatory": false,
+          "className": "text-info col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 ",
+          "sectionContent": {
+            "isShow": true,
+            "paragraphData": "Registering your Email Id would ensure that you’re connected with Bank with ease of receiving your Bank Account statement, transaction alerts and OTP alerts."
+          }
+        },
+        {
+          "componentType": "FORM",
+          "className": "medium",
+          "validateSection": true,
+          "mandatory": false,
+          "sectionContent": {
+            "options": {
+              "columnSize": 1
+            },
+            "isShow": true,
+            "fields": [
+              {
+                "fieldDataType": "TEXT",
+                "isMandatory": true,
+                "fieldLabel": "Email Id",
+                "fieldAccessModifier": "EDITABLE",
+                "minLength": null,
+                "maxLength": null,
+                "error": null,
+                "value": null,
+                "validationJson": null,
+                "rulesFor": null,
+                "regex": "^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$",
+                "regexErrorMessage": "Invalid Email id",
+                "rowNo": null,
+                "columnNo": null,
+                "placeholderText": "Enter Valid Email ID",
+                "fieldName": "alternativeUsername",
+                "labelInfo": null,
+                "showLabel": true,
+                "groupName": null,
+                "groupIndex": null,
+                "showField": true
+              }
+            ],
+            "validityEmitter": "new Subject<void>()",
+            "formValueEmitter": "new Subject<void>()"
+          }
+        },
+        {
+          "componentType": "OTP",
+          "validateSection": false,
+          "sectionContent": {
+            "fields": {
+              "fieldDataType": "OTP",
+              "otpType": "EMAIL",
+              "isMandatory": true,
+              "fieldLabel": "Enter Email OTP",
+              "fieldAccessModifier": "EDITABLE",
+              "minLength": 6,
+              "maxLength": 15,
+              "length": 6,
+              "error": null,
+              "value": null,
+              "validationJson": null,
+              "rulesFor": null,
+              "regex": null,
+              "regexErrorMessage": null,
+              "rowNo": null,
+              "columnNo": null,
+              "groupName": null,
+              "groupIndex": null,
+              "placeholderText": "xx x  xxxxx",
+              "fieldName": "accountNo",
+              "labelInfo": "loakjsdnakjd akjdnakdnakjd askdjnadkjnad",
+              "showLabel": true,
+              "showField": true,
+              "OtpMasking": true,
+              "otpDataType": "NUMBER",
+              "otpAttempts": 3,
+              "waitTimeInSeconds": 120,
+              "infoText": "A 6 digit OTP has been sent to the above email"
+            },
+            "options": {
+              "value": null,
+              "notificationType": "COMMON_OTP_TWO",
+              "loanProduct": null,
+              "createBorrower": true,
+              "generateOtp": true,
+              "journeyEventCode": "EMAIL_VERIFY"
+            },
+            "isShow": false
+          }
+        }
+      ],
+      "CUSTOMER_TYPE": [
+        {
+          "componentType": "PARAGRAPH",
+          "validateSection": false,
+          "mandatory": false,
+          "className": "common-info mb-5",
+          "sectionContent": {
+            "isShow": true,
+            "endLinks": [
+              {
+                "label": "Resume your Application",
+                "linkType": "REDIRECT",
+                "url": "/basicinfo/mobile-verify?resumeJourney=true"
+              }
+            ],
+            "paragraphData": "Already Applied?",
+            "subContent": "Resume your Application"
+          }
+        },
+        {
+          "componentType": "TITLE",
+          "mandatory": false,
+          "className": "common-title mt-5",
+          "validateSection": false,
+          "sectionContent": {
+            "isShow": true,
+            "titleData": "Welcome!"
+          }
+        },
+        {
+          "componentType": "FORM",
+          "validateSection": true,
+          "mandatory": true,
+          "className": "mt-10 medium",
+          "sectionContent": {
+            "options": {
+              "columnSize": 1
+            },
+            "isShow": true,
+            "fields": [
+              {
+                "fieldDataType": "DROPDOWN",
+                "dependentField": null,
+                "isMandatory": true,
+                "commonpropertyType": "BORROWER_PROFILE_VARIABLE5",
+                "fieldLabel": "Constitution",
+                "fieldAccessModifier": "READ_ONLY",
+                "minLength": 6,
+                "maxLength": 15,
+                "error": null,
+                "value": null,
+                "validationJson": {
+                  "default": "Individual"
+                },
+                "rulesFor": null,
+                "regex": null,
+                "options": [],
+                "regexErrorMessage": null,
+                "errorIconPath": null,
+                "rowNo": null,
+                "columnNo": null,
+                "placeholderText": "Select Constitution",
+                "fieldName": "constitution",
+                "showLabel": true,
+                "labelInfo": null,
+                "groupName": null,
+                "groupIndex": null,
+                "showField": true
+              },
+              {
+                "fieldDataType": "BUTTON_TOGGLE",
+                "otpType": "PHONE",
+                "isMandatory": true,
+                "fieldLabel": "Identify Yourself",
+                "fieldAccessModifier": "EDITABLE",
+                "minLength": 6,
+                "maxLength": 15,
+                "length": 6,
+                "error": null,
+                "value": null,
+                "validationJson": null,
+                "rulesFor": null,
+                "regex": null,
+                "regexErrorMessage": null,
+                "rowNo": null,
+                "columnNo": null,
+                "groupName": null,
+                "groupIndex": null,
+                "placeholderText": "xx x  xxxxx",
+                "fieldName": "identifyYourself",
+                "labelInfo": null,
+                "showLabel": true,
+                "showField": true,
+                "isVertical": true,
+                "options": [
+                  {
+                    "optionCode": "NC",
+                    "optionKey": "NewCustomer",
+                    "optionName": "I'm a New Customer",
+                    "optionParentCode": "-",
+                    "optionParentPropertyType": null,
+                    "optionValue": "",
+                    "icon": "newCustomer",
+                    "sortIndex": 0
+                  },
+                  {
+                    "optionCode": "EC",
+                    "optionKey": "ExistingCustomer",
+                    "optionName": " I'm an Existing Customer",
+                    "optionParentCode": "-",
+                    "optionParentPropertyType": null,
+                    "optionValue": "",
+                    "icon": "existingCustomer",
+                    "sortIndex": 1
+                  }
+                ]
+              }
+            ],
+            "validityEmitter": "new Subject<void>()",
+            "formValueEmitter": "new Subject<void>()"
+          }
+        }
+      ],
+      "EKYC_VERIFY": [
+        {
+          "componentType": "TITLE",
+          "validateSection": false,
+          "className": "display-flex mb-5",
+          "sectionContent": {
+            "titleData": "KYC Aadhaar Verification",
+            "isShow": true,
+            "endContent": [
+              {
+                "componentType": "ICON",
+                "className": "ml-10",
+                "sectionContent": {
+                  "isShow": true,
+                  "iconPath": "/assets/icons/aadhaar-colored.png"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "componentType": "FORM",
+          "validateSection": true,
+          "className": "mt-5",
+          "sectionContent": {
+            "options": {
+              "columnSize": 1,
+              "mapSupplyData": true,
+              "mapAndDisable": true
+            },
+            "isShow": true,
+            "fields": [
+              {
+                "fieldDataType": "AADHAR",
+                "isMandatory": true,
+                "fieldLabel": "Enter Your Aadhaar Number",
+                "fieldAccessModifier": "EDITABLE",
+                "minLength": 6,
+                "maxLength": 15,
+                "error": null,
+                "value": null,
+                "validationJson": null,
+                "rulesFor": null,
+                "regex": "^[0-9]{12}$",
+                "regexErrorMessage": "Only numbers are allowed.",
+                "rowNo": null,
+                "columnNo": null,
+                "placeholderText": "xx x  xxxxx",
+                "fieldName": "identityNumberOne",
+                "labelInfo": null,
+                "showLabel": true,
+                "Masking": true,
+                "groupName": null,
+                "groupIndex": null,
+                "isPreview": true,
+                "showField": true,
+                "aadhaarNumberFirstMask": true,
+                "aadhaarNumberSecondMask": true,
+                "aadhaarNumberThirdMask": false
+              }
+            ],
+            "validityEmitter": "new Subject<void>()",
+            "formValueEmitter": " new Subject<void>()"
+          }
+        },
+        {
+          "componentType": "OTP",
+          "validateSection": false,
+          "className": "w-45",
+          "sectionContent": {
+            "fields": {
+              "fieldDataType": "OTP",
+              "otpType": "AADHAR",
+              "isMandatory": true,
+              "fieldLabel": "Enter Aadhaar OTP",
+              "fieldAccessModifier": "EDITABLE",
+              "minLength": 6,
+              "maxLength": 15,
+              "length": 6,
+              "error": null,
+              "value": null,
+              "validationJson": null,
+              "rulesFor": null,
+              "regex": null,
+              "regexErrorMessage": null,
+              "rowNo": null,
+              "columnNo": null,
+              "groupName": null,
+              "groupIndex": null,
+              "placeholderText": "xx x  xxxxx",
+              "fieldName": "accountNo",
+              "labelInfo": "loakjsdnakjd akjdnakdnakjd askdjnadkjnad",
+              "showLabel": true,
+              "showField": true,
+              "OtpMasking": true,
+              "otpDataType": "NUMBER",
+              "otpAttempts": 3,
+              "waitTimeInSeconds": 120,
+              "infoText": "A 6 digit OTP code has been sent to aadhaar registered mobile number"
+            },
+            "options": {
+              "value": null,
+              "notificationType": "COMMON_OTP_TWO",
+              "loanProduct": null,
+              "createBorrower": true,
+              "generateOtp": true,
+              "requestFor": "BORROWER",
+              "journeyEventCode": "AADHAR_VERIFY"
+            },
+            "isShow": false
+          }
+        }
+      ]
+
+    }
+  },
+  "pageMetaConfig": {},
+  "productDocumentList": {
+    "documentList": [
+      {
+        "title": "minimum6MonthsBankStatement",
+        "documentName": "6 Months Bank Statement",
+        "documentCategoryCode": "DOC17",
+        "label": "Bank Statement (6 months)",
+        "isReceived": false,
+        "required": true,
+        "documentList": [
+          {
+            "icon": "../../../assets/icons/download.png",
+            "label": "Get Online",
+            "info": "Through Bank Portal",
+            "type": "redirectURL",
+            "category": "onlineFetch",
+            "documentCategoryCode": "DOC17"
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Digital ePDF",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "redirectURL",
+            "category": "statementUpload",
+            "documentCategoryCode": "DOC17"
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Scanned Document",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "redirectURL",
+            "category": "scannedStatementUpload",
+            "documentCategoryCode": "DOC17"
+          }
+        ]
+      },
+      {
+        "title": "udyamRegistrationNo",
+        "documentName": "Udyam Registration",
+        "documentCategoryCode": "DOC19",
+        "label": "Udyam Registration Certificate",
+        "isReceived": false,
+        "required": true,
+        "documentList": [
+          {
+            "icon": "../../../assets/icons/download.png",
+            "label": "Get Online",
+            "info": "Through Udyam aadhar portal",
+            "type": "redirectURL",
+            "documentCategoryCode": "DOC19",
+            "disable": true
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Digital ePDF",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "redirectURL",
+            "documentCategoryCode": "DOC19",
+            "disable": true
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Scanned Document",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "selfUpload",
+            "category": "udayamdoc",
+            "documentCategoryCode": "DOC19",
+            "disable": false
+          }
+        ]
+      },
+      {
+        "title": "otherDocuments",
+        "documentName": "Other Documents",
+        "documentCategoryCode": "DOC88",
+        "label": "Other Documents",
+        "isReceived": false,
+        "required": false,
+        "documentList": [
+          {
+            "icon": "../../../assets/icons/download.png",
+            "label": "Get Online",
+            "info": "Get Online",
+            "type": "redirectURL",
+            "documentCategoryCode": "DOC88",
+            "disable": true
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Digital ePDF",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "redirectURL",
+            "documentCategoryCode": "DOC88",
+            "disable": true
+          },
+          {
+            "icon": "../../../assets/icons/file_brand.png",
+            "label": "Upload Scanned Document",
+            "info": "only .pdf files and max size sholud be 20 Mb",
+            "type": "selfUpload",
+            "category": "otherDoc",
+            "documentCategoryCode": "DOC88",
+            "disable": false
+          }
+        ]
+      }
+    ]
+  },
+  "journeyEventCodes": {
+    "ACCOUNT_VERIFY": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_2",
+        "subStatusChangeDescription": "Once account successfully verified with OTP"
+      }
+    },
+    "NPA_SUCCESS": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_22",
+        "subStatusChangeDescription": "NPA check / Pull fetch general account enquiry NPA successful"
+      }
+    },
+    "NPA_FAIL": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_23",
+        "subStatusChangeDescription": "CBS NPA API send failure or error respose"
+      },
+      "status": {
+        "statusToBeChanged": "WITHDRAW",
+        "statusChangeDescription": "Rejection Review"
+      }
+    },
+    "SMA_SUCCESS": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_24",
+        "subStatusChangeDescription": "CBS SMA API successful response provided"
+      }
+    },
+    "SMA_FAIL": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_25",
+        "subStatusChangeDescription": "CBS SMA API send failure or error respose"
+      },
+      "status": {
+        "statusToBeChanged": "WITHDRAW",
+        "statusChangeDescription": "Rejection Review"
+      }
+    },
+    "BRE_QUALIFIED": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_28",
+        "subStatusChangeDescription": "BRE response - total sacntion amount below 10 lac"
+      }
+    },
+    "BRE_NOT_QUALIFIED": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_29",
+        "subStatusChangeDescription": "BRE response - total sacntion amount above 10 lac"
+      },
+      "status": {
+        "statusToBeChanged": "WITHDRAW",
+        "statusChangeDescription": "Rejection Review"
+      }
+    },
+    "AADHAR_VERIFY": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_6",
+        "subStatusChangeDescription": "Aadhaar verification successfull"
+      }
+    },
+    "EDW_STATEMENT": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_3",
+        "subStatusChangeDescription": "after fetch general account response it has to call this sub status"
+      }
+    },
+    "UDYAM_VERIFY": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_38",
+        "subStatusChangeDescription": "Udyam verification successfull"
+      },
+      "APPICE_EVENT": {
+        "key": "ElOnboardUser",
+        "properties": {
+          "UserOnboarded": true
+        }
+      }
+    },
+    "UDYAM_VERIFY_FAILED": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_39",
+        "subStatusChangeDescription": "Udyam verification Failed"
+      },
+      "status": {
+        "statusToBeChanged": "WITHDRAW",
+        "statusChangeDescription": "Rejection Review"
+      }
+    },
+    "MORE_INFO": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_5",
+        "subStatusChangeDescription": "Basic Information saved successfully"
+      }
+    },
+    "SMA_MCP_QUAILIFIED": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_30",
+        "subStatusChangeDescription": "SMA & MCP is Quailified"
+      }
+    },
+    "SMA_MCP_NOT_QUAILIFIED": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_33",
+        "subStatusChangeDescription": "SMA & MCP is not Quailified"
+      }
+    },
+    "EMPLOYMENT_DETAILS": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_34",
+        "subStatusChangeDescription": "Enhancement Initial successfully"
+      }
+    },
+    "ENHANCEMENT_FLOW": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L6",
+        "statusChangeDescription": "Enhancement successfully"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_4",
+        "subStatusChangeDescription": "Enhancement successfully"
+      }
+    },
+    "ENHANCEMENT_EXISITING_FLOW": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L6",
+        "statusChangeDescription": "Exisiting successfully"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_5",
+        "subStatusChangeDescription": "Exisiting successfully"
+      }
+    },
+    "EXISITING_FLOW": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L7",
+        "statusChangeDescription": "Exisiting successfully"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_12",
+        "subStatusChangeDescription": "Exisiting successfully"
+      }
+    },
+    "NEW_ENHANCEMENT": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L6",
+        "statusChangeDescription": "Enhancement case if new facility added by user"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_6",
+        "subStatusChangeDescription": "Enhancement case if new facility added by user"
+      }
+    },
+    "NO_ENHANCEMENT": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L6",
+        "statusChangeDescription": "Enhancement case if no new facility added by user"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_7",
+        "subStatusChangeDescription": "Enhancement case if no new facility added by user"
+      }
+    },
+    "DOCUMENT_UPLOAD_V2": {
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_15",
+        "subStatusChangeDescription": "Document Upload"
+      }
+    },
+    "DOCUMENT_UPLOAD_COMPLETE": {
+      "APPICE_EVENT": {
+        "key": "ElAddBusinessDetails",
+        "properties": {
+          "DocsUploaded": true,
+          "Constitution": [
+            "constitution"
+          ]
+        }
+      }
+    },
+    "KFS_LOADED": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L7",
+        "statusChangeDescription": "KFS loaded"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_13",
+        "subStatusChangeDescription": "KFS loaded"
+      }
+    },
+    "KFS_APPROVED": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L7",
+        "statusChangeDescription": "KFS Accepted"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_14",
+        "subStatusChangeDescription": "KFS Accepted"
+      }
+    },
+    "KFS_REJECTED": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L7",
+        "statusChangeDescription": "KFS Rejected"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_15",
+        "subStatusChangeDescription": "KFS Rejected"
+      }
+    },
+    "CONGRATS_PAGE": {
+      "status": {
+        "statusToBeChanged": "AWAITING_APPROVAL_L7",
+        "statusChangeDescription": "On successful movement on last page"
+      },
+      "subStatus": {
+        "newSubStatus": "SUB_STATUS_16",
+        "subStatusChangeDescription": "KFS Accepted"
+      },
+      "APPICE_EVENT": {
+        "key": "EducationalLoan",
+        "properties": {
+          "LoanApproved": true,
+          "LoanAmount": [
+            "metaData.globalScopeData.borrowerDetails.borrowerDetail.loanSanctionVO.loanSanctionAmount"
+          ],
+          "AccountNumber": [
+            "metaData.globalScopeData.borrowerDetails.borrowerDetail.virtualAccountNumber"
+          ],
+          "LeadID": [
+            "metaData.globalScopeData.loanDetails.loanDetails.crmLeadId"
+          ],
+          "ReferenceNumber": [
+            "metaData.globalScopeData.loanDetails.loanDetails.crmLeadId"
+          ],
+          "LoanApprovedDate": [
+            "metaData.globalScopeData.loanDetails.currentDate"
+          ]
+        }
+      }
+    }
+  }
+}

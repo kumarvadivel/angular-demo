@@ -1,0 +1,42 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "paths": {
+        "@kcc-ah-app/*": [
+          "src/app/*"
+        ],
+        "@kcc-ah-app-components/*": [
+          "src/app/components/*"
+        ],
+        "@kcc-ah-assets/*": [
+          "src/assets/*"
+        ],
+        "@kcc-ah-configuration/*": [
+          "src/configuration/*"
+        ],
+        "@kcc-ah-environments/*": [
+          "src/environments/*"
+        ]
+      },
+      "baseUrl": "./",
+      "outDir": "./dist/out-tsc",
+      "sourceMap": true,
+      "declaration": false,
+      "downlevelIteration": true,
+      "experimentalDecorators": true,
+      "moduleResolution": "node",
+      "importHelpers": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "useDefineForClassFields": false,
+      "target": "ES2022",
+      "module": "ES2022",
+      "lib": [
+        "es2018",
+        "dom",
+        "ES2022"
+      ]
+    }
+  }
+  

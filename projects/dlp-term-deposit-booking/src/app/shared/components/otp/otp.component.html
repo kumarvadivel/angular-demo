@@ -1,0 +1,40 @@
+<div [class]="options.className" class="col-lg-6 col-md-4 form-group input-container">
+    <div class="text-info">{{field.infoText}}</div>
+    <label class="form-label Required">{{field.fieldLabel}}
+        <span class="requiredHastrick"></span>
+    </label>
+    <div class="mb-3 d-flex align-items-center">
+        <ngx-otp-input #ngxotp (fill)="handleFillEvent($event)" (otpChange)="handeOtpChange($event)"
+                       [config]="{
+            otpLength: field.length,
+            autofocus: true,
+            isPasswordInput: field.OtpMasking,
+            numericInputMode: field.otpDataType=='NUMBER'?true:false,
+            classList: {
+                inputBox: 'my-super-box-class',
+                input: 'my-super-class',
+                inputFilled: 'my-super-filled-class',
+                inputDisabled: 'my-super-disable-class',
+                inputSuccess: 'my-super-success-class',
+                inputError: 'my-super-error-class'
+            }
+        }"></ngx-otp-input>
+        <img (click)="preview(field)" *ngIf="field.isPreview" alt="img" class="cursorPointer"
+             src="../../../assets//icons/preview.png">
+        <img (click)="preview(field)" *ngIf="!field.isPreview" alt="img" class="cursorPointer"
+             src="../../../assets//icons/preview-not.png">
+    </div>
+    <div class="otp-timer mt-2">
+        <div *ngIf="otpAttempt < field.otpAttempts" class="text-danger d-flex align-items-center mr-5 ">
+            <img alt="img" class="me-2" src="../../../assets/icons/caution.png"> {{otpAttempt}}
+            attempts remaining
+        </div>
+        <div class="otp-timer mt-2"></div>
+        <div *ngIf="timeLeft > 0" class="text-orange">Wait for <span class="fw-600">{{minsLeft |
+            number:'1.0-0'}}:{{secsLeft |number:'1.0-0'}}
+            </span> to <span (click)="resendOtp()" class="resendOTP">Resend OTP</span></div>
+        <span (click)="resendOtp()" *ngIf="timeLeft == 0" class="text-info text-orange">
+            Resend OTP</span>
+    </div>
+</div>
+<spinner *ngIf="showloader"></spinner>

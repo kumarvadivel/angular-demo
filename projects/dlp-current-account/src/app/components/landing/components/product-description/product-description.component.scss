@@ -1,0 +1,105 @@
+.loan-title {
+    position: relative;
+    &:before {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 6px;
+        background-color: #F58220;
+    }
+}
+
+:host::ng-deep .mat-tab-label {
+    min-width: auto;
+    color: rgba(42, 42, 42, 1);
+    font-size: 14px;
+    font-family: --var(font-family);
+    opacity: 1;
+}
+
+.loan-form-label {
+    font-size: 24px;
+    font-family: var(--font-family-lt);
+    padding-left: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-details {
+    list-style: none;
+    margin-bottom: 20px;
+    line-height: 40px;
+    > li {
+        color: #2a2a2a;
+        font-size: 16px;
+        font-family: var(--font-family);
+        &::before {
+            content: "\2022";
+            color: #007dc5;
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    }
+}
+
+:host::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: #F58220;
+}
+:host::ng-deep .mat-tab-label-active {
+    color: #F58220;
+}
+
+:host::ng-deep .mat-tab-header {
+    border-bottom: transparent !important;
+}
+
+:host::ng-deep .mat-tab-body-content {
+    overflow: hidden;
+}
+
+:host::ng-deep .mat-expansion-panel-header {
+    // background: #ebebeb7a;
+    border-radius: 4px;
+    height: 32px;
+}
+:host::ng-deep .mat-expansion-panel-header-title {
+    font-size: 14px !important;
+    color: #007dc5; 
+}
+
+:host::ng-deep .mat-expansion-indicator::after{
+    color: #007dc5;
+}
+
+:host::ng-deep .mat-expansion-panel-content {
+    // background: #f4f9fc;
+        color: #565656;
+        font-size: 16px;
+        font-family: var(--font-family);
+}
+
+:host::ng-deep .mat-expansion-panel-header.mat-expanded:focus,
+.mat-expansion-panel-header.mat-expanded:hover {
+    // background: #f4f9fc;
+    color: #007dc5;
+}
+.choose-loan-img {
+    width: 70%;
+    background-size: cover;
+}
+.accordion-panel {
+    .mat-expansion-panel{
+        box-shadow: none !important;
+    }
+}
+.offer-list {
+    padding: 10px 30px;
+}
+.layout{
+    padding: 10px 60px;
+}

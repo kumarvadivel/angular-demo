@@ -1,0 +1,22 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12  brand-layout commonStyle">
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mobileWidt pl-0 pr-0 commonStyle main-cnt-pad">
+        <div class="common-title mb-0 mt-5 d-flex align-items-center ">Your session has expired</div>
+        <ol class="inactivity-status">
+            <li *ngFor="let session of sessionLabel">
+                <div class="">
+                    {{session.message}}
+                </div>
+            </li>
+        </ol>
+        <div>
+            <button class="btn-orange mob-w-100" mat-flat-button (click)="continue()">Continue</button>
+        </div>
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12  mobileWidt commonStyle main-cnt-pad">
+        <div class="containerscroll">
+            <div>
+                <img class="imgmobileWidt" [src]="'../../../assets/images/page-expired.webp'" alt="">
+            </div>
+        </div>
+    </div>
+</div>

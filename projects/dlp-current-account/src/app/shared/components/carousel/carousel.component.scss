@@ -1,0 +1,79 @@
+
+ :host::ng-deep .mat-tab-label-active {   
+    background-color: #f58220;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: var(--font-family-lt);
+    opacity: 1;
+    border-radius: 4px 4px 0px 0px;
+}
+
+:host::ng-deep .mat-tab-body-content {
+    overflow: hidden;
+}
+
+:host::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: transparent;
+}
+
+:host::ng-deep .carousel-caption {
+    text-align: left;
+}
+:host::ng-deep .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+:host::ng-deep .mat-slider-thumb .mat-slider-track-fill {
+    background-color: var(--brand-color);
+}
+
+:host::ng-deep .mat-slider-thumb-label {
+    background-color: var(--brand-color);
+    border-radius: 4px !important;
+    width: 65px;
+    right: -30px !important;
+}
+
+:host::ng-deep .mat-slider:not(.mat-slider-disabled).cdk-focused.mat-slider-thumb-label-showing .mat-slider-thumb {
+    transform: scale(0.7);
+}
+
+:host::ng-deep .mat-slider-horizontal.cdk-focused .mat-slider-thumb-label {
+    transform: rotate(0deg) !important;
+}
+
+:host::ng-deep .mat-slider-horizontal .mat-slider-thumb-label-text {
+    transform: inherit !important;
+}
+
+:host::ng-deep .mat-slider {
+    width: 100%;
+}
+
+:host::ng-deep .mat-slider-track-background {
+    background-color: rgb(0 125 197 / 40%) !important;
+}
+
+.home-banner {
+    background-color: white;
+    // min-height: 600px;
+    position: relative;
+}
+.bannerImage{
+    position: relative;
+    &::after {
+        background-image: linear-gradient(to bottom, #867a7a00, #000000b2);
+        content: "";
+        display: block;
+        height: 130px;
+        bottom: 0px;
+        position: absolute;
+        width: 100%;
+    }
+}
+.bannerImage img{
+    height: 350px;
+}

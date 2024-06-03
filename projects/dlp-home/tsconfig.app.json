@@ -1,0 +1,61 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "../../tsconfig.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "../../out-tsc/app",
+    "types": [
+      "node"
+    ]
+  },
+  "paths": {
+    "path": [
+      "./node_modules/stream-browserify"
+    ],
+    "exceljs": [
+      "node_modules/exceljs/dist/exceljs.min"
+    ],
+    "@home-app/*": [
+      "projects/dlp-personal-loan/src/app/*"
+    ],
+    "@home-assets/*": [
+      "projects/dlp-personal-loan/src/assets/*"
+    ],
+    "@home-configuration/*": [
+      "projects/dlp-personal-loan/src/configuration/*"
+    ],
+    "@home-environments/*": [
+      "projects/dlp-personal-loan/src/environments/*"
+    ]
+  },
+  "baseUrl": "./",
+  "types": [],
+  "sourceMap": true,
+  "declaration": false,
+  "downlevelIteration": true,
+  "experimentalDecorators": true,
+  "moduleResolution": "node",
+  "importHelpers": true,
+  "resolveJsonModule": true,
+  "esModuleInterop": true,
+  "allowSyntheticDefaultImports": true,
+  "useDefineForClassFields": false,
+  "target": "ES2022",
+  "module": "ES2022",
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts"
+  ],
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "lib": [
+    "es2018",
+    "dom",
+    "ES2022"
+  ]
+}

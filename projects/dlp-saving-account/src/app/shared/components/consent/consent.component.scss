@@ -1,0 +1,78 @@
+@mixin line-clamp-3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: break-spaces;
+    color: #565656;
+    font-size: 16px;
+    font-family: var(--font-family);
+}
+
+.aadhaarImg {
+    width: 80px;
+    position: absolute;
+    right: 18px;
+}
+
+.displayBlock{
+    display: block;
+}
+.digit-group {
+    input {
+        width: 120px;
+        height: 48px !important;
+        line-height: 50px;
+        text-align: center; 
+        font-family: var(--font-family); 
+        color: white;
+        margin-right: 24px;
+        font-weight: 500;
+        font-size: 18px;
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+}
+
+ol.lower-alpha {
+    list-style-type: none;
+    margin-bottom: 0;
+    > li {
+        color: #565656;
+        font-size: 16px;
+        font-family: var(--font-family);
+        margin-bottom: 12px;
+    }
+}
+
+.line-clamp {
+    @include line-clamp-3;
+}
+.singlelabel-line-clamp {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: break-spaces;
+    color: #565656;
+    font-size: 16px;
+    font-family: var(--font-family);
+    width:100%
+}
+::ng-deep .consent-text{
+    width: 80%;
+}
+:host::ng-deep .mat-checkbox-inner-container {
+    margin-top: 4px;
+}
+
+.error-message-container{
+        bottom: 0;
+    top: auto;
+}
+.consent-size{
+    font-size: 16px
+}
+.h-120 {
+    height: 120px;
+}

@@ -1,0 +1,45 @@
+<div class="commonStyle  brand-layout display-flex contact-branch-page-padding" *ngIf="!showloader">
+    <div *ngIf="metaConfig.showLeftContent && !commonVariableService.appLayoutConfig.mobileView" class="col-xxl-4 col-xl-4 col-lg-4 col-md-4 col-sm-12 col-xs-12 float-left mobileWidt pl-0 pr-0 commonStyle">
+        <carousel [data]="journey.carouselBanner[journey.productUserType].carouselImages"></carousel>
+        <app-dynamic-tabs [tabsData]="tabsData"></app-dynamic-tabs>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-12 col-12 float-left mobileWidt commonStyle main-cnt-pad" [ngClass]="{'w-1000':!metaConfig.showLeftContent || commonVariableService.appLayoutConfig.mobileView}">
+            <div  *ngIf="metaConfig.showStepper" [ngClass]="{'mb-20':metaConfig.showStepper}" class="w-100  pl-0 pr-0">
+                <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+            </div>
+        <div class="containerscroll">
+            <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-20':metaConfig.showSubStepper}" class="w-100">
+                <app-substepper [stepperData]="journey.metaData.substepperData">
+                </app-substepper>
+            </div>
+            <div class="w-100 mb-15">
+                <app-section-builder [config]="config"  ></app-section-builder>
+            </div>
+            <div class="summary-error mt-20">
+                <span class="material-symbols-outlined">
+                    warning
+                    </span>
+                 We appreciate your effort for showing interest with our banking. 
+            </div>
+            <div class="row">
+                <div class="form-label-lg mt-4"> Your branch details </div>
+                <div class="bank-detail-status medium">
+                    <div class="mb-0 form-label-lg d-flex align-items-start">
+                        <img [src]="'../../../assets/icons/building.png'" alt="">
+                        <div class="details-content">{{branchConfig?.branchDetails?.name}} <div class="address-content">
+                            <span class="common-info">{{branchConfig?.branchDetails?.address}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="mt-50 link-space">
+                <a class="underscore-orange active-icon-red" (click)="goBack()">Go Back to Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 mt-5 ml-20">
+        <img [src]="'assets/images/branch-search-kcc.webp'" class="exp-img steppermobileNone w-100" alt="">    
+    </div>
+  
+<spinner *ngIf="showloader"></spinner>

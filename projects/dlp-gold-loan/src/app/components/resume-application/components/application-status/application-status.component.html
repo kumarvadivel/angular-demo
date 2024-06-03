@@ -1,0 +1,19 @@
+
+<div class="breadcrumb-content">
+    <app-section-builder [config]="config"></app-section-builder>
+    <div class="mb-20 p-30 stepper-pnl"  *ngFor="let loan of resumeVariableService.resumeLoanApplications">
+        <div class="mb-20">
+            <span class="ml-5">
+                <img _ngcontent-nyc-c248="" [src]="'../../../assets/icons/home-icon-27.png'" alt="" class="me-2">
+            </span>
+            {{loan.loanPurposeName}}
+        </div>
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12  pl-0 pr-0">
+                <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+            </div>
+        </div>
+        <button class="btn-orange" (click)="resumeJourney(loan)">Resume my Application</button>
+    </div>
+</div>
+

@@ -1,0 +1,242 @@
+.stepper {
+  width: 100%;
+  display: flex;
+  margin: 0px 0px 12px 0px;
+  padding: 12px 0 12px 0px;
+
+  .step {
+    height: 100px;
+    display: table;
+    align-items: center;
+    position: relative;
+
+    .step-progress-bar {
+      margin-left: 10px;
+      height: 100px;
+      width: 10px;
+      background-color: #f3f2f1;
+      border-radius: 3px;
+      display: flex;
+
+      .sub-step {
+        position: relative;
+        background-color: #f3f2f1;
+
+        .step-splitter {
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          border-radius: 50%;
+          background-color: #c6c6c6;
+          right: 0;
+          bottom: -4px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &:first-child {
+          border-radius: 3px 0px 0px 3px;
+        }
+
+        &:last-child {
+          border-radius: 0px 3px 3px 0px;
+        }
+      }
+
+      &:last-child {
+        background-color: none !important;
+      }
+    }
+
+    .outer-cirlce {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: transparent;
+      border: 1px solid #c6c6c6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .step-text {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: #ebebeb;
+        color: #565656;
+        font-family: var(--font-family-lt);
+        font-size: 15px;
+        border: 2px solid white;
+      }
+
+      .step-text-active {
+        background-color: #007dc5;
+        color: white;
+      }
+    }
+
+    .outer-circle-completed {
+      background-color: #007dc5;
+      border: none !important;
+      min-width: 30px;
+      min-height: 30px;
+    }
+
+    .step-name-custom {
+      font-family: var(--font-family);
+      font-size: 15px;
+    }
+
+    .step-status {
+      background-color: #effff5;
+      border-radius: 4px;
+      font-family: var(--font-family-lt);
+      padding: 2px 4px;
+      color: #3ecf78;
+      text-transform: uppercase;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .step-info {
+      background-color: #f4f9fc;
+      border-radius: 4px;
+      font-family: var(--font-family-lt);
+      padding: 0px 4px;
+      color: var(--brand-color);
+      font-size: 13px;
+    }
+  }
+
+  .complete-perc {
+    margin-top: 8px;
+    color: #007dc5;
+    font-size: 12px;
+    width: 20%;
+  }
+}
+
+.active-border {
+  border: 1px solid #007dc5 !important;
+}
+
+.active-bg {
+  background-color: #007dc5 !important;
+}
+
+.completed-border {
+  border: 1px solid var(--brand-green) !important;
+}
+
+.completed-bg {
+  background-color: var(--brand-green) !important;
+}
+
+:host::ng-deep .mat-progress-bar-fill::after {
+  background-color: var(--brand-color);
+}
+
+:host::ng-deep .mat-progress-bar {
+  height: 6px;
+  border-radius: 3px;
+}
+
+.stepCount {
+  width: 20%;
+  font-size: 12px;
+  color: #2a2a2a;
+  font-family: var(--font-family-lt);
+}
+
+.stepsMobile-section {
+  height: 60px;
+  box-shadow: 0px 0px 1px 0px lightgrey;
+  background: white;
+}
+
+.stepsMobile-section > ul {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+}
+
+.stepsMobile-section > ul > li {
+  position: relative;
+  display: inline-block;
+  float: left;
+  color: rgba(24, 59, 86, .6);
+}
+
+.stepsMobile-section > ul > li > span {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  padding: 8px 5px;
+}
+
+.stepsMobile-section > ul .activeStep {
+  color: #2E5BFF;
+}
+
+.stepsMobile-section > ul .completedStep {
+  color: lightgrey;
+}
+
+.stepsMobile-section ul {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-flex;
+  float: left;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepsMobile-section ul li {
+  position: relative;
+  float: left;
+  width: 70px;
+  height: 18px;
+  margin: 25px 8px;
+  border-radius: 20px;
+  border: 1px solid blue;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepsMobile-section ul li.activeStep span {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: blue;
+  height: 6px;
+  margin: 5px;
+  border-radius: 20px;
+}
+
+.stepsMobile-section ul li.completedStep span {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  background: blue;
+  height: 100%;
+  margin: 0px;
+  border-radius: 20px;
+}
+
+.active-border .step-name-custom {
+  opacity: 1 !important;
+  font-weight: 600 !important;
+}

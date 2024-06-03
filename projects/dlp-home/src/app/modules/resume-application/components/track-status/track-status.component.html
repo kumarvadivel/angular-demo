@@ -1,0 +1,60 @@
+<div class="breadcrumb-content">
+
+    <app-bread-crumb [breadCrumbList]="breadCrumbList"></app-bread-crumb>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pl-0 pr-0">
+        <app-section-builder [config]="config"  (status)="otpCompleteTrigger($event)"></app-section-builder>
+    </div>
+    <button mat-flat-button="" *ngIf="showContinue" (click)="continue()" class=" btn-orange  ng-star-inserted">
+         Continue 
+    </button>
+</div>
+
+
+<!-- <div>
+    <div class="row ng-star-inserted">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="common-title ng-star-inserted"> Track Status </div>
+            <div class="text-info col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3"> Please, * fill the mandatory details </div>
+            <form novalidate="" class="ng-star-inserted ng-dirty ng-invalid ng-touched">
+                <div class="mb-3 ng-star-inserted">
+                    <label class="form-label form-label-lg mb-3 ng-star-inserted">Enter Details</label>
+                    <div  class="row">
+                        <form-builder class="col-lg-6 col-md-4 ng-star-inserted">
+                        <div class="mb-4 ng-dirty ng-invalid ng-touched">
+                        <label class="form-label d-flex ng-star-inserted" for="enterMobilNumber">Enter Mobile Number 
+                            <span class="requiredHastrick ng-star-inserted"></span>
+                        </label>
+                        <div class="w-100 ng-star-inserted">
+                            <mobile-number  class="ng-star-inserted">
+                                <div  class="row mb-4 input-container">
+                                <div class="form-group ng-dirty ng-invalid ng-touched">
+                                    <div class="d-flex mb-2">
+                                        <input type="text" disabled="" class="form-control form-control-lg countryCode me-3">
+                                        <div class="input-group input-group-lg">
+                                            <input appcopypaste="" 
+                                            class="form-control form-control-lg input-group-field ng-dirty ng-invalid is-invalid ng-touched"
+                                            type="text" placeholder="Enter 10 digit Mobile Number" inputmode="numeric" pattern="[0-9]*"
+                                            maxlength="10">
+                                        </div>
+                                    </div>
+                                </div></div>
+                            </mobile-number>
+                            <div class="ng-star-inserted">
+
+                            </div>
+                        </div>
+                        </div>
+                        </form-builder>
+                    </div>
+                </div>
+                <button mat-flat-button="" class="mat-focus-indicator btn-orange wper-32 
+                mat-flat-button mat-button-base ng-star-inserted">
+                    <span class="mat-button-wrapper"> Continue </span>
+                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                    <span class="mat-button-focus-overlay"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+</div> -->

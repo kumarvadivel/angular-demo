@@ -1,0 +1,46 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "paths": {
+      "exceljs": [
+        "node_modules/exceljs/dist/exceljs.min"
+      ],
+      "@pl-app/*": [
+        "src/app/*"
+      ],
+      "@pl-app-components/*": [
+        "src/app/components/*"
+      ],
+      "@pl-assets/*": [
+        "src/assets/*"
+      ],
+      "@pl-configuration/*": [
+        "src/configuration/*"
+      ],
+      "@pl-environments/*": [
+        "src/environments/*"
+      ]
+    },
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "es2018",
+      "dom",
+      "ScriptHost",
+      "ES2021.String",
+      "ES2022"
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+.thead-light {
+    background-color: #f8f8f8;
+}
+
+th {
+    font-size: 14px;
+    color: #2A2A2A;
+    font-family: var(--font-family-lt);
+}
+
+.table>:not(:last-child)>:last-child>* {
+    border-bottom-color: #F1F3F5
+}
+
+.underscore-orange {
+    color: #F58220;
+    font-size: 16px;
+    text-decoration: underline;
+}
+
+//  th.mat-header-cell:first-of-type, td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+//      padding-left: 24px;
+//  }
+tr.mat-footer-row,
+tr.mat-row[_ngcontent-hao-c243] {
+    height: 70px !important;
+}
+
+th.mat-header-cell {
+    padding: 15px;
+    padding-left: 8px;
+}
+
+.common-table {
+    td {
+        vertical-align: middle;
+    }
+}

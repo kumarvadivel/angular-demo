@@ -1,0 +1,9 @@
+@font-face {
+    font-family:'Inter-lt';
+    src:url('Inter-Light-BETA.otf') format('otf'),
+        url('Inter-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

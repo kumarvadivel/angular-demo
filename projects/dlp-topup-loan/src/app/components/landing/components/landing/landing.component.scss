@@ -1,0 +1,223 @@
+.home-content {
+  padding: 30px 80px;
+  margin-bottom: 60px;
+
+  .home-banner {
+    background-color: white;
+    min-height: 600px;
+    position: relative;
+
+    .bannerTitle {
+      font-family: var(--font-family);
+      font-weight: 600;
+    }
+
+    .bannerDescription {
+      font-family: var(--font-family);
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    .bannerImage {
+      position: relative;
+
+      .bannerImageHeight {
+        height: 600px;
+      }
+
+      &::after {
+        background-image: linear-gradient(to bottom, #867a7a00, #000000);
+        content: "";
+        display: block;
+        height: 600px;
+        bottom: 0px;
+        position: absolute;
+        width: 100%;
+      }
+    }
+  }
+
+  ::ng-deep .bannerImageHeight {
+    height: 600px !important;
+  }
+
+  .loan-products {
+    .home-title {
+      font-family: var(--font-family-lt);
+      font-size: 36px;
+      color: #2a2a2a;
+    }
+
+    .home-title-md {
+      font-family: var(--font-family-lt);
+      font-size: 24px;
+      color: #2a2a2a;
+    }
+
+    .product {
+      height: 220px;
+      padding: 16px;
+      margin-bottom: 30px;
+      border: 2px solid #197dfc;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s linear;
+      position: relative;
+
+      &:hover {
+        transform: scale(1.03);
+      }
+
+      .product-image {
+        margin-bottom: 24px;
+      }
+
+      .product-label {
+        color: #2a2a2a;
+        font-family: var(--font-family-lt);
+        font-size: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+      }
+
+      .product-info {
+        color: #565656;
+        font-family: var(--font-family);
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
+
+      .stay-tuned {
+        position: absolute;
+        right: -25px;
+        top: -24px;
+      }
+    }
+
+    .product-inactive {
+      .product-image {
+        opacity: 0.5;
+      }
+
+      .product-label {
+        opacity: 0.5;
+      }
+
+      .product-info {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.connecting-bank {
+  height: 630px;
+  padding: 30px 80px;
+  width: 100%;
+  background-color: var(--brand-color);
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .outter-layout {
+    background-color: #fff;
+    border-radius: 8px;
+    position: absolute;
+    text-align: 0;
+    top: -65px;
+    width: 90%;
+    padding: 70px;
+    box-shadow: 0 12px 32px rgb(0 0 0 / 8%);
+    z-index: 999;
+
+    .left-section {
+      padding-right: 120px;
+
+      .connect-content {
+        margin-top: 20px;
+
+        .connect-header {
+          font-size: 48px;
+          font-family: var(--font-family-lt);
+          color: #2a2a2a;
+          margin-top: 30px;
+          margin-bottom: 20px;
+        }
+      }
+
+      .connecting-info {
+        color: #565656;
+        font-size: 24px;
+        font-family: var(--font-family);
+      }
+
+      .download-app {
+        display: flex;
+        flex-direction: column;
+        margin-top: 80px;
+
+        .downloadAppHeader {
+          font-size: 32px;
+          color: #2a2a2a;
+          font-family: var(--font-family-lt);
+          border-bottom: 1px solid #dddddd;
+          margin-bottom: 16px;
+        }
+      }
+    }
+  }
+}
+
+:host::ng-deep .mat-tab-label-active {
+  background-color: #f58220;
+  color: #ffffff;
+  font-size: 14px;
+  font-family: var(--font-family-lt);
+  opacity: 1;
+  border-radius: 4px 4px 0px 0px;
+}
+
+:host::ng-deep .mat-tab-body-content {
+  overflow: hidden;
+}
+
+:host::ng-deep .mat-tab-group.mat-primary .mat-ink-bar,
+.mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: transparent;
+}
+
+.home-content .loan-products .navigate {
+  width: 100%;
+  height: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.active {
+  background-color: var(--brand-color) !important;
+}
+
+.home-content .loan-products .navigate button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  margin: 0 5px;
+  padding: 0;
+  background-color: #B6B6B6;
+}

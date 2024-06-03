@@ -1,0 +1,20 @@
+<div class="chart-wrapper">
+    <div *ngIf="config.title" class="row chart-title">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-3">
+            <label class="loan-title form-label">{{config.title}}</label>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display: block;">
+            <div [hidden]="!chart">
+                <canvas id="canvas"></canvas>
+            </div>
+            <div *ngIf="config.centerData">
+                <h2 class="total-emi">
+                    <h4>{{config.centerData.label}}</h4>
+                    <div>{{config.centerData.value}}</div>
+                </h2>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Inter-bold';
+    src: url('Inter-SemiBold.otf') format('otf'),
+    url('Inter-SemiBold.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

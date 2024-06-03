@@ -1,0 +1,49 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "types": ["node"],
+    "paths": {
+      "path": [
+        "./node_modules/stream-browserify"
+      ],
+      "exceljs":[
+        "node_modules/exceljs/dist/exceljs.min"
+      ],
+      "@tlad-app/*": [
+        "src/app/*"
+      ],
+      "@tlad-app-components/*": [
+        "src/app/components/*"
+      ],
+      "@tlad-assets/*": [
+        "src/assets/*"
+      ],
+      "@tlad-configuration/*": [
+        "src/configuration/*"
+      ],
+      "@tlad-environments/*": [
+        "src/environments/*"
+      ]
+    },
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "useDefineForClassFields": false,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "es2018",
+      "dom",
+      "es2020",
+      "ES2022"
+    ]
+  }
+}

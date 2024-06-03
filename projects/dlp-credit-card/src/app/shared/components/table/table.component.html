@@ -1,0 +1,56 @@
+<div class="input-container w-100">
+    <div class="tableFormFields mb-20">
+        <div class="w-100 commonStyle table-responsive addressField" *ngIf="config">
+            
+            <div *ngIf="config.title" class="common-title form-label">
+                {{config.title}}
+            </div>
+            <table aria-describedby="table-common" class="table table-responsive common-table">
+                <thead class="thead-light">
+                    <tr *ngIf="config.showHeaders==undefined || config.showHeaders==true" >
+                        <th class="mat-header-cell" *ngIf="config.showSerialNo" scope="col">S.No</th>
+                        <th *ngFor="let headers of config.headers" class="mat-header-cell" scope="col">{{headers.fieldLabel}}</th>
+                        <th class="mat-header-cell" *ngIf="config.showRecordActions" scope="col">Actions</th> 
+                    </tr>
+                    <tr *ngIf="!config.showHeaders==undefined || !config.showHeaders==true">
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of config.data;let recordindex=index">
+                        <td *ngIf="config.showSerialNo" >{{recordindex+1}}</td>
+                        <td *ngFor="let headers of config.headers" class="mat-cell"  >
+                            <!-- TEXT -->
+                            <span *ngIf="headers.hasOwnProperty('masking'); else defaultDiv">
+                                {{data[headers.fieldName].substring(0,3)}}XXXXXXXXX{{data[headers.fieldName].substring(12,15)}}
+                            </span>
+                            <ng-template #defaultDiv>
+                                <span *ngIf="headers.hasOwnProperty('currency');">{{data[headers.fieldName] | currency:'INR':''}}</span>
+                                <span *ngIf="headers.hasOwnProperty('dateFormat');">{{data[headers.fieldName] | date: 'dd/MM/yyyy'}}</span>
+                            </ng-template>
+                        </td>
+                         <td class="display-flex" *ngIf="config.showRecordActions"> 
+                            <div *ngFor="let action of config.recordActions">
+                                <img [src]="action.icon" width="30px" alt="action" (click)="actionEmitter(action,recordindex)">
+                            </div>
+                            
+                       </td> 
+                    </tr>
+                </tbody>
+                <tfoot *ngIf="config.showFooterAction">
+                    <tr role="row" class="mat-footer-row">
+                        <td class="mat-footer-cell" colspan="100%" *ngIf="config.showFooterAction"> 
+                            <a (click)="footerAction(config)" class="underscore-orange">{{config.footerActionLabel}}</a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

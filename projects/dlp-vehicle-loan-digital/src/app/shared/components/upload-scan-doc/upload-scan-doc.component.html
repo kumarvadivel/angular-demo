@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="popup-page">
+            <div class="header-wrapper">
+                <h3 class="form-label form-label-lg mb-0">{{data.title}}</h3>
+                <img *ngIf="!data.actionItems" alt="img" class="ml-97" mat-dialog-close
+                     [src]="'../../../assets/icons/close.png'">
+            </div>
+            <div class="content-area">
+                <app-section-builder [config]="uploadScandocfields" [sendModalData]="data"></app-section-builder>
+            </div>
+            <div class="w-100 float-left popup-btn-panel">
+                <div class="btn-panel">
+                    <button (click)="completeTransaction()" [disabled]="commonVariableService.disableProceedBtn"
+                            class="btn-orange mr-15"
+                            mat-flat-button>Proceed
+                    </button>
+                    <button (click)="close()" class="btn-stroked-orange">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

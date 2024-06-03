@@ -1,0 +1,24 @@
+<svg height="32" viewBox="0 0 32 32" width="32" xmlns="http://www.w3.org/2000/svg">
+    <g data-name="Group 17323" id="Group_17323" transform="translate(-687 -187)">
+        <circle cx="16" cy="16" data-name="Ellipse 5515" fill="#f9e9dc" id="Ellipse_5515" r="16"
+                transform="translate(687 187)"/>
+        <g data-name="Group 17322" id="Group_17322" transform="translate(-12.157 34.915)">
+            <g data-name="Group 17319" id="Group_17319" transform="translate(14022.157 110.775)">
+                <g data-name="Group 8870" id="Group_8870" transform="translate(-13310.435 46.99)">
+                    <g data-name="Ellipse 319" fill="#f58220" id="Ellipse_319" stroke="#f58220"
+                       stroke-width="1" transform="translate(-1 1.181)">
+                        <ellipse cx="4.277" cy="4.297" rx="4.277" ry="4.297" stroke="none"/>
+                        <ellipse cx="4.277" cy="4.297" fill="none" rx="4.777" ry="4.797"/>
+                    </g>
+                    <text data-name="₹" fill="#fff" font-family="SegoeUI-Semibold, Segoe UI" font-size="9" font-weight="600"
+                          id="_" transform="translate(0.277 8.32)">
+                        <tspan x="0" y="0">₹</tspan>
+                    </text>
+                </g>
+                <path d="M88.842,23.593c-.012-2.336-.11-3.589-.786-4.7-2.321-.2-4.863-2.95-4.58-5.212h.012v-.012c2.235-.271,4.985,2.262,5.194,4.585a5.021,5.021,0,0,1,.626,1.291,4.56,4.56,0,0,1,.565-1.119c.086-2.36,2.922-5.04,5.219-4.745V13.7H95.1c.27,2.213-2.2,4.917-4.494,5.187-.761,1.119-.872,2.36-.9,4.708,3.021.074,5.391.824,5.391,1.746H83.439c.012-.922,2.394-1.684,5.4-1.746Z" data-name="Path 23195"
+                      fill="#f58220"
+                      id="Path_23195" transform="translate(-13396.439 43.111)"/>
+            </g>
+        </g>
+    </g>
+</svg>

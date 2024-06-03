@@ -1,0 +1,138 @@
+<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyle main-cnt-pad mobileWidt">
+    <div class="w-100 commonStyle main-cnt-pad">
+    <div *ngIf="metaConfig.showStepper" [ngClass]="{'mb-30':metaConfig.showStepper}"
+        class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12  pl-0 pr-0">
+        <stepper [stepperData]="journey.metaData.stepperData"></stepper>
+    </div>
+    <div *ngIf="metaConfig.showSubStepper" [ngClass]="{'mb-15':metaConfig.showSubStepper}"
+        class="containerscroll mob-mt">
+        <app-substepper [stepperData]="journey.metaData.substepperData"></app-substepper>
+    </div>
+    <div class="containerscroll">
+        <div class="row no-margin">
+            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 commonStyle pl-0 pr-0 ">
+                <app-section-builder [config]="config" [contentInsertIndex]="1">
+                    <ng-template>
+                        <div class="mb-4" *ngIf="employerType === 'SALARIED'">
+                            <label class="form-label form-label-lg mb-3 d-flex align-items-center">
+                                Aadhaar Card
+                            </label>
+                            <div class="document">
+                                <div class="col-lg-4">
+                                    <div class="documentInfo">
+                                        <img alt="" class="me-2" [src]="'../../../../assets/icons/available-file_brand.png'">
+                                        <span>Available Document</span>
+                                    </div>
+                                    <div class="aadhar-name">
+                                        <span class="aadhar-pin"> <img [src]="'../../../../assets/icons/pin.png'" alt="pin" /></span>
+                                        <span class="underscore-brand">&nbsp;{{availableDocument.Name}}</span>
+                                    </div>
+                                    <span class="text-info"> Received from your previous upload </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" w-100 mb-15"
+                            *ngFor="let document of commonVariableService.documentList;let parent = index">
+                            <div class="doc-section">
+                                <div class="display-flex a-i-c mb-15">
+                                    <div class="">{{document.label}}
+                                        <span *ngIf="document.required" class="requiredHastrick"></span>
+                                    </div>
+                                    <img *ngIf="document?.itemUploaded" [src]="'../../../../assets/icons/tick.png'"
+                                        class="ml-10 ht-15" alt="">
+                                </div>
+                            </div>
+                            <div class="document-card w-100" [ngClass]="{'fileReceived': document?.itemUploaded}">
+                                <div class="doc-width" *ngFor="let data of document.documentList;let i = index">
+                                    <div class="doc-mainInfo" *ngIf="document.isRadioButton == false">
+                                        <div class="documentInfo" [class.disabled]="data.disable == true">
+                                            <div class="display-flex" *ngIf="data.type == 'redirectURL'">
+                                                <img class="ml-5" [src]="data.icon" alt="">
+                                                <span class="doc-lbl"
+                                                    (click)="data.disable == true? '':callMicroService(data,document) ">{{data.label}}</span>
+                                            </div>
+                                            <div *ngIf="data.type == 'selfUpload'" class="display-flex">
+                                                <img class="ml-5" [src]="data.icon" alt="">
+                                                <span class="doc-lbl" (click)="data.disable == true? '':fileUpload.click()">{{data.label}}</span>
+                                            </div>
+                                            <input type="file" required #fileUpload ng2FileSelect accept=".pdf"
+                                                autocomplete="off" multiple
+                                                (change)="uploadFiles($event.target.files,data,document)" />
+                                            <div *ngIf="showError">{{errorText}}</div>
+                                            <div class="or-txt-pnl" *ngIf="i<=1 || (i<=2 && document.documentList.length ==4)">
+                                                <span class="or-text">or</span>
+                                            </div>
+                                        </div>
+                                        <span class="text-info doc-text-info">{{data.info}}</span>
+                                        <div class="text-info uploaded-file display-flex a-i-c"
+                                            *ngIf="data.uploadedValue">
+                                            <img class="ht-15 mr-10" [src]="'../../../../assets/icons/tick_submit.png'"
+                                                alt="">
+                                            {{data.uploadedValue}}
+                                            <img [src]="'../../../../assets/icons/close.png'" (click)="deleteDocument(data)"
+                                                alt="" class="ht-15 ml-10">
+                                        </div>
+                                    </div>
+                                    <div class="doc-mainIfo" *ngIf="document.isRadioButton == true">
+                                        <div class="docInfo">
+                                            <div class="display-flex justify-content-between bank-content">
+                                                <div class="text-nowrap mr-5">{{document.title}}</div>
+                                                <mat-radio-group
+                                                    class="form-conrol d-flex example-radio-group-vertical mr-5">
+                                                    <mat-radio-button *ngFor="let item of document.radioList"
+                                                        [value]="item.key" (change)="onChange(item)">
+                                                        {{item.name}}
+                                                    </mat-radio-button>
+                                                </mat-radio-group>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="isBrand == true" class="mt-20 w-25 mw-100">
+                            <div class="display-block w-100 ">
+                                <label for="">Salary Account</label><br>
+                                <select class="input-container mt-10 w-100">
+                                    <option selected value="1224353454">123******354r6</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div *ngIf="isOtherBankSelected == true" class="mt-20 w-45 mw-100">
+                            <div class="display-block w-100">
+                                <label for="">Select Bank</label><br>
+                                <select class="input-container mt-10 w-80">
+                                    <option selected value="ICCI">ICCI</option>
+                                </select>
+                                <div class="mt-10">
+                                    <span>Please Select Below Option For Sharing Your Bank Statement</span>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="row ">
+                                        <div class="col-sm-4">
+                                            <button class="btn-orange" (click)="otherBankModeSelect('AA')">Share With
+                                                AA</button>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button class="btn-orange" (click)="otherBankModeSelect('NB')">Share With
+                                                Netbanking</button>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button class="btn-orange"
+                                                (click)="otherBankModeSelect('EPF')">E-PDF-Statement</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 mt-10">
+                            <button class="btn-orange mob-w-100" (click)="continue()">{{metaConfig.fieldLabel}}</button>
+                        </div>
+                    </ng-template>
+                </app-section-builder>
+            </div>
+        </div>
+    </div>
+
+</div>
+<spinner *ngIf="showloader"></spinner>

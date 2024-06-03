@@ -1,0 +1,51 @@
+.main-section{
+    padding: 30px;
+    flex-wrap: wrap;
+  display: flex;
+}
+
+.config-actions-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.configure-section,.sequence-preview-section ,.journeyPagessection,.otherPagessection,.visual-preview,.json-preview{
+    flex-basis: 50%;
+}
+.configure-section{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+.sequence-preview-section{
+    display: flex;
+    flex-direction: column;
+    padding: 0 30px ;
+}
+
+.preview-group{
+    display: flex;
+}
+.pageseq{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper{
+    display: flex;
+
+}
+
+.pages-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.otherPagessection,.journeyPagessection{
+   // justify-content: center;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}

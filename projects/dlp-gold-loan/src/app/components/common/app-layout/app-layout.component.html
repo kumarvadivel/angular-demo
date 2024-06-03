@@ -1,0 +1,19 @@
+ <div class="col-lg-12 col-md-12 col-sm-12 col-12 pl-0 pr-0 commonStyle float-left maxWidth2400" [ngClass]="{'defaultTheme': commonVariableService.tenentConfiguration.applicationTheme=='default','redTheme': commonVariableService.tenentConfiguration.applicationTheme=='red','pinkTheme': commonVariableService.tenentConfiguration.applicationTheme=='pink'}">
+    <div class="appLayout-panel float-left w-100 commonStyle" >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-12 pl-0 pr-0 commonStyle float-left appHeader-section maxWidth2400" >
+            <app-header></app-header>
+        </div> 
+         <div class="pt-50" >
+          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pl-0 pr-0 commonStyle float-left appContent-section maxWidth2400">
+                <router-outlet></router-outlet> 
+         </div> 
+         </div> 
+         <div class="col-lg-12 col-md-12 col-sm-12 col-12 pl-0 pr-0 commonStyle float-left appFooter-section maxWidth2400">
+            <app-footer></app-footer>
+        </div> 
+    </div>
+    
+</div>
+
+
+
